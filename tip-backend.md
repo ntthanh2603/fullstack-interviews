@@ -261,46 +261,46 @@
   ```
   // Cách dùng object mapping
   const foodMap = {
-  'apple': 20,
-  'orange': 30,
-  'banana': 10
-};
+    'apple': 20,
+    'orange': 30,
+    'banana': 10
+  };
 
-const getPrice = name => {
-  return foodMap[name] || '';
-};
+  const getPrice = name => {
+    return foodMap[name] || '';
+  };
 
-console.log(getPrice('apple')); // Kết quả: 20
+  console.log(getPrice('apple')); // Kết quả: 20
 
-// Cách dùng if else
-const getPrice = name => {
-  if (name === 'apple') {
-    return 20;
-  } else if (name === 'orange') {
-    return 30;
-  } else if (name === 'banana') {
-    return 10;
-  }
-  return '';
-};
-
-console.log(getPrice('apple')); // Kết quả: 20
-
-// Dùng switch case
-const getPrice = name => {
-  switch (name) {
-    case 'apple':
+  // Cách dùng if else
+  const getPrice = name => {
+    if (name === 'apple') {
       return 20;
-    case 'orange':
+    } else if (name === 'orange') {
       return 30;
-    case 'banana':
+    } else if (name === 'banana') {
       return 10;
-    default:
-      return '';
-  }
-};
+    }
+    return '';
+  };
 
-console.log(getPrice('apple')); // Kết quả: 20
+  console.log(getPrice('apple')); // Kết quả: 20
+
+  // Dùng switch case
+  const getPrice = name => {
+    switch (name) {
+      case 'apple':
+        return 20;
+      case 'orange':
+        return 30;
+      case 'banana':
+        return 10;
+      default:
+        return '';
+    }
+  };
+
+  console.log(getPrice('apple')); // Kết quả: 20
   ```
   - Dùng object mapping:
     Ưu điểm: O(1), dễ mở rộng(chỉ cần thêm cặp key-value), code ngắn và dễ hiểu.
@@ -352,26 +352,26 @@ console.log(getPrice('apple')); // Kết quả: 20
   ```
 
 - Thêm phần tử vào mảng: 
-```
-// Good
-const addItemToCart = (cart, item) => {
-  return [
-    ...cart,
-    {
+  ```
+  // Good
+  const addItemToCart = (cart, item) => {
+    return [
+      ...cart,
+      {
+        item,
+        date: Date.now()
+      }
+    ];
+  }
+
+  // Not good
+  const addItemToCart = (cart, item) => {
+    cart.push({
       item,
       date: Date.now()
-    }
-  ];
-}
-
-// Not good
-const addItemToCart = (cart, item) => {
-  cart.push({
-    item,
-    date: Date.now()
-  });
-}
-```
+    });
+  }
+  ```
   - Cách 1 không làm thay đổi mảng cũ tránh tác dụng phụ ngoài ý muốn và dễ đọc dễ hiểu nhưng nếu cart là mảng lớn thì việc sao chép dữ liệu sẽ tốn tài nguyên hơn.
   - Không tạo mảng mới mà chỉ thêm vào mảng cũ giúp nhanh hơn khi làm việc với mảng lớn, nên dùng nếu không quan tâm tính bất biến của mảng cũ, nhược điểm ảnh hưởng dến mảng cũ làm không an toàn nếu mảng cũ đang dùng ở chỗ khác.
 
