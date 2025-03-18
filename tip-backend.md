@@ -379,7 +379,8 @@
 
 - Đọc ghi cache tối ưu nhất để có tính nhất quán:
   ![](./assets/io-cache.png)
-  ![](./assets/io-cache-use-rebbitmq.png)
+  và 
+  ![](./assets/io-cache-use-rabbitmq.png)
 
 - Tại sao phải dùng message queue:
 
