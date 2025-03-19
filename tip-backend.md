@@ -251,6 +251,7 @@
   - 3️⃣ Sử dụng Event Loop để kiểm tra hàng đợi (queue) và thực thi các tác vụ chờ xử lý.
 
 - Phân biệt SQL và NoSQL:
+
   - Cấu trúc dữ liệu: SQL (Structured Query Language): Cơ sở dữ liệu quan hệ, sử dụng bảng (tables) với các hàng (rows) và cột (columns). Dữ liệu có cấu trúc cố định. NoSQL: Cơ sở dữ liệu phi quan hệ, lưu trữ dữ liệu dưới dạng tài liệu (documents), cặp khóa-giá trị (key-value), đồ thị (graph), hoặc cột (column). Dữ liệu có thể không cấu trúc hoặc linh hoạt.
   - Mở rộng: SQL: Tối ưu cho các hệ thống có quan hệ và yêu cầu dữ liệu liên kết chặt chẽ, mở rộng theo chiều ngang khó khăn. NoSQL: Phù hợp với các hệ thống phân tán, có thể mở rộng linh hoạt theo chiều ngang.
   - Tính nhất quán: SQL: Dựa trên nguyên lý ACID (Atomicity, Consistency, Isolation, Durability), đảm bảo tính nhất quán dữ liệu. NoSQL: Thường sử dụng nguyên lý BASE (Basically Available, Soft state, Eventually consistent), có thể chấp nhận một số sự không nhất quán trong thời gian ngắn.
@@ -258,6 +259,7 @@
   - NoSQL không có quan hệ truyền thống như SQL không có ràng buộc giữa các bảng. Tuy nhiên cơ sở dữ liệu dạng đồ thị như Neo4j có thể lưu trữ và quản lý quan hệ các đối tượng dựa vào cạnh(edges) và đỉnh(nodes).
 
 - Nên dùng if else hay object mapping hay switch case trong trường hợp sau:
+
   ```
   // Cách dùng object mapping
   const foodMap = {
@@ -302,6 +304,7 @@
 
   console.log(getPrice('apple')); // Kết quả: 20
   ```
+
   - Dùng object mapping:
     Ưu điểm: O(1), dễ mở rộng(chỉ cần thêm cặp key-value), code ngắn và dễ hiểu.
     Nhược điểm: Chỉ phù hợp với trường hợp ánh xạ đơn giản và phải có sẵn các trường hợp(cần biết trước cặp key-value), không xử lý được điều kiện phức tạp.
@@ -311,16 +314,18 @@
   - Dùng switch case:
     Ưu điểm: Dễ đọc hơn if else, có thể nhanh hơn if else trong 1 số trình biên dịch.
     Nhược điểm: O(n) với n là số điều kiện trong trường hợp xấu nhất, phải liệt kê tất cả các key, nếu nhiều trường hợp thì khó đọc.
-  
+
 - Cách tối ưu hóa Docker:
+
   - Giảm kích thước image: Dùng các image như Alpine, Sử dụng multi-stage builds(Phân chia quá trình xây dựng thành nhiều giai đoạn để chỉ giữ lại những gì cần thiết cho môi trường production. Ví dụ, biên dịch mã nguồn trong một giai đoạn và chỉ sao chép tệp thực thi sang giai đoạn cuối cùng), Dùng .dockerignore để bỏ tệp không cần thiết, gộp nhiều lệnh RUN thành 1 để giảm số lượng layer từ đó làm giảm kích thước images.
   - Cải thiện hiệu suất của container: Giới hạn tài nguyên memory và cpu để tránh dùng quá nhiều tài nguyên hệ thống, dùng mạng phù hợp(như bridge, host, hoặc overlay) để cải thiện hiệu suất mạng của container, lưu trữ dữ liệu ngoài container thì dùng volume để cải thiện hiệu suất I/O và quản lý dễ dàng hơn.
-  Dùng các công cụ tối ưu hóa Docker: 
+    Dùng các công cụ tối ưu hóa Docker:
     - docker-slim: Công cụ này giúp giảm dung lượng hình ảnh Docker bằng cách loại bỏ các tệp, thư viện hoặc thành phần không cần thiết cho ứng dụng chạy, đồng thời tăng cường bảo mật.
     - dive: dive cho phép bạn xem chi tiết từng layer trong hình ảnh Docker, từ đó xác định các tệp hoặc dữ liệu dư thừa để tối ưu hóa Dockerfile.
     - Docker BuildKit: Backend xây dựng hình ảnh mới, hỗ trợ xây dựng song song và cache thông minh, giúp tăng tốc quá trình.
 
 - Dùng "??":
+
   ```
   const object = {
     name: 'tuanthanh',
@@ -332,9 +337,11 @@
   console.log(object.age ?? 25) // -> 21
   console.log(object.sex ?? 'male') // -> male
   ```
+
   Trả về bên phải khi bên trái là null hoặc undefined.
 
 - Return function:
+
   ```
   // senior
   const fetchDate = should => {
@@ -351,7 +358,8 @@
   }
   ```
 
-- Thêm phần tử vào mảng: 
+- Thêm phần tử vào mảng:
+
   ```
   // Good
   const addItemToCart = (cart, item) => {
@@ -372,6 +380,7 @@
     });
   }
   ```
+
   - Cách 1 không làm thay đổi mảng cũ tránh tác dụng phụ ngoài ý muốn và dễ đọc dễ hiểu nhưng nếu cart là mảng lớn thì việc sao chép dữ liệu sẽ tốn tài nguyên hơn.
   - Không tạo mảng mới mà chỉ thêm vào mảng cũ giúp nhanh hơn khi làm việc với mảng lớn, nên dùng nếu không quan tâm tính bất biến của mảng cũ, nhược điểm ảnh hưởng dến mảng cũ làm không an toàn nếu mảng cũ đang dùng ở chỗ khác.
 
@@ -381,19 +390,30 @@
   ![](./assets/io-cache.png)
   ![](./assets/io-cache-use-rabbitmq.png)
 
-- Tại sao phải dùng message queue:
+- Tại sao phải dùng message queue: Tách biệt và bất đồng bộ, Cân băng tải, Độ tin cậy, Khả năng mở rộng,Xử lý tác vụ nền, Giao tiếp giữa các hệ thống.
 
 - Ưu điểm và nhược điểm của message queue:
 
-- Tại sao dùng RabbitMQ:
+  - Ưu điểm: Tách biệt và bất đồng bộ, Cân băng tải, Độ tin cậy, Khả năng mở rộng,Xử lý tác vụ nền, Giao tiếp giữa các hệ thống.
+  - Nhược điểm: Độ phức tạp tăng, Độ trễ trong 1 task có thể cao hơn, Có thể message queue có thể bị nghẽn, Cần thêm tài nguyên để duy trì queue, Chi phí bảo trì cao hơn.
+
+- Tại sao dùng RabbitMQ: Dùng làm message queue vì:
+
+  - Hỗ trợ nhiều giao thức: AMQP, MQTT, STOMP, và HTTP.
+  - Dễ triển khai( Có UI thân thiện).
+  - Độ tin cậy cao(message không mất ngay cả khi hệ thống bị lỗi).
+  - Khả năng mở rộng cao( Hỗ trợ clustering và federation giúp mở rộng tuy nhiên không mạnh bằng kafka thì xử lý lượng data lớn).
+  - Cộng đồng lớn và mã nguồn mở (Được hỗ trợ bởi VMware).
+  - Hỗ trợ đa nền tảng: RabbitMQ chạy tốt trên Linux, Windows, macOS và có thư viện client cho hầu hết các ngôn ngữ lập trình phổ biến như Python, Java, Node.js, .NET, v.v.
 
 - Phân biệt RabbitMQ và Kafka:
-  - RabbitMQ: Phát triển bằng ngôn ngữ Scala, độ tin cậy của dữ liệu trong RabbitMQ cao hơn Kafka. Thường dùng trong hệ thống tài chính thì đảm bảo tính nhất quán dữ liệu hơn Kafka. 
-    => Nếu dự án yêu cầu về chức năng thì nên dùng RabbitMQ. 
+
+  - RabbitMQ: Phát triển bằng ngôn ngữ Scala, độ tin cậy của dữ liệu trong RabbitMQ cao hơn Kafka. Thường dùng trong hệ thống tài chính thì đảm bảo tính nhất quán dữ liệu hơn Kafka.
+    => Nếu dự án yêu cầu về chức năng thì nên dùng RabbitMQ.
   - Kafka: Được phát triển bằng ngôn ngữ Golang bởi Linkedin rồi sau đó Linkedin tặng cho Apache, thường dùng để ghi log, khả năng mở rộng của kafka thì mạnh hơn
     => Nếu hệ thống yêu cầu về hiêụ suất hơn thì nên dùng kafka.
     ==> Còn nếu phải lựa chọn chức năng và hiệu suất thì hiệu suất của Kafka là lựa chọn để dùng.
-    ==>  Kafka với triển khai fsync + epoch number + Raft protocol cho consistency + durability + reliability rất tốt, không thể nói là kém hơn rabbitmq được :D Cái đặc trưng nhất giữa 2 thằng cần nói ở đây là trade-off giữa low latency và high throughput -> Kafka dùng concept batch processing, nên cho throughput cao, độ trễ mỗi message ổn định, còn RabbitMQ ưu tiên low latency cho mỗi message, dùng cho real-processing application, bù lại nếu tải cao thì system bị stress dẫn đến tail latency cao chứ không ổn định theo batch như kafka.
+    ==> Kafka với triển khai fsync + epoch number + Raft protocol cho consistency + durability + reliability rất tốt, không thể nói là kém hơn rabbitmq được :D Cái đặc trưng nhất giữa 2 thằng cần nói ở đây là trade-off giữa low latency và high throughput -> Kafka dùng concept batch processing, nên cho throughput cao, độ trễ mỗi message ổn định, còn RabbitMQ ưu tiên low latency cho mỗi message, dùng cho real-processing application, bù lại nếu tải cao thì system bị stress dẫn đến tail latency cao chứ không ổn định theo batch như kafka.
 
 - Cơ chế khi login:
 

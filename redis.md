@@ -1,6 +1,7 @@
 # Hướng dẫn sử dụng Redis trong NestJS với thư viện ioredis
 
 ## Mục lục
+
 1. [Giới thiệu](#giới-thiệu)
 2. [Cài đặt](#cài-đặt)
 3. [Cấu hình module Redis](#cấu-hình-module-redis)
@@ -18,9 +19,27 @@
 
 ## Giới thiệu
 
-Redis là một hệ thống lưu trữ dữ liệu key-value trong bộ nhớ với hiệu năng cao. Trong NestJS, chúng ta có thể tích hợp Redis thông qua thư viện ioredis. Hướng dẫn này sẽ giúp bạn hiểu cách cấu hình và sử dụng Redis trong ứng dụng NestJS.
+Redis là một hệ thống lưu trữ dữ liệu key-value trong bộ nhớ với hiệu năng cao do lưu trong in-memory và tính đồng thời cao(Do không cần query database).
+
+Redis hỗ trợ nhiều kiểu dữ liệu như: String, List, Set, ZSet, Hash.
+
+Redis thường dùng làm cache hoặc queue hoặc lưu trữ dữ liệu tạm thời nhờ tốc độ truy cập cao.
+
+- Các điểm nổi bật:
+
+  - Hiệu suất cao: Do lưu trữ trong ram nên các thao tác I/O rất nhanh.
+  - Hỗ trợ sao lưu: Dữ liệu có thể được sao lưu xống đĩa giúp tránh mất dữ liệu khi hệ thống khởi động lại.
+  - Mở rộng: Hỗ trợ phân cụm để xử lý dữ liệu lớn.
+
+- Các cách đặt ttl(time to live): Tự động xóa sau 1 khoảng thời gian, xóa lúc 12h đêm.
+
+- Memcached và Redis:
+  - Memcached: Chỉ hỗ trợ kiểu string, chỉ lưu trên ram khởi động là mất, hoạt động đa luồng.
+  - Redis: Hỗ trợ nhiều kiểu dữ liệu, có tính bền bỉ vì có thể lưu trên ổ cứng, hoạt động đơn luồng.
 
 ## Cài đặt
+
+Trong NestJS, chúng ta có thể tích hợp Redis thông qua thư viện ioredis. Hướng dẫn này sẽ giúp bạn hiểu cách cấu hình và sử dụng Redis trong ứng dụng NestJS.
 
 Đầu tiên, cài đặt các package cần thiết:
 
@@ -34,9 +53,9 @@ Tạo module Redis để cung cấp client Redis cho toàn bộ ứng dụng:
 
 ```typescript
 // redis.module.ts
-import { Module, DynamicModule } from '@nestjs/common';
-import { Redis } from 'ioredis';
-import { RedisService } from './redis.service';
+import { Module, DynamicModule } from "@nestjs/common";
+import { Redis } from "ioredis";
+import { RedisService } from "./redis.service";
 
 @Module({})
 export class RedisModule {
@@ -45,7 +64,7 @@ export class RedisModule {
       module: RedisModule,
       providers: [
         {
-          provide: 'REDIS_CLIENT',
+          provide: "REDIS_CLIENT",
           useFactory: async () => {
             const redis = new Redis(options.url);
             return redis;
@@ -63,12 +82,12 @@ export class RedisModule {
 
 ```typescript
 // redis.service.ts
-import { Injectable, Inject } from '@nestjs/common';
-import { Redis } from 'ioredis';
+import { Injectable, Inject } from "@nestjs/common";
+import { Redis } from "ioredis";
 
 @Injectable()
 export class RedisService {
-  constructor(@Inject('REDIS_CLIENT') private readonly redis: Redis) {}
+  constructor(@Inject("REDIS_CLIENT") private readonly redis: Redis) {}
 
   /**
    * Lưu giá trị vào Redis
@@ -76,9 +95,9 @@ export class RedisService {
    * @param value - Giá trị cần lưu
    * @param ttl - Thời gian sống (tính bằng giây), tùy chọn
    */
-  async set(key: string, value: string, ttl?: number): Promise<'OK'> {
+  async set(key: string, value: string, ttl?: number): Promise<"OK"> {
     if (ttl) {
-      return this.redis.set(key, value, 'EX', ttl);
+      return this.redis.set(key, value, "EX", ttl);
     }
     return this.redis.set(key, value);
   }
@@ -167,7 +186,11 @@ export class RedisService {
    * @param value - Giá trị của trường
    * @returns 1 nếu trường được tạo mới, 0 nếu trường đã tồn tại và được cập nhật
    */
-  async hSet(key: string, field: string, value: string | number): Promise<number> {
+  async hSet(
+    key: string,
+    field: string,
+    value: string | number
+  ): Promise<number> {
     return this.redis.hset(key, field, value.toString());
   }
 
@@ -177,7 +200,7 @@ export class RedisService {
    * @param fieldValues - Object chứa các cặp trường/giá trị
    * @returns OK nếu thành công
    */
-  async hMSet(key: string, fieldValues: Record<string, any>): Promise<'OK'> {
+  async hMSet(key: string, fieldValues: Record<string, any>): Promise<"OK"> {
     return this.redis.hmset(key, fieldValues);
   }
 
@@ -388,7 +411,10 @@ export class RedisService {
    * @param scoreMembers - Mảng các cặp [score, member]
    * @returns Số lượng thành viên mới được thêm vào
    */
-  async zAdd(key: string, ...scoreMembers: (string | number)[]): Promise<number> {
+  async zAdd(
+    key: string,
+    ...scoreMembers: (string | number)[]
+  ): Promise<number> {
     return this.redis.zadd(key, ...scoreMembers);
   }
 
@@ -409,7 +435,11 @@ export class RedisService {
    * @param max - Điểm số lớn nhất
    * @returns Mảng các thành viên trong phạm vi điểm số
    */
-  async zRangeByScore(key: string, min: number | string, max: number | string): Promise<string[]> {
+  async zRangeByScore(
+    key: string,
+    min: number | string,
+    max: number | string
+  ): Promise<string[]> {
     return this.redis.zrangebyscore(key, min, max);
   }
 
@@ -450,7 +480,11 @@ export class RedisService {
    * @param member - Thành viên cần tăng điểm
    * @returns Điểm số mới của thành viên
    */
-  async zIncrBy(key: string, increment: number, member: string): Promise<string> {
+  async zIncrBy(
+    key: string,
+    increment: number,
+    member: string
+  ): Promise<string> {
     return this.redis.zincrby(key, increment, member);
   }
 
@@ -495,9 +529,12 @@ export class RedisService {
    * @param channel - Tên kênh
    * @param callback - Hàm xử lý tin nhắn
    */
-  async subscribe(channel: string, callback: (channel: string, message: string) => void): Promise<void> {
+  async subscribe(
+    channel: string,
+    callback: (channel: string, message: string) => void
+  ): Promise<void> {
     await this.redis.subscribe(channel);
-    this.redis.on('message', callback);
+    this.redis.on("message", callback);
   }
 
   /**
@@ -532,13 +569,13 @@ export class RedisService {
 
 ```typescript
 // app.module.ts
-import { Module } from '@nestjs/common';
-import { RedisModule } from './redis/redis.module';
+import { Module } from "@nestjs/common";
+import { RedisModule } from "./redis/redis.module";
 
 @Module({
   imports: [
     RedisModule.register({
-      url: 'redis://localhost:6379',
+      url: "redis://localhost:6379",
     }),
   ],
 })
@@ -553,40 +590,40 @@ export class AppModule {}
 
 ```typescript
 // Lưu dữ liệu vào Redis
-await this.redisService.set('key', 'value');
+await this.redisService.set("key", "value");
 
 // Lưu dữ liệu với thời gian sống (TTL)
-await this.redisService.set('key', 'value', 3600); // hết hạn sau 1 giờ
+await this.redisService.set("key", "value", 3600); // hết hạn sau 1 giờ
 ```
 
 #### Truy xuất dữ liệu
 
 ```typescript
 // Lấy dữ liệu từ Redis
-const value = await this.redisService.get('key');
+const value = await this.redisService.get("key");
 
 // Kiểm tra xem khóa có tồn tại không
-const exists = await this.redisService.exists('key');
+const exists = await this.redisService.exists("key");
 ```
 
 #### Xóa dữ liệu
 
 ```typescript
 // Xóa một khóa
-await this.redisService.del('key');
+await this.redisService.del("key");
 
 // Xóa nhiều khóa
-await this.redisService.del('key1', 'key2', 'key3');
+await this.redisService.del("key1", "key2", "key3");
 ```
 
 ### Làm việc với hạn sử dụng
 
 ```typescript
 // Đặt thời gian sống cho khóa
-await this.redisService.expire('key', 3600); // hết hạn sau 1 giờ
+await this.redisService.expire("key", 3600); // hết hạn sau 1 giờ
 
 // Kiểm tra thời gian sống còn lại của khóa
-const ttl = await this.redisService.ttl('key');
+const ttl = await this.redisService.ttl("key");
 ```
 
 ### Xử lý Hash
@@ -595,24 +632,28 @@ Hash là một cấu trúc dữ liệu có nhiều trường giá trị, rất h
 
 ```typescript
 // Lưu trữ một trường trong hash
-await this.redisService.hSet('user:100', 'name', 'Nguyễn Văn A');
-await this.redisService.hSet('user:100', 'email', 'nguyenvana@example.com');
+await this.redisService.hSet("user:100", "name", "Nguyễn Văn A");
+await this.redisService.hSet("user:100", "email", "nguyenvana@example.com");
 
 // Lưu trữ nhiều trường cùng lúc
-await this.redisService.hMSet('user:100', {
-  name: 'Nguyễn Văn A',
-  email: 'nguyenvana@example.com',
+await this.redisService.hMSet("user:100", {
+  name: "Nguyễn Văn A",
+  email: "nguyenvana@example.com",
   age: 30,
 });
 
 // Lấy một trường từ hash
-const name = await this.redisService.hGet('user:100', 'name');
+const name = await this.redisService.hGet("user:100", "name");
 
 // Lấy nhiều trường từ hash
-const [name, email] = await this.redisService.hMGet('user:100', 'name', 'email');
+const [name, email] = await this.redisService.hMGet(
+  "user:100",
+  "name",
+  "email"
+);
 
 // Lấy tất cả các trường trong hash
-const user = await this.redisService.hGetAll('user:100');
+const user = await this.redisService.hGetAll("user:100");
 ```
 
 ### Xử lý List
@@ -621,19 +662,19 @@ List là danh sách các phần tử có thứ tự, cho phép thêm/xóa từ �
 
 ```typescript
 // Thêm phần tử vào đầu danh sách
-await this.redisService.lPush('notifications', 'New message');
+await this.redisService.lPush("notifications", "New message");
 
 // Thêm phần tử vào cuối danh sách
-await this.redisService.rPush('notifications', 'New message');
+await this.redisService.rPush("notifications", "New message");
 
 // Lấy và xóa phần tử đầu tiên
-const firstItem = await this.redisService.lPop('notifications');
+const firstItem = await this.redisService.lPop("notifications");
 
 // Lấy và xóa phần tử cuối cùng
-const lastItem = await this.redisService.rPop('notifications');
+const lastItem = await this.redisService.rPop("notifications");
 
 // Lấy tất cả các phần tử trong danh sách
-const allItems = await this.redisService.lRange('notifications', 0, -1);
+const allItems = await this.redisService.lRange("notifications", 0, -1);
 ```
 
 ### Xử lý Set
@@ -642,16 +683,16 @@ Set là tập hợp các phần tử không có thứ tự và không có phần
 
 ```typescript
 // Thêm phần tử vào set
-await this.redisService.sAdd('tags', 'nestjs', 'redis', 'typescript');
+await this.redisService.sAdd("tags", "nestjs", "redis", "typescript");
 
 // Kiểm tra phần tử có trong set không
-const isMember = await this.redisService.sIsMember('tags', 'nestjs');
+const isMember = await this.redisService.sIsMember("tags", "nestjs");
 
 // Lấy tất cả các phần tử trong set
-const allTags = await this.redisService.sMembers('tags');
+const allTags = await this.redisService.sMembers("tags");
 
 // Xóa phần tử khỏi set
-await this.redisService.sRem('tags', 'typescript');
+await this.redisService.sRem("tags", "typescript");
 ```
 
 ### Xử lý Sorted Set
@@ -660,16 +701,28 @@ Sorted Set là tập hợp các phần tử không trùng lặp, mỗi phần t�
 
 ```typescript
 // Thêm phần tử vào sorted set với điểm số
-await this.redisService.zAdd('leaderboard', 100, 'user1', 200, 'user2', 150, 'user3');
+await this.redisService.zAdd(
+  "leaderboard",
+  100,
+  "user1",
+  200,
+  "user2",
+  150,
+  "user3"
+);
 
 // Lấy điểm số của một phần tử
-const score = await this.redisService.zScore('leaderboard', 'user1');
+const score = await this.redisService.zScore("leaderboard", "user1");
 
 // Lấy danh sách phần tử theo thứ hạng (từ thấp đến cao)
-const topUsers = await this.redisService.zRange('leaderboard', 0, 2);
+const topUsers = await this.redisService.zRange("leaderboard", 0, 2);
 
 // Lấy danh sách phần tử theo phạm vi điểm số
-const usersInRange = await this.redisService.zRangeByScore('leaderboard', 100, 200);
+const usersInRange = await this.redisService.zRangeByScore(
+  "leaderboard",
+  100,
+  200
+);
 ```
 
 ## Pipeline và Transaction
@@ -681,47 +734,51 @@ Pipeline cho phép gửi nhiều lệnh cùng lúc để giảm độ trễ mạ
 Pipeline cho phép gửi nhiều lệnh cùng lúc để giảm độ trễ mạng. Transaction đảm bảo các lệnh được thực hiện cùng nhau hoặc không thực hiện gì cả.
 
 ### Pipeline
+
 ```typescript
 // Tạo pipeline
 const pipeline = this.redisService.pipeline();
 // Thêm các lệnh vào pipeline
-pipeline.set('key1', 'value1');
-pipeline.set('key2', 'value2');
-pipeline.get('key1');
-pipeline.get('key2');
+pipeline.set("key1", "value1");
+pipeline.set("key2", "value2");
+pipeline.get("key1");
+pipeline.get("key2");
 // Thực thi pipeline
 const results = await pipeline.exec();
 // Kết quả trả về là mảng [err, result] cho mỗi lệnh
 ```
 
 ### Transaction
+
 Transaction trong Redis được thực hiện bằng cách sử dụng lệnh `MULTI` và `EXEC`. Các lệnh bên trong transaction sẽ được thực thi tuần tự và đồng bộ.
+
 ```typescript
 // Bắt đầu transaction
 const multi = this.redisService.multi();
-multi.set('balance', '100');
-multi.decrby('balance', 10);
-multi.incrby('balance', 20);
+multi.set("balance", "100");
+multi.decrby("balance", 10);
+multi.incrby("balance", 20);
 // Thực thi transaction
 const transactionResults = await multi.exec();
 ```
 
 ## Pub/Sub
+
 Redis hỗ trợ mô hình **Publisher/Subscriber** để gửi và nhận thông điệp theo thời gian thực.
 
 ### **Publisher**
+
 ```typescript
-await this.redisService.publish('notifications', 'New user signed up!');
+await this.redisService.publish("notifications", "New user signed up!");
 ```
 
 ### **Subscriber**
+
 ```typescript
-this.redisService.subscribe('notifications', (message, channel) => {
+this.redisService.subscribe("notifications", (message, channel) => {
   console.log(`Received message: ${message} from channel: ${channel}`);
 });
 ```
-
-
 
 # Redis Interview Knowledge Guide
 
@@ -740,9 +797,11 @@ this.redisService.subscribe('notifications', (message, channel) => {
 ## Kiến thức cơ bản về Redis
 
 ### Redis là gì?
+
 Redis (Remote Dictionary Server) là một hệ thống lưu trữ dữ liệu key-value trong bộ nhớ, mã nguồn mở, có hiệu năng cao và hỗ trợ nhiều kiểu dữ liệu khác nhau.
 
 ### Những đặc điểm chính của Redis
+
 1. **In-memory storage**: Lưu trữ dữ liệu trong RAM, mang lại tốc độ cực nhanh.
 2. **Persistence**: Hỗ trợ lưu trữ dữ liệu xuống disk để tránh mất dữ liệu khi khởi động lại.
 3. **Đa dạng kiểu dữ liệu**: Strings, Lists, Sets, Sorted Sets, Hashes, Streams, Bitmaps, HyperLogLogs, Geospatial indexes.
@@ -752,12 +811,14 @@ Redis (Remote Dictionary Server) là một hệ thống lưu trữ dữ liệu k
 7. **Automatic failover**: Với Redis Sentinel hoặc Redis Cluster.
 
 ### Điểm mạnh của Redis
+
 - Tốc độ xử lý nhanh (thường đạt 100,000+ operations/second)
 - Đơn giản, dễ sử dụng
 - Hỗ trợ nhiều ngôn ngữ lập trình
 - Phù hợp cho cache, bộ đếm, hàng đợi, real-time analytics
 
 ### Điểm yếu của Redis
+
 - Giới hạn về kích thước dữ liệu (bởi RAM)
 - Không phải giải pháp lưu trữ dữ liệu chính thức dài hạn
 - Không hỗ trợ truy vấn phức tạp như SQL
@@ -765,6 +826,7 @@ Redis (Remote Dictionary Server) là một hệ thống lưu trữ dữ liệu k
 ## Cấu trúc dữ liệu và lệnh Redis
 
 ### String
+
 - Kiểu dữ liệu cơ bản nhất, có thể lưu trữ binary data
 - **Lệnh**: SET, GET, INCR, DECR, EXPIRE
 
@@ -776,6 +838,7 @@ EXPIRE session:1234 3600
 ```
 
 ### Lists
+
 - Danh sách các strings được liên kết theo thứ tự
 - **Lệnh**: LPUSH, RPUSH, LPOP, RPOP, LRANGE
 
@@ -786,6 +849,7 @@ LRANGE notifications 0 -1
 ```
 
 ### Sets
+
 - Tập hợp các string không có thứ tự và không trùng lặp
 - **Lệnh**: SADD, SREM, SMEMBERS, SINTER, SUNION
 
@@ -796,6 +860,7 @@ SINTER tags1 tags2
 ```
 
 ### Sorted Sets
+
 - Giống Sets nhưng mỗi phần tử được gắn với điểm số, sắp xếp theo điểm số
 - **Lệnh**: ZADD, ZRANGE, ZRANK, ZSCORE
 
@@ -805,6 +870,7 @@ ZRANGE leaderboard 0 -1 WITHSCORES
 ```
 
 ### Hashes
+
 - Lưu trữ hash table của các cặp key-value
 - **Lệnh**: HSET, HGET, HMSET, HGETALL
 
@@ -815,6 +881,7 @@ HGETALL user:1
 ```
 
 ### Streams
+
 - Kiểu dữ liệu mới dùng cho message broker
 - **Lệnh**: XADD, XREAD, XRANGE
 
@@ -824,6 +891,7 @@ XREAD COUNT 2 STREAMS mystream 0
 ```
 
 ### Bitmaps và HyperLogLogs
+
 - Bitmap: Chuỗi bit có thể sử dụng làm bộ đếm hiệu quả
 - HyperLogLog: Cấu trúc dữ liệu để ước tính số lượng phần tử riêng biệt
 
@@ -836,20 +904,25 @@ PFCOUNT visitors
 ## Kiến trúc và hoạt động của Redis
 
 ### Single-threaded model
+
 Redis chủ yếu hoạt động trên một luồng duy nhất để xử lý lệnh nhưng có thể sử dụng nhiều luồng cho một số tác vụ như:
+
 - I/O đĩa
 - Giải phóng bộ nhớ
 - Xử lý connections
 
 ### Event loop
+
 - Redis sử dụng mô hình I/O multiplexing (select/epoll/kqueue)
 - Xử lý đồng thời nhiều connections mà không cần nhiều thread
 
 ### Thời gian thực thi lệnh
+
 - Hầu hết các lệnh có độ phức tạp O(1) hoặc O(log n)
 - Một số lệnh có thể chặn luồng chính (như KEYS, FLUSHALL) và nên tránh trong môi trường production
 
 ### Ảnh hưởng của thiết kế single-threaded
+
 - Đơn giản hóa mã nguồn, giảm lỗi đồng thời
 - Không cần mutexes hoặc locks
 - Mỗi lệnh Redis được thực hiện tuần tự, đảm bảo tính nhất quán
@@ -857,16 +930,19 @@ Redis chủ yếu hoạt động trên một luồng duy nhất để xử lý l
 ## Chiến lược lưu trữ và quản lý bộ nhớ
 
 ### Persistence
+
 - **RDB (Redis Database)**: Snapshot của dữ liệu tại thời điểm cụ thể
-    - Ưu điểm: Tệp nhỏ, khôi phục nhanh
-    - Nhược điểm: Có thể mất dữ liệu giữa các lần snapshot
+  - Ưu điểm: Tệp nhỏ, khôi phục nhanh
+  - Nhược điểm: Có thể mất dữ liệu giữa các lần snapshot
 - **AOF (Append Only File)**: Ghi lại tất cả các lệnh ghi
-    - Ưu điểm: Bền vững hơn, ít mất dữ liệu
-    - Nhược điểm: Tệp lớn hơn, khôi phục chậm hơn
+  - Ưu điểm: Bền vững hơn, ít mất dữ liệu
+  - Nhược điểm: Tệp lớn hơn, khôi phục chậm hơn
 - Có thể kết hợp cả hai để tận dụng ưu điểm
 
 ### Eviction policies
+
 Redis có các chính sách xóa khi bộ nhớ đầy:
+
 - **noeviction**: Báo lỗi khi bộ nhớ đầy
 - **allkeys-lru**: Xóa ít được sử dụng nhất
 - **volatile-lru**: Xóa ít được sử dụng nhất trong số khóa có TTL
@@ -875,6 +951,7 @@ Redis có các chính sách xóa khi bộ nhớ đầy:
 - **volatile-ttl**: Xóa khóa có TTL ngắn nhất
 
 ### Tối ưu hóa bộ nhớ
+
 - **Đặt maxmemory**: Giới hạn bộ nhớ Redis được sử dụng
 - **Redis Ziplist**: Biểu diễn nhỏ gọn cho các collections nhỏ
 - **Redis Modules**: Mở rộng Redis với các module tùy chỉnh
@@ -882,6 +959,7 @@ Redis có các chính sách xóa khi bộ nhớ đầy:
 ## Redis Transactions và Concurrency
 
 ### Transactions
+
 Redis hỗ trợ transactions thông qua lệnh MULTI, EXEC, DISCARD và WATCH:
 
 ```
@@ -892,11 +970,13 @@ EXEC
 ```
 
 ### Đặc điểm của Redis transactions
+
 - **Atomicity**: Tất cả lệnh trong transaction được thực hiện hoặc không có lệnh nào được thực hiện
 - **Isolation**: Các lệnh trong transaction không bị ảnh hưởng bởi những lệnh từ transaction khác
 - **Không có rollback**: Nếu một lệnh thất bại, các lệnh khác vẫn được thực hiện
 
 ### Optimistic locking với WATCH
+
 - WATCH dùng để theo dõi sự thay đổi của một khóa
 - Transaction thất bại nếu khóa được watch thay đổi
 
@@ -911,17 +991,20 @@ EXEC
 ## Mở rộng và High Availability
 
 ### Redis Replication
+
 - **Master-Replica**: Một master có thể có nhiều replicas
 - Replicas có thể đọc từ master và phục vụ truy vấn đọc
 - Hỗ trợ asynchronous replication
 
 ### Redis Sentinel
+
 - Giải pháp high availability cho Redis
 - Theo dõi master và replicas
 - Thực hiện failover tự động khi master gặp sự cố
 - Thông báo cho các ứng dụng về thay đổi cấu hình
 
 ### Redis Cluster
+
 - Mô hình phân tán cho Redis
 - Tự động phân vùng dữ liệu
 - Không cần proxy
@@ -931,11 +1014,13 @@ EXEC
 ## Bảo mật Redis
 
 ### Phương pháp xác thực
+
 - Xác thực bằng mật khẩu
 - TLS/SSL cho mã hóa kết nối
 - ACL (Access Control Lists) từ Redis 6.0
 
 ### Bảo mật Redis
+
 - Không để Redis mở ra internet
 - Đặt mật khẩu mạnh
 - Vô hiệu hóa các lệnh nguy hiểm (như FLUSHALL)
@@ -945,6 +1030,7 @@ EXEC
 ## Use cases và Best Practices
 
 ### Các ứng dụng phổ biến
+
 - **Caching**: Giảm tải cho database
 - **Session storage**: Lưu trữ phiên đăng nhập
 - **Queues/Job systems**: Hàng đợi công việc
@@ -953,6 +1039,7 @@ EXEC
 - **Pub/Sub**: Messaging giữa các services
 
 ### Best Practices
+
 - Đặt TTL cho các khóa khi phù hợp
 - Sử dụng naming conventions cho khóa
 - Tránh các lệnh chặn như KEYS trong production
@@ -965,10 +1052,12 @@ EXEC
 ### Câu hỏi cơ bản
 
 1. **Redis là gì và nó khác với database quan hệ như thế nào?**
+
    - Redis là in-memory data store, tập trung vào tốc độ và đơn giản
    - DB quan hệ phức tạp hơn, có schema, và hỗ trợ các truy vấn phức tạp
 
 2. **Khi nào nên sử dụng Redis?**
+
    - Khi cần tốc độ cao
    - Làm cache
    - Lưu trữ dữ liệu tạm thời
@@ -976,6 +1065,7 @@ EXEC
    - Bảng xếp hạng, đếm, phân tích thời gian thực
 
 3. **Redis lưu trữ dữ liệu như thế nào?**
+
    - Dữ liệu được lưu trong RAM
    - Có thể persistence xuống disk bằng RDB hoặc AOF
    - Sử dụng cấu trúc dữ liệu đơn giản và hiệu quả
@@ -987,18 +1077,21 @@ EXEC
 ### Câu hỏi trung cấp
 
 5. **Làm thế nào để cache dữ liệu hiệu quả với Redis?**
+
    - Sử dụng TTL cho các cache entries
    - Sử dụng cấu trúc dữ liệu phù hợp
    - Xử lý cache invalidation
    - Xử lý cache stampede (nhiều request cùng build cache)
 
 6. **Các chiến lược cache invalidation?**
+
    - Time-based expiration
    - Write-through cache
    - Cache-aside pattern
    - Event-based invalidation
 
 7. **Redis transactions hoạt động như thế nào?**
+
    - Bắt đầu với MULTI
    - Thêm các lệnh vào queue
    - EXEC để thực thi tất cả
@@ -1012,6 +1105,7 @@ EXEC
 ### Câu hỏi nâng cao
 
 9. **So sánh Redis Sentinel và Redis Cluster**
+
    - **Redis Sentinel**:
      - Tập trung vào high availability và failover
      - Không hỗ trợ sharding dữ liệu
@@ -1024,6 +1118,7 @@ EXEC
      - Thích hợp cho hệ thống lớn với nhiều dữ liệu
 
 10. **Làm thế nào để giải quyết vấn đề tràn bộ nhớ trong Redis?**
+
     - Sử dụng eviction policies phù hợp
     - Thiết lập giới hạn maxmemory
     - Sử dụng expire cho các khóa
@@ -1031,6 +1126,7 @@ EXEC
     - Shard dữ liệu qua nhiều instances
 
 11. **Làm thế nào để tối ưu hóa hiệu suất Redis?**
+
     - Sử dụng pipelining để giảm round-trip
     - Sử dụng cấu trúc dữ liệu phù hợp
     - Tránh các lệnh chặn như KEYS
@@ -1039,6 +1135,7 @@ EXEC
     - Theo dõi và phân tích số liệu hiệu suất
 
 12. **Giải thích về Redis Pub/Sub**
+
     - Cơ chế gửi và nhận tin nhắn
     - Publishers gửi tin nhắn đến channels
     - Subscribers đăng ký channels để nhận tin nhắn
@@ -1046,12 +1143,14 @@ EXEC
     - Phù hợp cho truyền thông thời gian thực
 
 13. **Redis Modules là gì và khi nào nên sử dụng?**
+
     - Mở rộng chức năng Redis với modules
     - Ví dụ: RediSearch (full-text search), RedisJSON, RedisTimeSeries
     - Sử dụng khi cần chức năng đặc biệt không có sẵn
     - Viết modules tùy chỉnh cho trường hợp đặc biệt
 
 14. **Làm thế nào để giải quyết vấn đề single point of failure trong Redis?**
+
     - Sử dụng Redis Sentinel hoặc Redis Cluster
     - Cấu hình replication
     - Triển khai backup và restore strategy
@@ -1066,6 +1165,7 @@ EXEC
 ### Câu hỏi thực tiễn
 
 16. **Làm thế nào để theo dõi và debug Redis trong môi trường production?**
+
     - Sử dụng Redis CLI và lệnh MONITOR (cẩn thận với overhead)
     - Redis INFO command để lấy metrics
     - Slow log để theo dõi các lệnh chậm
@@ -1073,18 +1173,21 @@ EXEC
     - Redis Latency Monitoring
 
 17. **Làm thế nào để xử lý big keys trong Redis?**
+
     - Tránh lưu trữ các khóa lớn
     - Phân tách thành nhiều khóa nhỏ hơn
     - Sử dụng SCAN thay vì KEYS
     - Sử dụng tools như redis-cli --bigkeys
 
 18. **Làm thế nào để xử lý migration dữ liệu Redis?**
+
     - Sử dụng Redis replication
     - Sử dụng công cụ như redis-dump và redis-load
     - Sử dụng MIGRATE command
     - Sử dụng AOF để restore dữ liệu
 
 19. **Làm thế nào để xử lý các lệnh có tiềm năng gây chặn trong Redis?**
+
     - Tránh sử dụng KEYS trong production
     - Sử dụng SCAN thay thế
     - Sử dụng Lua scripts với EVAL nhưng cẩn thận về thời gian thực thi
@@ -1099,12 +1202,14 @@ EXEC
 ### Câu hỏi về kiến thức thực tế
 
 21. **Mô tả một vấn đề bạn đã gặp với Redis và cách bạn giải quyết nó**
+
     - Ví dụ: Memory issues, connection problems, data loss
     - Phân tích nguyên nhân
     - Cách tiếp cận giải quyết
     - Bài học rút ra
 
 22. **Làm thế nào để thiết kế một hệ thống cache hiệu quả với Redis?**
+
     - Phân tích traffic pattern
     - Xác định thời gian sống của các đối tượng khác nhau
     - Chiến lược invalidation
@@ -1112,12 +1217,14 @@ EXEC
     - Giám sát hit rate và memory usage
 
 23. **Làm thế nào để xử lý việc cập nhật cache khi dữ liệu thay đổi?**
+
     - Write-through cache: Cập nhật cache cùng lúc với database
     - Write-behind cache: Cập nhật cache trước, sau đó cập nhật database
     - Cache-aside: Cập nhật database trước, sau đó invalidate cache
     - Event-based invalidation: Sử dụng pub/sub để thông báo thay đổi
 
 24. **So sánh các chiến lược sharding data trong Redis**
+
     - Client-side sharding
     - Proxy-based sharding
     - Redis Cluster
@@ -1132,12 +1239,14 @@ EXEC
 ### Câu hỏi về Redis Lua Scripts
 
 26. **Tại sao và khi nào nên sử dụng Lua scripts trong Redis?**
+
     - Đảm bảo atomicity của nhiều lệnh
     - Giảm network round-trips
     - Implement logic phức tạp trên server-side
     - Ví dụ: Conditional updates, atomic counters with limits
 
 27. **Ví dụ về Lua script để implement rate limiting**
+
 ```lua
 local key = KEYS[1]
 local limit = tonumber(ARGV[1])
@@ -1162,6 +1271,7 @@ return 1
 ### Câu hỏi về Redis trong microservices
 
 29. **Làm thế nào để sử dụng Redis trong kiến trúc microservices?**
+
     - Caching
     - Service discovery
     - Distributed locking
@@ -1169,12 +1279,14 @@ return 1
     - Rate limiting
 
 30. **Cách implement distributed locking với Redis**
+
     - Sử dụng SET với NX và EX options
     - Sử dụng unique identifier cho lock
     - Giải quyết vấn đề của fencing tokens
     - Tránh deadlocks với timeout
 
 31. **Làm thế nào để implement một hệ thống message queue với Redis?**
+
     - Sử dụng Lists với LPUSH và BRPOP
     - Sử dụng Pub/Sub cho real-time notifications
     - Sử dụng Streams cho message broker có độ bền vững cao
@@ -1189,6 +1301,7 @@ return 1
 ### Câu hỏi về các tính năng mới
 
 33. **Redis 6.0 có gì mới?**
+
     - Access Control Lists (ACLs)
     - SSL/TLS support
     - Nhiều threaded I/O
@@ -1196,6 +1309,7 @@ return 1
     - RESP3 protocol
 
 34. **Redis 7.0 có gì mới?**
+
     - Redis Functions (thay thế cho Lua scripts)
     - Sharded Pub/Sub
     - ACL enhancements
@@ -1210,6 +1324,7 @@ return 1
 ### Câu hỏi về hiệu suất
 
 36. **Làm thế nào để chẩn đoán và giải quyết vấn đề về hiệu suất Redis?**
+
     - Sử dụng INFO command để lấy metrics
     - Theo dõi memory usage và fragmentation
     - Phân tích slow log
@@ -1217,6 +1332,7 @@ return 1
     - Network latency và throughput
 
 37. **Làm thế nào để tối ưu hóa memory usage trong Redis?**
+
     - Sử dụng cấu trúc dữ liệu phù hợp
     - Tránh big keys
     - Sử dụng compression
@@ -1224,6 +1340,7 @@ return 1
     - Sử dụng maxmemory và eviction policies
 
 38. **Các strategies để tối ưu hóa Redis cho write-heavy workloads**
+
     - Sử dụng pipeline để giảm round-trips
     - Điều chỉnh AOF fsync policy
     - Cân nhắc giữa durability và performance
@@ -1238,6 +1355,7 @@ return 1
 ### Câu hỏi tổng hợp
 
 40. **Redis Enterprise có gì khác so với Redis mã nguồn mở?**
+
     - Active-Active geo-distribution
     - Redis on Flash (ROF)
     - Dynamic scaling
@@ -1245,6 +1363,7 @@ return 1
     - CRDT-based conflict resolution
 
 41. **Các thách thức khi migrate từ Redis standalone sang Redis Cluster**
+
     - Xử lý slot migration
     - Thay đổi client library
     - Multi-key operations
@@ -1252,6 +1371,7 @@ return 1
     - Testing và validation
 
 42. **Làm thế nào để bảo vệ Redis khỏi các cuộc tấn công DoS?**
+
     - Sử dụng firewall và security groups
     - Giới hạn số lượng kết nối
     - Rate limiting
@@ -1259,6 +1379,7 @@ return 1
     - Theo dõi và phát hiện các kết nối bất thường
 
 43. **Làm thế nào để implement và quản lý một Redis Cluster lớn?**
+
     - Cấu hình số lượng masters và replicas phù hợp
     - Balanced slot distribution
     - Theo dõi và quản lý failovers
@@ -1266,6 +1387,7 @@ return 1
     - Performance tuning và monitoring
 
 44. **Khi nào nên sử dụng Redis, Memcached, và MongoDB?**
+
     - **Redis**: Khi cần cấu trúc dữ liệu phong phú, persistence, replication
     - **Memcached**: Khi cần cache đơn giản, phân tán, và không cần persistence
     - **MongoDB**: Khi cần lưu trữ dữ liệu phức tạp, truy vấn phức tạp, và schema linh hoạt
