@@ -88,8 +88,6 @@ React là một thư viện JavaScript mã nguồn mở, linh hoạt và hiệu 
 
 [40. Caching trong React?](#40-caching-trong-react)
 
-
-
 ## Câu hỏi phỏng vấn React cho Fresher
 
 ### 1. React là gì?
@@ -97,6 +95,7 @@ React là một thư viện JavaScript mã nguồn mở, linh hoạt và hiệu 
 React là một thư viện JavaScript mã nguồn mở và giao diện người dùng, rất hữu ích trong việc phát triển giao diện người dùng dành riêng cho các ứng dụng SPA. Nó hữu ích trong việc xây dựng các thành phần giao diện người dùng (UI) phức tạp và có thể tái sử dụng của các ứng dụng web và di động vì nó tuân theo mô hình dựa trên component.
 
 Tính năng của React:
+
 - Tăng hiệu suất của ứng dụng với Virtual DOM.
 - JSX làm cho code dễ đọc và viết.
 - Nó kết xuất cả phía máy khách và máy chủ.
@@ -106,7 +105,7 @@ Tính năng của React:
 ### 2. Lợi ích khi dùng React?
 
 - ReactJS giúp cho việc viết các đoạn code Javascript sẽ trở nên dễ dàng hơn vì nó sử dụng một cú pháp đặc biệt đó chính là cú pháp JSX. Thông qua JSX cho phép nhúng code HTML và Javascript.
-- ReactJS cho phép nhà phát triển phá vỡ những cấu trúc UI phức tạp thành những component độc lập. Các nhà phát triển sẽ không phải lo lắng về tổng thể ứng dụng web, giờ đây có thể dễ dàng chia nhỏ các cấu trúc UI/UX phức tạp thành từng component đơn giản hơn. 
+- ReactJS cho phép nhà phát triển phá vỡ những cấu trúc UI phức tạp thành những component độc lập. Các nhà phát triển sẽ không phải lo lắng về tổng thể ứng dụng web, giờ đây có thể dễ dàng chia nhỏ các cấu trúc UI/UX phức tạp thành từng component đơn giản hơn.
 - Đi kèm với ReactJS là rất nhiều các công cụ phát triển giúp cho việc debug code một cách dễ dàng hơn.
 - Một trong những ưu điểm nữa của ReactJS đó là sự thân thiện với SEO. Hầu như các JS Frameworks không thân thiện với các tìm kiếm mặc dù đã được cải thiện nhiều nhưng dưới sự hỗ trợ của các render dữ liệu trả về dưới dạng web page giúp cho SEO chuẩn hơn.
 - React cùng với React Native, Redux, Electro cùng với nhiều công cụ hữu ích khác giúp nhà phát triển xây dựng được đa dạng loại ứng dụng phù hợp với nhiều yêu cầu.
@@ -147,14 +146,10 @@ Key là một thuộc tính chuỗi đặc biệt dùng khi sử dụng danh sá
 Ví dụ:
 
 ```js
-const ids = [1,2,3,4,5];
-const listElements = ids.map((id)=>{
-    return(
-        <li key={id.toString()}>
-            {id}
-        </li>
-    )
-})
+const ids = [1, 2, 3, 4, 5];
+const listElements = ids.map((id) => {
+  return <li key={id.toString()}>{id}</li>;
+});
 ```
 
 #### Ý nghĩa của keys
@@ -174,20 +169,20 @@ Theo trang chủ của React, JSX cung cấp cú pháp tuyệt vời hơn cho `R
 - Không dùng JSX:
 
 ```js
-const text = React.createElement('p', {}, 'This is a text');
-const container = React.createElement('div','{}',text );
-ReactDOM.render(container,rootElement);
+const text = React.createElement("p", {}, "This is a text");
+const container = React.createElement("div", "{}", text);
+ReactDOM.render(container, rootElement);
 ```
 
 - Dùng JSX:
 
 ```jsx
 const container = (
-<div>
+  <div>
     <p>This is a text</p>
-</div>
+  </div>
 );
-ReactDOM.render(container,rootElement);
+ReactDOM.render(container, rootElement);
 ```
 
 ### 7. Sự khác biệt giữa class component và function component?
@@ -201,37 +196,37 @@ Dù function component đang là trend hiện tại, nhưng class component vẫ
 Function component giống như một hàm thông thường trong JS, ta có thể tạo kiểu arrow function hoặc function:
 
 ```jsx
-function card(props){
-    return(
-        <div className="main-container">
-            <h2>Title of the card</h2>
-        </div>
-    )
+function card(props) {
+  return (
+    <div className="main-container">
+      <h2>Title of the card</h2>
+    </div>
+  );
 }
 
 const card = (props) => {
-    return(
-        <div className="main-container">
-            <h2>Title of the card</h2>
-        </div>
-    )
-}
+  return (
+    <div className="main-container">
+      <h2>Title of the card</h2>
+    </div>
+  );
+};
 ```
 
 Class component sử dụng cú pháp tạo lớp của ES6
 
 ```jsx
-class Card extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return(
-            <div className="main-container">
-                <h2>Title of the card</h2>
-            </div>
-        )
-    }
+class Card extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div className="main-container">
+        <h2>Title of the card</h2>
+      </div>
+    );
+  }
 }
 ```
 
@@ -246,32 +241,32 @@ Ta thử render component dưới đây theo cả hai cách:
 Trong function component, xử lý props rất thẳng thắn. Bất ký props nào cũng được xem như tham số của function component có thể xử lý trực tiếp:
 
 ```jsx
-function StudentInfo(props){
-    return(
-        <div className="main">
-            <h2>{props.name}</h2>
-            <h4>{props.rollNumber}</h4>
-        </div>
-    )
+function StudentInfo(props) {
+  return (
+    <div className="main">
+      <h2>{props.name}</h2>
+      <h4>{props.rollNumber}</h4>
+    </div>
+  );
 }
 ```
 
 Với class component, props được xử lý bằng `this`:
 
 ```jsx
-class StudentInfo extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    
-    render(){
-        return(
-            <div className="main">
-                <h2>{this.props.name}</h2>
-                <h4>{this.props.rollNumber}</h4> 
-            </div>
-        )
-    }
+class StudentInfo extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="main">
+        <h2>{this.props.name}</h2>
+        <h4>{this.props.rollNumber}</h4>
+      </div>
+    );
+  }
 }
 ```
 
@@ -280,47 +275,47 @@ class StudentInfo extends React.Component{
 Function component sử dụng hook để quản lý state. Hook hữu ích nhất là `useState` cho thiết lập state trong component.
 
 ```jsx
-function ClassRoom(props){
-    let [studentsCount,setStudentsCount] = useState(0);
-    
-    const addStudent = () => {
-        setStudentsCount(++studentsCount);
-    }
-        
-    return(
-        <div>
-            <p>Number of students in class room: {studentsCount}</p>
-            <button onClick={addStudent}>Add Student</button>
-        </div>
-    )
+function ClassRoom(props) {
+  let [studentsCount, setStudentsCount] = useState(0);
+
+  const addStudent = () => {
+    setStudentsCount(++studentsCount);
+  };
+
+  return (
+    <div>
+      <p>Number of students in class room: {studentsCount}</p>
+      <button onClick={addStudent}>Add Student</button>
+    </div>
+  );
 }
 ```
 
 Ta không thể sử dụng hook bên trong class component, thế nên ta vẫn phải xử lý state bằng `this` trong class component.
 
 ```jsx
-class ClassRoom extends React.Component{
-    constructor(props){
-        super(props);
+class ClassRoom extends React.Component {
+  constructor(props) {
+    super(props);
 
-        this.state = {studentsCount : 0};
-        this.addStudent = this.addStudent.bind(this);
-    }
-    
-    addStudent(){
-        this.setState((prevState)=>{
-            return {studentsCount: prevState.studentsCount++}
-        });
-    }
-    
-    render(){
-        return(
-            <div>
-                <p>Number of students in class room: {this.state.studentsCount}</p>
-                <button onClick={this.addStudent}>Add Student</button>
-            </div>
-        )
-    }
+    this.state = { studentsCount: 0 };
+    this.addStudent = this.addStudent.bind(this);
+  }
+
+  addStudent() {
+    this.setState((prevState) => {
+      return { studentsCount: prevState.studentsCount++ };
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Number of students in class room: {this.state.studentsCount}</p>
+        <button onClick={this.addStudent}>Add Student</button>
+      </div>
+    );
+  }
 }
 ```
 
@@ -348,15 +343,15 @@ React sử dụng hai virtual DOM để hiển thị giao diện người dùng.
 
 ### 9. Sự khác biệt giữa controlled component và uncontrolled component?
 
-| Tính năng | Uncontrolled | Controlled 
-|-|-|-|
-| Truy xuất giá trị một lần (như khi submit) | Yes | Yes |
-| Xác thực submit | Yes | Yes |
-| Xác thực trường | No | Yes |
-| Điều kiện cho kích hoạt nút submit | No | Yes |
-| Định dạng đầu vào | No | Yes |
-| Cung cấp nhiều input cho một mẫu dữ liệu | No | Yes |
-| Input động | No | Yes |
+| Tính năng                                  | Uncontrolled | Controlled |
+| ------------------------------------------ | ------------ | ---------- |
+| Truy xuất giá trị một lần (như khi submit) | Yes          | Yes        |
+| Xác thực submit                            | Yes          | Yes        |
+| Xác thực trường                            | No           | Yes        |
+| Điều kiện cho kích hoạt nút submit         | No           | Yes        |
+| Định dạng đầu vào                          | No           | Yes        |
+| Cung cấp nhiều input cho một mẫu dữ liệu   | No           | Yes        |
+| Input động                                 | No           | Yes        |
 
 **Controlled component**
 
@@ -366,17 +361,17 @@ Khi người dùng nhập dữ liệu vào phần tử input trong controlled co
 
 ```jsx
 function FormValidation(props) {
-    let [inputValue, setInputValue] = useState("");
-    let updateInput = e => {
-        setInputValue(e.target.value);
-    };
-    return (
-        <div>
-            <form>
-            <input type="text" value={inputValue} onChange={updateInput} />
-            </form>
-        </div>
-    );
+  let [inputValue, setInputValue] = useState("");
+  let updateInput = (e) => {
+    setInputValue(e.target.value);
+  };
+  return (
+    <div>
+      <form>
+        <input type="text" value={inputValue} onChange={updateInput} />
+      </form>
+    </div>
+  );
 }
 ```
 
@@ -392,19 +387,19 @@ Khi người dùng nhập dữ liệu vào trường input, dữ liệu cập nh
 
 ```jsx
 function FormValidation(props) {
-    let inputValue = React.createRef();
-    let handleSubmit = e => {
-        alert(`Input value: ${inputValue.current.value}`);
-        e.preventDefault();
-    };
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-            <input type="text" ref={inputValue} />
-            <button type="submit">Submit</button>
-            </form>
-        </div>
-    );
+  let inputValue = React.createRef();
+  let handleSubmit = (e) => {
+    alert(`Input value: ${inputValue.current.value}`);
+    e.preventDefault();
+  };
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" ref={inputValue} />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }
 ```
 
@@ -413,62 +408,63 @@ function FormValidation(props) {
 Props trong React là dữ liệu được truyền cho các component. Nó có thể là giá trị đơn hoặc đối tượng có tập giá trị được truyền cho component trong suốt quá trình bằng cách thực hiện truyền tham số (tương tự với cú pháp thuộc tính trong HTML). Ta có thể nói props là dữ liệu kế thừa được truyền từ component cha sang component con.
 
 Các chức năng của props:
+
 - Truyền dữ liệu tuỳ chỉnh đến component.
 - Kích hoạt thay đổi trạng thái
 - Sử dụng cho render dữ liệu.
 
 ### 11. Giải thích state và props?
 
-| Props | State |
-|-|-|
-| Bất biến | Có thể thay đổi |
-| Hiệu suất tốt hơn | Phạm vi cục bộ |
-| Truyền được cho component khác | Truyền được giống như props |
-| | Có phương thức setState để đổi giá trị |
-| | Đổi trạng bất đồng bộ |
+| Props                          | State                                  |
+| ------------------------------ | -------------------------------------- |
+| Bất biến                       | Có thể thay đổi                        |
+| Hiệu suất tốt hơn              | Phạm vi cục bộ                         |
+| Truyền được cho component khác | Truyền được giống như props            |
+|                                | Có phương thức setState để đổi giá trị |
+|                                | Đổi trạng bất đồng bộ                  |
 
 **React State**
 
 Tất cả component đều có sẵn đối tượng state, bao gồm tất cả giá trị thuộc tính cùng với component đó. Nói cách khác, đối tượng state điều khiển hành vi của component. Bất kỳ thay đổi giá trị thuộc tính nào của đối tượng state sẽ dẫn đến re-render component.
 
-*Khai báo đối tượng state*
-
-```jsx
-class Car extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            brand: "BMW",
-            color: "black"
-        }
-    }
-}
-```
-
-*Dùng và cập nhật đối tượng state*
+_Khai báo đối tượng state_
 
 ```jsx
 class Car extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            brand: "BMW",
-            color: "Black"
-        };
-    }
-    changeColor() {
-        this.setState(prevState => {
-            return { color: "Red" };
-        });
-    }
-    render() {
-        return (
-            <div>
-                <button onClick={() => this.changeColor()}>Change Color</button>
-                <p>{this.state.color}</p>
-            </div>
-        );
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: "BMW",
+      color: "black",
+    };
+  }
+}
+```
+
+_Dùng và cập nhật đối tượng state_
+
+```jsx
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: "BMW",
+      color: "Black",
+    };
+  }
+  changeColor() {
+    this.setState((prevState) => {
+      return { color: "Red" };
+    });
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.changeColor()}>Change Color</button>
+        <p>{this.state.color}</p>
+      </div>
+    );
+  }
 }
 ```
 
@@ -476,25 +472,25 @@ class Car extends React.Component {
 
 Tất cả component đều nhận vào một đối thượng tham số gọi là props (viết tắt của properties). Props có thể được truyền đi component khác và các component này nhận props như một đối số.
 
-*Truyền props cho component*
+_Truyền props cho component_
 
 ```jsx
-<Car brand="Mercedes"/>
+<Car brand="Mercedes" />
 ```
 
-*Nhận props từ component khác*
+_Nhận props từ component khác_
 
 Trong class:
 
 ```jsx
 class Car extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            brand: this.props.brand,
-            color: "Black"
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: this.props.brand,
+      color: "Black",
+    };
+  }
 }
 ```
 
@@ -502,13 +498,14 @@ Trong function:
 
 ```jsx
 function Car(props) {
-    let [brand, setBrand] = useState(props.brand);
+  let [brand, setBrand] = useState(props.brand);
 }
 ```
 
 ### 12. Các kiểu side effect trong React component?
 
 Có hai kiểu side effect trong React.
+
 - **Effect không có cleanup:** Side effect này sẽ được sử dụng trong `useEffect` không hạn chế trình duyệt cập nhật màn hình. Nó cũng cải thiện khả năng phản hồi của một ứng dụng. Một vài ví dụ phổ biến là yêu cầu mạng, logging, chỉnh sửa DOM thủ công, v.v.
 - **Effect có cleanup:** Một số Hook effect sẽ yêu cầu cleanup sau khi cập nhật xong DOM. Ví dụ: nếu bạn muốn thiết lập đăng ký nguồn dữ liệu bên ngoài, nó yêu cầu dọn dẹp bộ nhớ, nếu không có thể xảy ra sự cố rò rỉ bộ nhớ. Có một thực tế là React sẽ thực hiện dọn dẹp bộ nhớ khi các component unmounting. Nhưng các effect sẽ chạy mỗi phương thức `render()` hơn là cho bất kỳ phương thức cụ thể nào. Do đó, chúng ta có thể nói rằng, trước khi thực thi các hiệu ứng thời gian, React cũng sẽ dọn dẹp các hiệu ứng từ lần hiển thị trước đó.
 
@@ -531,29 +528,29 @@ Bất kỳ component nào sử dụng các phương thức lifecycle cũng đư�
 **Không dùng error boundary**
 
 ```jsx
-class CounterComponent extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            counterValue: 0
-        }
-        this.incrementCounter = this.incrementCounter.bind(this);
-    }
+class CounterComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counterValue: 0,
+    };
+    this.incrementCounter = this.incrementCounter.bind(this);
+  }
 
-    incrementCounter(){
-        this.setState(prevState => counterValue = prevState+1);
+  incrementCounter() {
+    this.setState((prevState) => (counterValue = prevState + 1));
+  }
+  render() {
+    if (this.state.counter === 2) {
+      throw new Error("Crashed");
     }
-    render(){
-        if(this.state.counter === 2){
-            throw new Error('Crashed');
-        }
-        return(
-            <div>
-                <button onClick={this.incrementCounter}>Increment Value</button>
-                <p>Value of counter: {this.state.counterValue}</p>
-            </div>
-        )
-    }
+    return (
+      <div>
+        <button onClick={this.incrementCounter}>Increment Value</button>
+        <p>Value of counter: {this.state.counterValue}</p>
+      </div>
+    );
+  }
 }
 ```
 
@@ -564,28 +561,28 @@ Khi không dùng error boundary, ta sẽ thấy một trang trống thay vì l�
 **Sử dụng error boundary**: error bounary là một component sử dụng một hoặc cả hai phương thức sau:
 
 - `getDerivedStateFromError`
--  `componentDidCatch`
+- `componentDidCatch`
 
 Ví dụ:
 
 ```jsx
 class ErrorBoundary extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { hasError: false };
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+  componentDidCatch(error, errorInfo) {
+    logErrorToMyService(error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      return <h4>Something went wrong</h4>;
     }
-    static getDerivedStateFromError(error) {     
-        return { hasError: true }; 
-    }
-    componentDidCatch(error, errorInfo) {       
-        logErrorToMyService(error, errorInfo); 
-    }
-    render() {
-        if (this.state.hasError) {     
-            return <h4>Something went wrong</h4>     
-        }
-        return this.props.children;
-    }
+    return this.props.children;
+  }
 }
 ```
 
@@ -597,7 +594,7 @@ Bây giờ với error boundary ta có thể render CounterComponent như sau:
 
 ```jsx
 <ErrorBoundary>
-    <CounterComponent />
+  <CounterComponent />
 </ErrorBoundary>
 ```
 
@@ -615,9 +612,9 @@ Ví dụ: sử dụng hook useState
 
 ```jsx
 function Person(props) {
-// We are declaring a state variable called name.
-// setName is a function to update/change the value of name
-let [name, setName] = useState('');
+  // We are declaring a state variable called name.
+  // setName is a function to update/change the value of name
+  let [name, setName] = useState("");
 }
 ```
 
@@ -628,7 +625,7 @@ let [name, setName] = useState('');
 
 ### 18. Cách dùng useEffect?
 
-React Hook useEffect được dùng cho thực hiện side effect trong function component. Với useEffect, ta sẽ thông báo cho React biết các component của bạn yêu cầu phải thực hiện điều gì đó sau khi render component hoặc sau khi thay đổi trạng thái. Function đã được truyền sẽ được React nhớ và gọi sau khi quá trình cập nhật DOM kết thúc. Nhừo điều này ta có thể thực hiện các thao tác khác nhau như tìm nạp dữ liệu, thiệt lập tiêu đều, quản lý DOM trực tiếp,... mà không nhắm đến giá trị output. Hook useEffect sẽ chạy theo mặc định sau lần render đầu tiên và mỗi lần cập nhật component. React đảm bảo tằng DOM sẽ  được cập nhật vào thời điểm effect chạy bởi nó.
+React Hook useEffect được dùng cho thực hiện side effect trong function component. Với useEffect, ta sẽ thông báo cho React biết các component của bạn yêu cầu phải thực hiện điều gì đó sau khi render component hoặc sau khi thay đổi trạng thái. Function đã được truyền sẽ được React nhớ và gọi sau khi quá trình cập nhật DOM kết thúc. Nhừo điều này ta có thể thực hiện các thao tác khác nhau như tìm nạp dữ liệu, thiệt lập tiêu đều, quản lý DOM trực tiếp,... mà không nhắm đến giá trị output. Hook useEffect sẽ chạy theo mặc định sau lần render đầu tiên và mỗi lần cập nhật component. React đảm bảo tằng DOM sẽ được cập nhật vào thời điểm effect chạy bởi nó.
 
 useEffect nhận vào hai thám số: `useEffect(callback[, dependencies]);`
 
@@ -637,20 +634,20 @@ Trong đó tham số calback đầu tiên biểu diễn hàm chứa logic side-e
 Ví dụ:
 
 ```jsx
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 function WelcomeGreetings({ name }) {
-    const msg = `Hi, ${name}!`;     // Calculates output
+  const msg = `Hi, ${name}!`; // Calculates output
 
-    useEffect(() => {
-        document.title = `Welcome to you ${name}`;    // Side-effect!
-    }, [name]);
+  useEffect(() => {
+    document.title = `Welcome to you ${name}`; // Side-effect!
+  }, [name]);
 
-    return <div>{msg}</div>;         // Calculates output
+  return <div>{msg}</div>; // Calculates output
 }
 ```
 
-Đoạn code trên sẽ cập nhật tiêu đề document nó được xem như một side-effect vì nó không tính toán output trực tiếp. Đó là lý do tại sao cập nhật tiêu đề document  được đặt trong callback và cung cấp cho `useEffect()`.
+Đoạn code trên sẽ cập nhật tiêu đề document nó được xem như một side-effect vì nó không tính toán output trực tiếp. Đó là lý do tại sao cập nhật tiêu đề document được đặt trong callback và cung cấp cho `useEffect()`.
 
 Hãy cân nhắc rằng bạn không muốn thực hiện cập nhật tiêu đề document mỗi lần render component `WelcomeGreetings` và bạn muốn nó chỉ được thực thi khi prop `name` thay đổi thì bạn cần cung cấp `name` làm phụ thuộc đến `useEffect(callback, [name])`.
 
@@ -668,7 +665,7 @@ Các refs được sử dụng cho:
 
 Một hook tùy chỉnh(custom hooks) là một hàm trong Javascript có tên bắt đầu bằng **use** và gọi các hook khác. Nó là một phần của bản cập nhật hook React v16.8 và cho phép bạn sử dụng lại logic trạng thái mà không cần phải cấu trúc lại cấu trúc phân cấp component.
 
-Trong hầu hết các trường hợp, hook tùy chỉnh được coi là đủ để thay thế render props và HoC (High-Order components) và giảm số lượng lồng ghép cần thiết. Hooks  tuỳ chỉnh sẽ cho phép bạn tránh nhiều lớp trừu tượng hoặc wrapper hell có thể đi kèm với render props và HoC.
+Trong hầu hết các trường hợp, hook tùy chỉnh được coi là đủ để thay thế render props và HoC (High-Order components) và giảm số lượng lồng ghép cần thiết. Hooks tuỳ chỉnh sẽ cho phép bạn tránh nhiều lớp trừu tượng hoặc wrapper hell có thể đi kèm với render props và HoC.
 
 Nhược điểm của Hooks tuỳ chỉnh là nó không thể được sử dụng bên trong các lớp.
 
@@ -680,17 +677,15 @@ StrictMode là công cụ được thêm vào ở React v16.3 để highlight c�
 
 ```jsx
 function App() {
-    return (
-        <React.StrictMode>
-            <div classname="App">
-                <Header/>
-                <div>
-                    Page Content
-                </div>
-                <Footer/>
-            </div>
-        </React.StrictMode>
-    );
+  return (
+    <React.StrictMode>
+      <div classname="App">
+        <Header />
+        <div>Page Content</div>
+        <Footer />
+      </div>
+    </React.StrictMode>
+  );
 }
 ```
 
@@ -702,63 +697,61 @@ import ReactDOM from "react-dom";
 import App from "./App";
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-<React.StrictMode>
-  <App />
-</React.StrictMode>,
-rootElement
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  rootElement
 );
 ```
 
 StrictMode giúp giải quyết các vấn đề sau:
 
 - **Xác định các component với phương thức lifecycle**
-    - Một số phương thức lifecycle không an toàn khi dùng bất đồng bộ trong ứng dụng react. Với thư viện bên thứ 3, thật khó để đảm bảo một số phương thức lifecycle nhất định không được dùng.
-    - StrictMode giúp ta bằng cách cung cấp cảnh báo với bất kỳ class component nào sử dụng phương thức lifecycle không an toàn.
+  - Một số phương thức lifecycle không an toàn khi dùng bất đồng bộ trong ứng dụng react. Với thư viện bên thứ 3, thật khó để đảm bảo một số phương thức lifecycle nhất định không được dùng.
+  - StrictMode giúp ta bằng cách cung cấp cảnh báo với bất kỳ class component nào sử dụng phương thức lifecycle không an toàn.
 - **Cảnh báo sử dụng chuỗi API kế thừa**
-    - Nếu sử dụng phiên bản cũ của React, **callback ref** được đề nghị là cách để quản lý **refs** thay vì dùng **chuỗi refs**. StringMode đưa ra cảnh báo nếu bản sử dụng chuỗi ref để quản lý refs.
+  - Nếu sử dụng phiên bản cũ của React, **callback ref** được đề nghị là cách để quản lý **refs** thay vì dùng **chuỗi refs**. StringMode đưa ra cảnh báo nếu bản sử dụng chuỗi ref để quản lý refs.
 - **Cảnh báo sử dụng findDOMNode**
-    - Phương thức `findDOMNode()` dùng để tìm cây của node DOM. Phương thức này đã không còn hỗ trợ trogn React. Do đó, StrictMode đưa ra cảnh báo khi ta dùng phương thức này.
+  - Phương thức `findDOMNode()` dùng để tìm cây của node DOM. Phương thức này đã không còn hỗ trợ trogn React. Do đó, StrictMode đưa ra cảnh báo khi ta dùng phương thức này.
 
 ### 22. Ngăn chặn re-render trong React?
 
-Nguyên nhân cho re-render:
-    - Re-render một component và con của nó xảy ra khi props hoặc state của component thay đổi
-    - Re-render component không có cập nhật, sẽ ảnh hưởng đến hiệu suất của ứng dụng
+Nguyên nhân cho re-render: - Re-render một component và con của nó xảy ra khi props hoặc state của component thay đổi - Re-render component không có cập nhật, sẽ ảnh hưởng đến hiệu suất của ứng dụng
 
 Cách để chặn re-render:
 
 ```jsx
 class Parent extends React.Component {
-    state = { messageDisplayed: false };
-    
-    componentDidMount() {
-        this.setState({ messageDisplayed: true });
-    }
-    
-    render() {
-        console.log("Parent is getting rendered");
-        return (
-            <div className="App">
-                <Message />
-            </div>
-        );
-    }
+  state = { messageDisplayed: false };
+
+  componentDidMount() {
+    this.setState({ messageDisplayed: true });
+  }
+
+  render() {
+    console.log("Parent is getting rendered");
+    return (
+      <div className="App">
+        <Message />
+      </div>
+    );
+  }
 }
-    
+
 class Message extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { message: "Hello, this is vivek" };
-    }  
-    
-    render() {
-        console.log("Message is getting rendered");
-        return (
-            <div>
-                <p>{this.state.message}</p>
-            </div>
-        );
-    }
+  constructor(props) {
+    super(props);
+    this.state = { message: "Hello, this is vivek" };
+  }
+
+  render() {
+    console.log("Message is getting rendered");
+    return (
+      <div>
+        <p>{this.state.message}</p>
+      </div>
+    );
+  }
 }
 ```
 
@@ -766,24 +759,24 @@ Component `Parent` là cha của component `Message`. Bất kỳ thay đổi nà
 
 ```jsx
 class Message extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { message: "Hello, this is vivek" };
-    }
+  constructor(props) {
+    super(props);
+    this.state = { message: "Hello, this is vivek" };
+  }
 
-    shouldComponentUpdate() {
-        console.log("Does not get rendered");
-        return false;
-    }
+  shouldComponentUpdate() {
+    console.log("Does not get rendered");
+    return false;
+  }
 
-    render() {
-        console.log("Message is getting rendered");
-        return (
-            <div>
-                <p>{this.state.message}</p>
-            </div>
-        );
-    }
+  render() {
+    console.log("Message is getting rendered");
+    return (
+      <div>
+        <p>{this.state.message}</p>
+      </div>
+    );
+  }
 }
 ```
 
@@ -795,14 +788,14 @@ Như đã thấy, ta trả về false cho phương thức `shouldComponentUpdate
 
 ```jsx
 class RandomComponent extends React.Component {
-    render() {
-        return (
-            <div>
-            <h3 style={{ color: "Yellow" }}>This is a heading</h3>
-            <p style={{ fontSize: "32px" }}>This is a paragraph</p>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <h3 style={{ color: "Yellow" }}>This is a heading</h3>
+        <p style={{ fontSize: "32px" }}>This is a paragraph</p>
+      </div>
+    );
+  }
 }
 ```
 
@@ -810,85 +803,85 @@ class RandomComponent extends React.Component {
 
 ```jsx
 class RandomComponent extends React.Component {
-    paragraphStyles = {
-        color: "Red",
-        fontSize: "32px"
-    };
+  paragraphStyles = {
+    color: "Red",
+    fontSize: "32px",
+  };
 
-    headingStyles = {
-        color: "blue",
-        fontSize: "48px"
-    };
+  headingStyles = {
+    color: "blue",
+    fontSize: "48px",
+  };
 
-    render() {
-        return (
-            <div>
-            <h3 style={this.headingStyles}>This is a heading</h3>
-            <p style={this.paragraphStyles}>This is a paragraph</p>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <h3 style={this.headingStyles}>This is a heading</h3>
+        <p style={this.paragraphStyles}>This is a paragraph</p>
+      </div>
+    );
+  }
 }
 ```
 
 **CSS Stylesheet:** Ta sẽ tạo một file CSS riêng và viết tất cả style cho component trong file đó. Sau đó import nó vào file React.
 
 ```jsx
-import './RandomComponent.css';
+import "./RandomComponent.css";
 
 class RandomComponent extends React.Component {
-    render() {
-        return (
-            <div>
-                <h3 className="heading">This is a heading</h3>
-                <p className="paragraph">This is a paragraph</p>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <h3 className="heading">This is a heading</h3>
+        <p className="paragraph">This is a paragraph</p>
+      </div>
+    );
+  }
 }
 ```
 
 **CSS Module:** Tương tự như file CSS, nhưng ta sửa thành `.module.css`, với cách này tên lớp sẽ được mã hoá, đồng thời nó hỗ trợ kiểu viết tương tự sass.
 
 ```css
-.paragraph{
-    color:"red";
-    border:1px solid black;
+.paragraph {
+  color: "red";
+  border: 1px solid black;
 }
 ```
 
 Ta có thể import file vào component như sau:
 
 ```jsx
-import styles from  './styles.module.css';
+import styles from "./styles.module.css";
 
 class RandomComponent extends React.Component {
-    render() {
-        return (
-            <div>
-                <h3 className="heading">This is a heading</h3>
-                <p className={styles.paragraph} >This is a paragraph</p>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <h3 className="heading">This is a heading</h3>
+        <p className={styles.paragraph}>This is a paragraph</p>
+      </div>
+    );
+  }
 }
 ```
 
 ### 24. Các kỹ thuật tối ưu hiệu suất ứng dụng React?
 
 - **useMemo()**
-    - Là hook dùng cho caching CPU.
-    - Đôi khi trong các ứng dụng web, các hàm đắt (tính toán nhiều, tốn bộ nhớ) được gọi liên túc do re-render đẫn đến tốc độ render chậm, hiệu suất kém.
-    - useMemo() có thể sử dụng cho cache cám hàm như vậy. Bằng cách dùng useMemo() các hàm đó chỉ được gọi khi cần thiết.
+  - Là hook dùng cho caching CPU.
+  - Đôi khi trong các ứng dụng web, các hàm đắt (tính toán nhiều, tốn bộ nhớ) được gọi liên túc do re-render đẫn đến tốc độ render chậm, hiệu suất kém.
+  - useMemo() có thể sử dụng cho cache cám hàm như vậy. Bằng cách dùng useMemo() các hàm đó chỉ được gọi khi cần thiết.
 - **React.PureComponent**
-    - Là class component cơ sở để kiểm tra state và props của một component để biết khi nào nó nên được cập nhật.
-    - Thay vì dùng React.Component, ta có sử dụng React.PureComponent để giảm việc re-render không cần thiết.
+  - Là class component cơ sở để kiểm tra state và props của một component để biết khi nào nó nên được cập nhật.
+  - Thay vì dùng React.Component, ta có sử dụng React.PureComponent để giảm việc re-render không cần thiết.
 - **Duy trì vị trí state**
-    - Đây là quá trình chuyển state đến nơi bạn nhất có thể.
-    - Thỉnh thoảng ta có các state không cần thiết nằm trong component cha để gây khó đọc và bảo trì hơn, thậm chí là dẫn đến re-render không cần thiết.
-    - Để tốt hơn, ta chuyển các state vô nghĩa ở component cha sang một component riêng biệt.
+  - Đây là quá trình chuyển state đến nơi bạn nhất có thể.
+  - Thỉnh thoảng ta có các state không cần thiết nằm trong component cha để gây khó đọc và bảo trì hơn, thậm chí là dẫn đến re-render không cần thiết.
+  - Để tốt hơn, ta chuyển các state vô nghĩa ở component cha sang một component riêng biệt.
 - **Lazy Loading**
-    - Đây là kỹ thuật dùng để giảm thời gian tải của ứng dụng React. Lazy loading giúp tối ưu hiệu suất ứng dụng web bằng cách chỉ tải khi cần thiết.
+  - Đây là kỹ thuật dùng để giảm thời gian tải của ứng dụng React. Lazy loading giúp tối ưu hiệu suất ứng dụng web bằng cách chỉ tải khi cần thiết.
 
 ### 25. Truyền dữ liệu giữa các component?
 
@@ -902,15 +895,15 @@ Ta có thể làm như sau:
 import ChildComponent from "./Child";
 
 function ParentComponent(props) {
-    let [counter, setCounter] = useState(0);
-    let increment = () => setCounter(++counter);
-   
-    return (
-        <div>
-            <button onClick={increment}>Increment Counter</button>
-            <ChildComponent counterValue={counter} />
-        </div>
-    );
+  let [counter, setCounter] = useState(0);
+  let increment = () => setCounter(++counter);
+
+  return (
+    <div>
+      <button onClick={increment}>Increment Counter</button>
+      <ChildComponent counterValue={counter} />
+    </div>
+  );
 }
 ```
 
@@ -920,17 +913,18 @@ Ta có thể sử dụng dữ liệu được chuyển đến component con như
 
 ```jsx
 function ChildComponent(props) {
-    return (
-        <div>
-            <p>Value of counter: {props.counterValue}</p>
-        </div>
-    );
+  return (
+    <div>
+      <p>Value of counter: {props.counterValue}</p>
+    </div>
+  );
 }
 ```
 
 **Từ component con sang cha (dùng callback)**
 
 Ta có các bước sau:
+
 - Tạo một callback trong component cha nhận dữ liệu cần thiết như tham số.
 - Truyền callback này như props cho component con.
 - Gửi dữ liệu từ component con bằng cách dùng callback.
@@ -941,15 +935,15 @@ Tạo callback và gửi nó như prop đến component con:
 
 ```jsx
 function ParentComponent(props) {
-    let [counter, setCounter] = useState(0);
-    let callback = valueFromChild => setCounter(valueFromChild);
+  let [counter, setCounter] = useState(0);
+  let callback = (valueFromChild) => setCounter(valueFromChild);
 
-    return (
-        <div>
-            <p>Value of counter: {counter}</p>
-            <ChildComponent callbackFunc={callback} counterValue={counter} />
-        </div>
-    );
+  return (
+    <div>
+      <p>Value of counter: {counter}</p>
+      <ChildComponent callbackFunc={callback} counterValue={counter} />
+    </div>
+  );
 }
 ```
 
@@ -957,15 +951,15 @@ Sau đó ta truyền dữ liệu từ component con đến component cha:
 
 ```jsx
 function ChildComponent(props) {
-    let childCounterValue = props.counterValue;
-    
-    return (
-        <div>
-            <button onClick={() => props.callbackFunc(++childCounterValue)}>
-                Increment Counter
-            </button>
-        </div>
-    );
+  let childCounterValue = props.counterValue;
+
+  return (
+    <div>
+      <button onClick={() => props.callbackFunc(++childCounterValue)}>
+        Increment Counter
+      </button>
+    </div>
+  );
 }
 ```
 
@@ -977,7 +971,7 @@ High-Order Component (HOC) là một hàm nhận một component làm tham số 
 
 ![](./assets/Higher_Order_Components.png)
 
-*Tại sao lại cần HOC*
+_Tại sao lại cần HOC_
 
 Trong phát triển ứng dụng React, ta có thể phát triển component khá giống nhau với vài sự khác biệt nhỏ. Trong hầu hết trường hợp, việc phát triển các component tương tự không phải là vấn đề, nhưng khi ứng dụng lớn hơn, chúng ta cần giữ cho code mình DRY. Do đó, chúng ta muốn một sự trừu tượng cho phép chúng ta xác định logic này ở một nơi duy nhất và chia sẻ nó trên các component. HOC cho phép chúng ta tạo ra sự trừu tượng đó.
 
@@ -988,36 +982,36 @@ Component sau dùng để hiển thị danh sách bài viết:
 ```jsx
 // "GlobalDataSource" is some global data source
 class ArticlesList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.state = {
-            articles: GlobalDataSource.getArticles(),
-        };
-    }
-    componentDidMount() {
-        // Listens to the changes added
-        GlobalDataSource.addChangeListener(this.handleChange);
-    }
-    componentWillUnmount() {
-        // Listens to the changes removed
-        GlobalDataSource.removeChangeListener(this.handleChange);
-    }
-    handleChange() {
-        // States gets Update whenver data source changes
-        this.setState({
-            articles: GlobalDataSource.getArticles(),
-        });
-    }
-    render() {
-        return (
-            <div>
-                {this.state.articles.map((article) => (
-                    <ArticleData article={article} key={article.id} />
-                ))}
-            </div>
-        );  
-    }
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      articles: GlobalDataSource.getArticles(),
+    };
+  }
+  componentDidMount() {
+    // Listens to the changes added
+    GlobalDataSource.addChangeListener(this.handleChange);
+  }
+  componentWillUnmount() {
+    // Listens to the changes removed
+    GlobalDataSource.removeChangeListener(this.handleChange);
+  }
+  handleChange() {
+    // States gets Update whenver data source changes
+    this.setState({
+      articles: GlobalDataSource.getArticles(),
+    });
+  }
+  render() {
+    return (
+      <div>
+        {this.state.articles.map((article) => (
+          <ArticleData article={article} key={article.id} />
+        ))}
+      </div>
+    );
+  }
 }
 ```
 
@@ -1026,36 +1020,36 @@ Component sau dùng để hiển thị danh sách người dùng:
 ```jsx
 // "GlobalDataSource" is some global data source
 class UsersList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.state = {
-            users: GlobalDataSource.getUsers(),
-        };
-    }
-    componentDidMount() {
-        // Listens to the changes added
-        GlobalDataSource.addChangeListener(this.handleChange);
-    }
-    componentWillUnmount() {
-        // Listens to the changes removed
-        GlobalDataSource.removeChangeListener(this.handleChange);
-    }
-    handleChange() {
-        // States gets Update whenver data source changes
-        this.setState({
-            users: GlobalDataSource.getUsers(),
-        });
-    }
-    render() {
-        return (
-            <div>
-            {this.state.users.map((user) => (
-                <UserData user={user} key={user.id} />
-            ))}
-            </div>
-        );
-    }
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      users: GlobalDataSource.getUsers(),
+    };
+  }
+  componentDidMount() {
+    // Listens to the changes added
+    GlobalDataSource.addChangeListener(this.handleChange);
+  }
+  componentWillUnmount() {
+    // Listens to the changes removed
+    GlobalDataSource.removeChangeListener(this.handleChange);
+  }
+  handleChange() {
+    // States gets Update whenver data source changes
+    this.setState({
+      users: GlobalDataSource.getUsers(),
+    });
+  }
+  render() {
+    return (
+      <div>
+        {this.state.users.map((user) => (
+          <UserData user={user} key={user.id} />
+        ))}
+      </div>
+    );
+  }
 }
 ```
 
@@ -1066,32 +1060,32 @@ Bây giờ ta có hai component có chức năng giống nhau chỉ khác về A
 // as input and returns another component
 // "GlobalDataSource" is some global data source
 function HOC(WrappedComponent, selectData) {
-    return class extends React.Component {
-        constructor(props) {
-            super(props);
-            this.handleChange = this.handleChange.bind(this);
-            this.state = {
-                data: selectData(GlobalDataSource, props),
-            };
-        }
-        componentDidMount() {
-            // Listens to the changes added
-            GlobalDataSource.addChangeListener(this.handleChange);
-        }
-        componentWillUnmount() {
-            // Listens to the changes removed
-            GlobalDataSource.removeChangeListener(this.handleChange);
-        }
-        handleChange() {
-            this.setState({
-            data: selectData(GlobalDataSource, this.props),
-            });
-        }
-        render() {
-            // Rendering the wrapped component with the latest data data
-            return <WrappedComponent data={this.state.data} {...this.props} />;
-        }
-    };
+  return class extends React.Component {
+    constructor(props) {
+      super(props);
+      this.handleChange = this.handleChange.bind(this);
+      this.state = {
+        data: selectData(GlobalDataSource, props),
+      };
+    }
+    componentDidMount() {
+      // Listens to the changes added
+      GlobalDataSource.addChangeListener(this.handleChange);
+    }
+    componentWillUnmount() {
+      // Listens to the changes removed
+      GlobalDataSource.removeChangeListener(this.handleChange);
+    }
+    handleChange() {
+      this.setState({
+        data: selectData(GlobalDataSource, this.props),
+      });
+    }
+    render() {
+      // Rendering the wrapped component with the latest data data
+      return <WrappedComponent data={this.state.data} {...this.props} />;
+    }
+  };
 }
 ```
 
@@ -1102,16 +1096,21 @@ Tham số thứ hai là hàm gọi cho phương thức trên API.
 Ta đã giảm code trùng lặp giữa `componentDidUpdate` và `componentDidMount`. Bây giờ ta có component `ArticleList` và `UsersList` như sau:
 
 ```jsx
-const ArticlesListWithHOC = HOC(ArticlesList, (GlobalDataSource) => GlobalDataSource.getArticles());
-const UsersListWithHOC = HOC(UsersList, (GlobalDataSource) => GlobalDataSource.getUsers());
+const ArticlesListWithHOC = HOC(ArticlesList, (GlobalDataSource) =>
+  GlobalDataSource.getArticles()
+);
+const UsersListWithHOC = HOC(UsersList, (GlobalDataSource) =>
+  GlobalDataSource.getUsers()
+);
 ```
 
 ### 27. Các giai đoạn trong vòng đời component?
 
 Có 3 giai đoạn trong vòng đời component React.
+
 - **Mounting**: đề cập đến việc đưa phần tử vào DOM của trình duyệt. Vì React dùng virtual DOM, toàn bộ DOM của trình duyệt đã render sẽ không được làm mới. Bao gồm các phương thức trong giai đoạn này bao gồm: `constructor` và `componentDidMount`.
 - **Updating**: Trong giai đoạn này, component sẽ được cập nhật khi có thay đổi state hoặc props của component. Các phương thức trong giai đoạn này: `getDerivedStateFromProps`, `shouldComponentUpdate`, `render`, và `componentDidUpdate`.
-- **Unmounting**: Ở giai đoạn cuối, component sẽ bị xoá khỏi DOM. Giai đoạn này  sẽ có phương thức là `componentWillUnmount`.
+- **Unmounting**: Ở giai đoạn cuối, component sẽ bị xoá khỏi DOM. Giai đoạn này sẽ có phương thức là `componentWillUnmount`.
 
 ![](./assets/different_phases_of_the_component_lifecycle.png)
 
@@ -1124,6 +1123,7 @@ Ví dụ: nếu bạn đang phát triển ứng dụng YouTube, thì ứng dụn
 Vì vậy, chúng ta có thể nói rằng nhà phát triển sẽ có thể tạo ra một ứng dụng chất lượng với sự trợ giúp của các phương pháp vòng đời và nó cũng giúp các nhà phát triển đảm bảo lập kế hoạch những gì và làm như thế nào tại các thời điểm sinh, phát triển hoặc chết của giao diện người dùng.
 
 Các phương thức trong vòng đời:
+
 - `constructor()`: phương thức được gọi khi component được tạo trước khi thực hiện bất kỳ hành động gì. Nó giúp tạo state và props.
 - `getDerivedStateFromProps()`: nó sẽ gọi trước khi phần tử được render vào DOM. Nó giúp thiết lập đối tượng state dựa trên props khởi tạo. Phương thức `getDerivedStateFromProps` sẽ có một state như đối số và trả về một đối tượng để thay đổi state. Nó sẽ là phương thức đầu tiên được gọi khi thực hiện cập nhật.
 - `render()`: phương thức này sẽ render HTML từ DOM với thay đổi mới nhất. Phương thức `render` sẽ được gọi mỗi khi có thay đổi đến component.
@@ -1139,19 +1139,7 @@ Static typing đề cập đến quá trình kiểm tra code trong suốt thời
 
 ### 30. Các kiểu Hooks trong React?
 
-**Hook có sẵn**: là các hooks được hỗ trợ sẵn trong React:
-    - **Hook cơ bản**:
-        + `useState()`: là component dùng cho thiết lập và chỉnh sửa state.
-        + `useEffect()`: cho phép thực hiện side effect trên function component.
-        + `useContext()`: dùng cho tạo dữ liệu chung có thể truy cập trong hệ phân cấp component mà không cần truyền dữ liệu theo props từ trên xuống.
-    - **Hook nâng cao**:
-        + `useReducer()`: dùng cho các logic state phức tạp có nhiều giá trị con khi cập nhật state phụ thuộc vào state trước đó. Nó sẽ giúp tối ưu hoá hiệu suất component khi kích hoạt các bản cập nhật sâu hơn vì nó được truyền xuống thay vì callback.
-        + `useMemo()`: điều này sẽ được sử dụng để tính toán lại giá trị đã ghi nhớ khi có sự thay đổi trong một trong các phần phụ thuộc. Việc tối ưu hóa này sẽ giúp tránh các tính toán tốn kém trên mỗi lần render.
-        + `useCallback()`: hữu ích khi truyền callback vào component con đã tối ưu hoá và phụ thuộc vào tham chiếu để ngăn chặn các render không cần thiết.
-        + `useImperativeHandle()`: cho phép chỉnh sửa thực thể sẽ được truyền cho đối tượng ref.
-        + `useDebugValue()`: dùng cho hiển thị nhãn hoặc hook tuỳ chỉnh trong React DevTools.
-        + `useRef()`: Nó sẽ cho phép tạo một tham chiếu đến phần tử DOM trực tiếp trong function component.
-        + `useLayoutEffect()`: dùng cho đọc bố cục từ DOM và re-render bất đồng bộ.
+**Hook có sẵn**: là các hooks được hỗ trợ sẵn trong React: - **Hook cơ bản**: + `useState()`: là component dùng cho thiết lập và chỉnh sửa state. + `useEffect()`: cho phép thực hiện side effect trên function component. + `useContext()`: dùng cho tạo dữ liệu chung có thể truy cập trong hệ phân cấp component mà không cần truyền dữ liệu theo props từ trên xuống. - **Hook nâng cao**: + `useReducer()`: dùng cho các logic state phức tạp có nhiều giá trị con khi cập nhật state phụ thuộc vào state trước đó. Nó sẽ giúp tối ưu hoá hiệu suất component khi kích hoạt các bản cập nhật sâu hơn vì nó được truyền xuống thay vì callback. + `useMemo()`: điều này sẽ được sử dụng để tính toán lại giá trị đã ghi nhớ khi có sự thay đổi trong một trong các phần phụ thuộc. Việc tối ưu hóa này sẽ giúp tránh các tính toán tốn kém trên mỗi lần render. + `useCallback()`: hữu ích khi truyền callback vào component con đã tối ưu hoá và phụ thuộc vào tham chiếu để ngăn chặn các render không cần thiết. + `useImperativeHandle()`: cho phép chỉnh sửa thực thể sẽ được truyền cho đối tượng ref. + `useDebugValue()`: dùng cho hiển thị nhãn hoặc hook tuỳ chỉnh trong React DevTools. + `useRef()`: Nó sẽ cho phép tạo một tham chiếu đến phần tử DOM trực tiếp trong function component. + `useLayoutEffect()`: dùng cho đọc bố cục từ DOM và re-render bất đồng bộ.
 
 **Hook tuỳ chỉnh**: là một hàm JavaScript. Hoạt động giống như một hàm thông thường với "use" phía trước để React hiểu đó là một hook tuỳ chỉnh và sẽ mô tả các hàm đặc biệt theo quy tắc của Hook. Hơn thế nữa, việc phát triển hook tuỳ chỉnh cho phép bạn trích xuất logic component trong các hàm có thể tái sử dụng
 
@@ -1159,13 +1147,13 @@ Static typing đề cập đến quá trình kiểm tra code trong suốt thời
 
 ### 31. Sự khác biệt giữa lớp và React Hook?
 
-| React Hook | Lớp |
-|-|-|
-| Được dùng cho function component | Được dùng cho class component |
-| Không yêu cầu khai báo constructor | Cần constructor trong các class component |
+| React Hook                                            | Lớp                                                                          |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Được dùng cho function component                      | Được dùng cho class component                                                |
+| Không yêu cầu khai báo constructor                    | Cần constructor trong các class component                                    |
 | Không yêu cầu con trỏ this cho khai báo hay chỉnh sửa | Cần dùng this cho khai báo state (this.state) và chỉnh sửa (this.setState()) |
-| Dễ sử dụng với useState | Không có hàm cụ thể giúp ta truy cập state với setState tương ứng |
-| Hữu dụng khi triển khai Redux và Context API | Quá trình thiết lập state lâu, nên class state sẽ không được ưu tiên |
+| Dễ sử dụng với useState                               | Không có hàm cụ thể giúp ta truy cập state với setState tương ứng            |
+| Hữu dụng khi triển khai Redux và Context API          | Quá trình thiết lập state lâu, nên class state sẽ không được ưu tiên         |
 
 ### 32. Hiệu suất của React Hook so với lớp?
 
@@ -1175,6 +1163,7 @@ Static typing đề cập đến quá trình kiểm tra code trong suốt thời
 ### 33. Các hook có thay thế được lớp hoàn toàn?
 
 Mục đích của Hook là thay thế các chức năng được cung cấp bởi lớp. Nhưng có các phương thức mà Hook vẫn chưa thay thế được lớp:
+
 - `getSnapshotBeforeUpdate()`
 - `getDerivedStateFromError()`
 - `componentDidCatch()`
@@ -1200,6 +1189,7 @@ Trong các ứng dụng web thương mại lớn hơn, độ phức tạp sẽ c
 Render có điều kiện đề cập kết quả động của giao diện người dùng dựa trên điều kiện state. Nó hoạt động tương tự điều kiện JavaScript. Sử dụng render có điều kiện, nó có thể chuyển đổi các hàm ứng dụng cụ thể, API dữ liệu, ẩn hoặc hiện các phần tử, phân quyền, xử lý xác thức,...
 
 Các cách khác nhau cho triển khai render có điều kiện trong React:
+
 - Sử dụng if-else phù hợp với các ứng dụng vừa và nhỏ.
 - Sử dụng toán tử ba ngôi (`?:`) giúp giảm bớt câu lệnh if-else phức tạp.
 - Sử dụng biến phần tử, phù hợp cho viết code sạch.
@@ -1209,6 +1199,7 @@ Các cách khác nhau cho triển khai render có điều kiện trong React:
 `<Link>` dùng cho điều hướng các trang khác nhau trong ứng dụng web. Còn `<NavLink>` được dùng để thêm thuộc tính cho hoạt động chuyển hướng.
 
 **Cú pháp**
+
 - Link:
 
 ```jsx
@@ -1218,7 +1209,9 @@ Các cách khác nhau cho triển khai render có điều kiện trong React:
 - NavLink:
 
 ```jsx
-<NavLink to="/" activeClassName="active">Home</NavLink>
+<NavLink to="/" activeClassName="active">
+  Home
+</NavLink>
 ```
 
 **Ví dụ**
@@ -1234,46 +1227,51 @@ index.css
 Routes.js
 
 ```jsx
-import ReactDOM from 'react-dom'
-import './index.css'
-import { Route, NavLink, BrowserRouter as Router, Switch } from 'react-router-dom'
-import App from './App'
-import Users from './users'
-import Contact from './contact'
-import Notfound from './notfound'
+import ReactDOM from "react-dom";
+import "./index.css";
+import {
+  Route,
+  NavLink,
+  BrowserRouter as Router,
+  Switch,
+} from "react-router-dom";
+import App from "./App";
+import Users from "./users";
+import Contact from "./contact";
+import Notfound from "./notfound";
 
 const Routes = (
-    <Router>
-        <div>
-            <ul>
-                <li>
-                <NavLink exact activeClassName="active" to="/">
-                    Home
-                </NavLink>
-                </li>
-                <li>
-                <NavLink activeClassName="active" to="/users">
-                    Users
-                </NavLink>
-                </li>
-                <li>
-                <NavLink activeClassName="active" to="/contact">
-                    Contact
-                </NavLink>
-                </li>
-            </ul>
-            <hr />
-            <Switch>
-                <Route exact path="/" component={App} />
-                <Route path="/users" component={Users} />
-                <Route path="/contact" component={Contact} />
-                <Route component={Notfound} />
-            </Switch>
-        </div>
-    </Router>
-)
+  <Router>
+    <div>
+      <ul>
+        <li>
+          <NavLink exact activeClassName="active" to="/">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/users">
+            Users
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/contact">
+            Contact
+          </NavLink>
+        </li>
+      </ul>
+      <hr />
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/users" component={Users} />
+        <Route path="/contact" component={Contact} />
+        <Route component={Notfound} />
+      </Switch>
+    </div>
+  </Router>
+);
 
-ReactDOM.render(Routes, document.getElementById('root'))
+ReactDOM.render(Routes, document.getElementById("root"));
 ```
 
 ### 38. withRouter trong react-router-dom là gì?
@@ -1283,26 +1281,26 @@ ReactDOM.render(Routes, document.getElementById('root'))
 Ví dụ:
 
 ```jsx
-import React from "react"
-import PropTypes from "prop-types"
-import { withRouter } from "react-router"
+import React from "react";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 
 // A simple component that shows the pathname of the current location
 class ShowTheLocation extends React.Component {
-    static propTypes = {
-        match: PropTypes.object.isRequired,
-        location: PropTypes.object.isRequired,
-        history: PropTypes.object.isRequired
-    }
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+  };
 
-    render() {
-        const { match, location, history } = this.props
+  render() {
+    const { match, location, history } = this.props;
 
-        return <div>You are now at {location.pathname}</div>
-    }
+    return <div>You are now at {location.pathname}</div>;
+  }
 }
 
-const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
+const ShowTheLocationWithRouter = withRouter(ShowTheLocation);
 ```
 
 ### 39. Cách hiển thị dữ liệu API với Axios?
@@ -1310,6 +1308,7 @@ const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
 Axios là một promise dựa trên HTTP để tạo yêu cầu HTTP đến trình duyệt hay web server.
 
 **Tính năng**
+
 - **Interceptors**: Truy cập cấu hình yêu cầu hoặc phản hồi (header, dữ liệu, v.v.) khi chúng gửi đến hoặc đi. Các hàm này có thể hoạt động như các cổng để kiểm tra cấu hình hoặc thêm dữ liệu.
 - **Instances**: Tạo thực thể có thể tái sử dụng như baseUrl, headers, và cấu hình khác đã thiết lập.
 - **Defaults**: Thiết lập giá trị chung cho header chung (như Authorization) với các yêu cầu. Nó hữu ích khi bạn cần xác thực đến server trên mọi yêu cầu.
@@ -1334,93 +1333,97 @@ Các phương thức thường dùng:
 Ví dụ POST:
 
 ```js
-
-axios.post('/url',{data: 'data'})
-    .then((res)=>{
-        //on success
-    })
-    .catch((error)=>{
-        //on error
-    })
+axios
+  .post("/url", { data: "data" })
+  .then((res) => {
+    //on success
+  })
+  .catch((error) => {
+    //on error
+  });
 ```
 
 Ví dụ GET:
 
 ```js
-axios.get('/url')
-    .then((res)=>{
-        //on success
-    })
-    .catch((error)=>{
-        //on error
-    })
+axios
+  .get("/url")
+  .then((res) => {
+    //on success
+  })
+  .catch((error) => {
+    //on error
+  });
 ```
 
 Xử lý nhiều yêu cầu đồng thời:
 
 ```js
 function getUserAccount() {
-    return axios.get('/user/12345')
+  return axios.get("/user/12345");
 }
 
 function getUserPermissions() {
-    return axios.get('/user/12345/permissions')
+  return axios.get("/user/12345/permissions");
 }
 
-axios.all([getUserAccount(), getUserPermissions()])
-    .then(axios.spread(function (acct, perms) {
-        // Both requests are now complete
-    }))
+axios.all([getUserAccount(), getUserPermissions()]).then(
+  axios.spread(function (acct, perms) {
+    // Both requests are now complete
+  })
+);
 ```
 
 POST trong Component:
 
 ```jsx
-import React from 'react'
-import axios from 'axios'
+import React from "react";
+import axios from "axios";
 
 export default class PersonList extends React.Component {
-    state = {
-        name: '',
-    }
+  state = {
+    name: "",
+  };
 
-    handleChange = event => {
-        this.setState({ name: event.target.value })
-    }
+  handleChange = (event) => {
+    this.setState({ name: event.target.value });
+  };
 
-    handleSubmit = event => {
-        event.preventDefault()
+  handleSubmit = (event) => {
+    event.preventDefault();
 
-        const user = {
-        name: this.state.name
-        }
+    const user = {
+      name: this.state.name,
+    };
 
-        axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
-        .then(res => {
-            console.log(res)
-            console.log(res.data)
-        })
-    }
+    axios
+      .post(`https://jsonplaceholder.typicode.com/users`, { user })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+  };
 
-    render() {
-        return (
-        <div>
-            <form onSubmit={this.handleSubmit}>
-            <label>
-                Person Name:
-                <input type="text" name="name" onChange={this.handleChange} />
-            </label>
-            <button type="submit">Add</button>
-            </form>
-        </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Person Name:
+            <input type="text" name="name" onChange={this.handleChange} />
+          </label>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    );
+  }
 }
 ```
 
 ### 40. Caching trong React?
 
 Ta có thể caching dữ liệu trong React bằng nhiều cách như:
+
 - Local Storage
 - Redux Store
 - Giữa dữ liệu giữa mounting và unmounting
@@ -1430,36 +1433,36 @@ Memoization là một kỹ thuật mà chúng ta sẽ sử dụng để đảm b
 Ví dụ:
 
 ```jsx
-const cache = {}
+const cache = {};
 
 const useFetch = (url) => {
-    const [status, setStatus] = useState('idle')
-    const [data, setData] = useState([])
+  const [status, setStatus] = useState("idle");
+  const [data, setData] = useState([]);
 
-    useEffect(() => {
-        if (!url) return
+  useEffect(() => {
+    if (!url) return;
 
-        const fetchData = async () => {
-            setStatus('fetching')
+    const fetchData = async () => {
+      setStatus("fetching");
 
-            if (cache[url]) {
-                const data = cache[url]
-                setData(data)
-                setStatus('fetched')
-            } else {
-                const response = await fetch(url)
-                const data = await response.json()
-                cache[url] = data // set response in cache
-                setData(data)
-                setStatus('fetched')
-            }
-        }
+      if (cache[url]) {
+        const data = cache[url];
+        setData(data);
+        setStatus("fetched");
+      } else {
+        const response = await fetch(url);
+        const data = await response.json();
+        cache[url] = data; // set response in cache
+        setData(data);
+        setStatus("fetched");
+      }
+    };
 
-        fetchData()
-    }, [url])
+    fetchData();
+  }, [url]);
 
-    return { status, data }
-}
+  return { status, data };
+};
 ```
 
 Ở đây ta ánh xạ URL tới dữ liệu của ta. Nếu ta thực hiện yêu cầu nạp dữ liệu hiện có, chúng ta sẽ lấy dữ liệu từ cache cục bộ của mình. Nếu không, ta tiếp tục thực hiện yêu cầu và đặt kết quả vào cache. Điều này đảm bảo tằng ta không gọi lại API khi đã có dữ liệu cục bộ.
@@ -1470,34 +1473,34 @@ Với `useRef()`, ta có thể thiết lập và truy xuất dữ liệu có th�
 
 ```jsx
 const useFetch = (url) => {
-   const cache = useRef({})
-    const [status, setStatus] = useState('idle')
-    const [data, setData] = useState([])
+  const cache = useRef({});
+  const [status, setStatus] = useState("idle");
+  const [data, setData] = useState([]);
 
-    useEffect(() => {
-        if (!url) return
+  useEffect(() => {
+    if (!url) return;
 
-        const fetchData = async () => {
-            setStatus('fetching')
+    const fetchData = async () => {
+      setStatus("fetching");
 
-            if (cache.current[url]) {
-                const data = cache.current[url]
-                setData(data)
-                setStatus('fetched')
-            } else {
-                const response = await fetch(url)
-                const data = await response.json()
-                cache.current[url] = data // set response in cache
-                setData(data)
-                setStatus('fetched')
-            }
-        }
+      if (cache.current[url]) {
+        const data = cache.current[url];
+        setData(data);
+        setStatus("fetched");
+      } else {
+        const response = await fetch(url);
+        const data = await response.json();
+        cache.current[url] = data; // set response in cache
+        setData(data);
+        setStatus("fetched");
+      }
+    };
 
-        fetchData()
-    }, [url])
+    fetchData();
+  }, [url]);
 
-    return { status, data }
-    }
+  return { status, data };
+};
 ```
 
 #### Sử dụng localStorage
@@ -1532,41 +1535,651 @@ export default App
 #### Giữ dữ liệu giữa mounting và unmounting
 
 ```jsx
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 // Set initial state
-let state = { counter: 5 }
+let state = { counter: 5 };
 
 class Counter extends Component {
+  constructor(props) {
+    super(props);
 
+    // Retrieve the last state
+    this.state = state;
+
+    this.onClick = this.onClick.bind(this);
+  }
+
+  componentWillUnmount() {
+    // Remember state for the next mount
+    state = this.state;
+  }
+
+  onClick(e) {
+    e.preventDefault();
+    this.setState((prev) => ({ counter: prev.counter + 1 }));
+  }
+
+  render() {
+    return (
+      <div>
+        <span>{this.state.counter}</span>
+        <button onClick={this.onClick}>Increase</button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
+# Phỏng vấn React
+
+## Nguồn tham khảo
+
+<a href="https://www.edureka.co/blog/interview-questions/react-interview-questions" target="_blank" rel="noopener noreferrer">edureka.co</a>
+
+<a  id="top"></a>
+
+## Mục lục
+
+- [General React Interview Questions](#general_questions)
+
+- [React Component Interview Questions](#component_questions)
+
+- [React Redux Interview Questions](#redux_questions)
+
+- [React Router Interview Question](#router_questions)
+
+<a id="general_questions"></a>
+
+## General React Interview Questions
+
+**1. Differentiate between Real DOM and Virtual DOM.**
+| **Real DOM** | **Virtual DOM** |
+| --- | --- |
+| 1. It updates slow. | 1. It updates faster. |
+| 2. Can directly update HTML. | 2. Can’t directly update HTML. |
+| 3. Creates a new DOM if element updates. | 3. Updates the JSX if element updates. |
+| 4. DOM manipulation is very expensive. | 4. DOM manipulation is very easy. |
+| 5. Too much of memory wastage. | 5. No memory wastage. |
+
+**2. What is React?**
+
+- React là 1 thư viện Javascript Front-End được phát triển bởi facebook vào năm 2011.
+- Nó tuân theo cách tiếp cận **Component** giúp xây dựng các thành phần UI có thể tái sử dụng.
+- Nó được sử dụng để xây dựng các Web và Mobile UI phức tạp và giàu tính tương tác.
+- Mặc dù chỉ mới open-sourced vào năm 2015 nhưng, nó có 1 trong những cộng đồng lốn nhất hỗ trợ nó.
+
+**3. What are the features of React?**
+| Features | Description |
+|---|---|
+| **JSX** | JSX là cú pháp mở rộng của javascript. Nó được sử dụng với React để mô tả giao diện người dùng trông như thế nào. Bằng cách sử dụng JSX chúng ta có thể viết HTML trong javascript. |
+| **Components** | Components là các thành phần nền tảng của bất kì ứng dụng React nào và 1 ứng dụng đơn lẻ thường bao gồm nhiều component. Component chia giao diện người dùng thành các phần độc lập, có thể tái sử dụng và xử lí riêng biệt. |
+| **Virtual DOM** | React giữ một bản sao nhỏ gọn của **Real DOM** trong bộ nhớ và đó được gọi là **Virtual DOM**. Khi trạng thái của một đối tượng thay đổi, **Virtual DOM** chỉ thay đổi đối tượng đó trong **Real DOM**, thay vì cập nhật tất cả các đối tượng. |
+| **One-way data-binding** | Liên kết dữ liệu 1 chiều giữ cho mọi thứ theo module và nhanh chóng. Luồng dữ liệu 1 chiều có nghĩa là khi thiết kế 1 ứng dụng React, bạn thường lồng các thành phần con trong các thành phần mẹ. |
+| **High performance** | React chỉ cập nhật những component đã thay đổi, thay vì cập nhật tất cả các component cùng một lúc. Điều này dẫn đến các ứng dụng web nhanh hơn nhiều. |
+| **Debugging** | Các ứng dụng React rất dễ kiểm tra do có một cộng đồng developer lớn. Facebook thậm chí còn cung cấp một [browser extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) nhỏ giúp gỡ lỗi React nhanh chóng và dễ dàng hơn. |
+
+**4. List some of the major advantages of React.**
+
+- Tăng hiệu suất của ứng dụng.
+- Nó có thể sử dụng trên cả client và server side (ssr).
+- Tăng khả năng đọc mã với JSX.
+- React dễ dàng tích hợp với khác framework khác như Meteor, Angular, ...
+- Viết các UI test case trở nên cực kỳ dễ dàng
+
+**5. What are the limitions of React**
+
+- React là 1 library, ko phải framework nên ta sẽ cần kết hợp với nhiều library khác.
+- Do có nhiều lựa chọn library, nên việc kết hợp với các thư viện khác sẽ mất thời gian để hiểu và học.
+- Có thể khó hiểu đối với các lập trình viên mới bắt đầu.
+- Việc code sẽ trở nên phức tạp hơn vì nó sử dụng **Inline Styles** và **JSX**.
+
+**6. What is JSX?**\
+JSX (JavaScript XML\_) là một loại cú pháp mở rộng dành cho ngôn ngữ JavaScript viết theo kiểu XML. JSX cung cấp cú pháp ngọt (syntactic sugar) để thay cho câu lệnh `React.createElement()` trong React.
+
+Mã lệnh viết bằng JSX sẽ được chuyển sang JavaScript để trình duyệt có thể hiểu được, ví dụ:
+
+```JS
+  render() {
+    return(
+      <div>
+        <h1>Hello World!</h1>
+      </div>
+    );
+  }
+```
+
+**7. what do you understand by Virtual DOM? giải thích hoạt động của nó**\
+**Virtual DOM** là một phiên bản thu nhỏ của **Real DOM**, có thể coi nó như một bản sao của **Real DOM**, mà việc cập nhập không gây ảnh hưởng tới **Real DOM**. Nó có tất cả các thuộc tính giống như object **Real DOM**, nhưng nó không có khả năng viết lên màn hình như **Real DOM**.
+
+Các bước hoạt động:
+
+1. Bất cứ khi nào bất kỳ dữ liệu cơ bản nào thay đổi, toàn bộ UI sẽ được hiển thị lại trong biểu diễn **Virtual DOM**. \
+   ![Virtual DOM 1](https://cdn1.bbcode0.com/uploads/2020/12/16/589994042ba10554685a9d6315c24ac2-full.png)
+
+2. Sau đó sự khác biệt giữa **Virtual DOM** mới và **Real DOM** trước đó được tính toán.\
+   ![Virtual DOM 2](https://cdn1.bbcode0.com/uploads/2020/12/16/e5f1a852eff1e4d623f133ef6ed4604b-full.png)
+
+3. Sau khi tính toán xong, **Real DOM** sẽ chỉ được cập nhật với những thứ đã thực sự thay đổi.\
+   ![Virtual DOM 3](https://cdn1.bbcode0.com/uploads/2020/12/16/d46a52c7400b7b212755d3686585e2ff-full.png)
+
+**8. Why can’t browsers read JSX?**\
+Trình duyệt chỉ có thể đọc các đối tượng Javascript nhưng JSX không phải là đối tượng javascript thông thường. Do đó, để cho trình duyệt có thể đọc được Javascript, ta cần chuyển đổi tệp JSX thành đối tượng Javascript bằng cách sử dụng các trình biến đổi như **Babel**.
+
+**9. How different is React’s ES6 syntax when compared to ES5?**
+
+1.  **require vs import**
+
+    ```JS
+    // ES5
+    var React = require('react');
+
+    // ES6
+    import React from 'react';
+    ```
+
+2.  **export vs exports**
+
+    ```JS
+    // ES5
+    module.exports = Component;
+
+    // ES6
+    export default Component;
+    ```
+
+3.  **Component and function**
+
+    ```JS
+    // ES5
+    var MyComponent = React.createClass({
+      render: function() {
+        return <h3>Hello World!</h3>;
+      }
+    });
+
+    // ES6
+    class MyComponent extends React.Component {
+      render() {
+        return <h3>Hello World!</h3>;
+      }
+    }
+    ```
+
+4.  **Props**
+
+    ```JS
+    // ES5
+    var App = React.createClass({
+      propTypes: { name: React.PropTypes.string },
+        render: function() {
+          return <h3>Hello, {this.props.name}!</h3>;
+        }
+    });
+
+    // ES6
+    class App extends React.Component {
+      render() {
+        return <h3>Hello, {this.props.name}!</h3>;
+      }
+    }
+    ```
+
+5.  **State**
+    ```JS
+    // ES5
+    var App = React.createClass({
+    getInitialState: function() {
+    return { name: 'world'};
+    },
+    render: function() {
+    return <h3>Hello, {this.state.name}!</h3>;
+    }
+    });
+
+        // ES6
+
+        class App extends React.Component {
+          constructor() {
+            super();
+            this.state = { name: 'world'};
+          }
+
+          render() {
+            return <h3>Hello, {this.state.name}!</h3>;
+          }
+        }
+        ```
+
+    **10. How is React different from Angular?**
+    | TOPIC | REACT | ANGULAR |
+    |--|--|--|
+    | ARCHITECTURE | Only the View of MVC | Complete MVC |
+    | RENDERING | Server-side rendering | Client-side rendering |
+    | DOM | Uses virtual DOM | Uses real DOM |
+    | DATA BINDING | One-way data binding | Two-way data binding |
+    | DEBUGGING | Compile time debugging | Runtime debugging |
+    | AUTHOR | Facebook | Google |
+
+<a id="component_questions"></a>
+
+## React Component Interview Questions
+
+**11. What do you understand from “In React, everything is a component.”**\
+Components là những thành phần xây dựng nên UI của ứng dụng React. Các Components chia toàn bộ giao diện người dùng thành các phần nhỏ độc lập và có thể tái sử dụng. Sau đó nó hiển thị các Components này độc lập với nhau mà ko ảnh hưởng đến phần còn lại của giao diện người dùng.
+
+**12. Explain the purpose of render() in React.**
+Mỗi component trong React phải có một phương thức render (). Nó trả về một element duy nhất là đại diện của DOM Component gốc. Nếu nhiều element HTML cần được hiển thị, chúng phải được nhóm lại với nhau bên trong một thẻ bao quanh như `<div></div>`, `<></>`, `<React.Fragment></React.Fragment>`.
+
+**13. How can you embed two or more components into one?**\
+Chúng ta có thể nhúng nhiều component theo cách sau:
+
+```JS
+class MyComponent extends React.Component{
+  render(){
+    return(
+      <div>
+        <h1>Hello</h1>
+        <Header/>
+      </div>
+    );
+  }
+}
+
+class Header extends React.Component{
+  render(){
+    return
+      <h1>Header Component</h1>
+  };
+}
+
+ReactDOM.render(
+  <MyComponent/>, document.getElementById('content')
+);
+```
+
+**14. What is Props?**\
+Props là viết tắt của **Properties** trong React. Chúng là những thành phần chỉ có thể đọc, tức là bất biến. Chúng luôn được truyền từ các thành phần mẹ đến các thành phần con trong suốt ứng dụng. 1 thành phần con ko bao giờ có thể gửi **Props** trở về các thành phần mẹ. Điều này giúp duy trì luồng dữ liệu 1 chiều và thường dc sử dụng để render data động.
+
+**15. What is a State in React and how is it used?**\
+State là thành phần của 1 Component khác với Props được truyền từ bên ngoài vào.\
+State là lưu lưu trữ các giá trị khởi tạo của component, khi state thay đổi thì component cũng được render lại.\
+Ví dụ tạo, sử dụng và thay đổi state:
+
+```JS
+class App extends React.Component {
+  constructor(props)  {
+    super(props);
+    this.state  =  {
+      firstName:  "kid",
+      lastName:  "kaito"
+    };
+  }
+
+  changeName =  ()  =>  {
+    this.setState({firstName:  "conan"});
+    this.setState({lastName:  "edogawa"});
+  }
+
+  render() {
+    return (
+      <>
+        <p>{this.state.lastName} - {this.state.firstName}</p>
+        <button onClick={changeName}>Click</button>
+      </>
+    );
+  }
+}
+```
+
+**16. Differentiate between states and props.**
+| Props | State |
+|-------|-------|
+| Props chỉ có thể đọc. | State có thể thay đổi bất đồng bộ.|
+| Props là bất biến (immutable). | State thay đổi được (mutable).|
+| Props cho phép truyền data từ 1 component đến component khác. | State giữ thông tin về component. |
+| Props có thể truy cập bởi các component con. | State ko thể truy cập bởi các component con |
+| Props được sử dụng để giao tiếp giữa các component. | States được sử dụng để render lại khi component thay đổi state. |
+| Props làm component có thể tái sử dụng. | State ko thể làm component tái sử dụng. |
+| Props được truyền từ bên ngoài vào và được kiểm soát ở nơi ta truyền vào. | State nằm bên trong nội bộ và được kiểm soát bởi chính component đó. |
+
+**17. How can you update the state of a component?**\
+Để update state ta sử dụng **this.setState()** trong React Class, **useState()** trong React Hook.
+
+- **React Hook**
+
+  ```JS
+  import React, { useState } from 'react';
+
+  function Example() {
+    // count trả về bởi useState là giá trị khởi tạo ban đầu là 0.
+    // Sử dụng setCount trả về bởi useState để update state mới
+    const [count, setCount] = useState(0);
+
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>
+          Click me
+        </button>
+      </div>
+    );
+  }
+  ```
+
+- **React Classes**
+
+  ```JS
+  import React, { useState } from 'react';
+
+  class Example extends React.Component {
     constructor(props) {
-        super(props)
-
-        // Retrieve the last state
-        this.state = state
-
-        this.onClick = this.onClick.bind(this)
-    }
-
-    componentWillUnmount() {
-        // Remember state for the next mount
-        state = this.state
-    }
-
-    onClick(e) {
-        e.preventDefault()
-        this.setState(prev => ({ counter: prev.counter + 1 }))
+      super(props);
+      this.state = {
+        count: 0
+      };
     }
 
     render() {
-        return (
-            <div>
-                <span>{ this.state.counter }</span>
-                <button onClick={this.onClick}>Increase</button>
-            </div>
-        )
+      return (
+        <div>
+          <p>You clicked {this.state.count} times</p>
+          <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+            Click me
+          </button>
+        </div>
+      );
     }
+  }
+  ```
+
+**18. What is arrow function in React? How is it used?**\
+**Arrow Function** là cú pháp ngắn gọn để viết 1 biểu thức hàm ko tên. Các function này cho phép liên kết đến ngữ cảnh của component 1 cách chính xác vì ES6 ko tự động liên kết. Các **Arrow Function** chủ yếu hữu ích khi làm việc với các higher order functions.
+
+```JS
+//General way
+render() {
+  return(
+    <MyInput onChange={this.handleChange.bind(this)} />
+  );
 }
 
-export default Counter
+//With Arrow Function
+render() {
+  return(
+    <MyInput onChange={(e) =>this.handleOnChange(e)} />
+  );
+}
 ```
+
+**19. Differentiate between stateful and stateless components.**
+| Stateful Component | Stateless Component |
+|--|--|
+| Còn gọi là Smart Component | Còn gọi là Dump Component |
+| Thường khai báo các function handle event sau đó truyền xuống Stateless Component | Thường nhận props và sau đó render ra UI cần thiết |
+| Có state | Không có state |
+| Có các Lifecycle Methods | Không có Lifecycle Methods |
+
+**20. What are the different phases of React component’s lifecycle?**\
+Có 3 giai đoạn chính trong 1 vòng đời của component:
+
+- **Initial Rendering Phase:** Đây là giai đoạn component được khởi tạo và gắn vào DOM.
+- **Updating Phase:** Giai đoạn cập nhật và re-render chỉ xảy ra khi Props hoặc State thay đổi.
+- **Unmounting Phase:** Giai đoạn cuối cùng, xảy ra khi component bị loại bỏ khỏi DOM.
+
+  **21. Explain the lifecycle methods of React components in detail.**\
+
+1.  **componentWillMount()** - được gọi trước khi quá trình gắn kết xảy ra.
+2.  **componentDidMount()** - được gọi ngay sau khi một component được gắn kết
+3.  **componentWillReceiveProps()** - được gọi trước khi 1 component được gắn kết nhận được các props mới.
+4.  **shouldComponentUpdate()** - cho React biết có nên update khi state hoặc props thay đổi. return true nếu muốn update và ngược lại return false.
+5.  **componentWillUpdate()** - được gọi trước khi rendering vào DOM.
+6.  **componentDidUpdate()** - được gọi sau khi rendering vào DOM.
+7.  **componentWillUnmount()**- được gọi khi 1 component loại bỏ khỏi DOM. Sử dụng để giải phóng bộ nhớ.
+
+**22. What is an event in React?**\
+Trong React, các event được kích hoạt khi như di chuột, nhấp chuột, nhấn phím, v.v. Xử lý các event này tương tự như xử lý các event trong DOM elements. Nhưng có một số khác biệt về cú pháp như:
+
+- Các sự kiện được đặt tên theo qui tắc camelCase.
+- Sự kiện được truyền dưới dạng fuction thay vì string.
+
+**23. How do you create an event in React?**
+
+```js
+class Display extends React.Component({
+  show(evt) {
+    // do something
+  },
+
+  render() {
+    // Render the div with an onClick prop (value is a function)
+    return (
+      <div onClick={this.show}>Click Me!</div>
+    );
+  }
+});
+```
+
+**24. What are synthetic events in React?**\
+**Synthetic events** là các đối tượng hoạt động như một trình bao bọc trình duyệt chéo xung quanh sự kiện gốc của trình duyệt. Chúng kết hợp hành vi của các trình duyệt khác nhau thành một API. Điều này được thực hiện để đảm bảo rằng các sự kiện hiển thị các thuộc tính nhất quán trên các trình duyệt khác nhau.
+
+**25. What do you understand by refs in React?**\
+Refs là viết tắt của References trong React. Nó là một thuộc tính giúp lưu trữ một tham chiếu đến một element hoặc component trả về bởi render (). Chúng rất hữu ích khi chúng ta cần các phép đo DOM hoặc thêm các phương thức vào các component.
+
+```js
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+
+  render() {
+    return <div ref={this.myRef} />;
+  }
+}
+```
+
+> **Chú ý**: Refs không thể dùng với stateless component.
+
+**26. List some of the cases when you should use Refs.**
+
+- Khi cần quản lí focus, select text hoặc phát lại media.
+- Kích hoạt các animations bắt buộc.
+- Tích hợp với thư viện DOM bên ngoài.
+
+**27. How do you modularize code in React?**\
+Sử dụng import và export của ES6. Giúp việc viết component thành những file riêng biệt.
+
+```js
+//ChildComponent.jsx
+export default class ChildComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>This is a child component</h1>
+      </div>
+    );
+  }
+}
+
+//ParentComponent.jsx
+import ChildComponent from "./childcomponent.js";
+
+class ParentComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <App />
+      </div>
+    );
+  }
+}
+```
+
+**28. How are forms created in React?**
+React Forms tương tự như các HTML Forms. Nhưng trong React, ta quản lí dữ liệu đầu vào thông qua state và cập nhật dữ liệu bằng setState ().
+
+```js
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: "" };
+  }
+
+  handleChange = (event) => {
+    this.setState({ value: event.target.value });
+  };
+
+  handleSubmit = (event) => {
+    alert("A name was submitted: " + this.state.value);
+    event.preventDefault();
+  };
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input
+            type="text"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+```
+
+**29. What do you know about controlled and uncontrolled components?**\
+
+- **Controlled Component**: Dữ liệu form được xử lí bởi React, dữ liệu giữ trong state và cập nhật bằng setState().
+- **Uncontrolled Component**: Dữ liệu form được xử lí bởi DOM, sử dụng **ref** để truy cập dữ liệu.
+
+**30. What are Higher Order Components(HOC)?**\
+Higher-order component (HOC) là một kỹ thuật nâng cao trong React để sử dụng lại logic của component. Cụ thể, HOC là một function nhận đầu vào là component và trả về một component mới
+
+**31. What can you do with HOC?**
+
+- Tái sử dụng code, logic.
+- [Render High jacking](https://stackoverflow.com/questions/48144659/what-is-render-hijacking-in-react)
+- Thao tác với State và Props.
+
+**32. What are Pure Components?**\
+Pure Components hay Function Components, Stateless Components là cách nhanh nhất để viết 1 component dưới dạng 1 function. Các component này nâng cao tính đơn giản của mã và hiệu suất của ứng dụng.
+
+**33. What is the significance of keys in React?**\
+Keys giúp React xác định những item đã thay đổi, được thêm vào hoặc bị xóa. Keys phải được cấp cho các phần tử bên trong mảng để cung cấp một danh tính ổn định.
+
+<a id="redux_questions"></a>
+
+## React Redux – React Interview Questions
+
+**34. What were the major problems with MVC framework?**
+
+- Quản lí DOM rất tốn kém.
+- Ứng dụng chậm và không hiệu quả.
+- Sự lãng phí bộ nhớ lớn.
+- Luồng dữ liệu theo 2 chiều nên khó debug.
+
+**35. Explain Flux.**\
+Flux là một mẫu kiến trúc thực thi luồng dữ liệu đơn hướng. Nó kiểm soát dữ liệu có nguồn gốc và cho phép giao tiếp giữa nhiều component bằng cách sử dụng store trung tâm có quyền đối với tất cả dữ liệu. Mọi cập nhật dữ liệu trong toàn bộ ứng dụng chỉ được thực hiện tại đây. Flux cung cấp sự ổn định cho ứng dụng và giảm lỗi thời gian chạy.
+![enter image description here](https://cdn1.bbcode0.com/uploads/2021/1/7/f90fce065c6c0348b294b717db9a68a5-full.png)
+
+**36. What is Redux?**\
+Redux là một trong những thư viện phổ biến nhất để phát triển front-end trên thị trường ngày nay. Nó là một vùng chứa trạng thái có thể dự đoán được cho các ứng dụng JavaScript và được sử dụng để quản lý trạng thái toàn bộ ứng dụng. Các ứng dụng được phát triển bằng Redux rất dễ kiểm tra và có thể chạy trong các môi trường khác nhau cho thấy hành vi nhất quán.
+
+**37. What are the three principles that Redux follows?**
+
+- **Single source of truth:** State của toàn bộ ứng dụng được lưu trữ trong một cây object / state trong một store duy nhất. Cây state duy nhất giúp theo dõi các thay đổi theo thời gian và gỡ lỗi hoặc kiểm tra ứng dụng dễ dàng hơn.
+- **State is read-only:** Cách duy nhất để thay đổi state là kích hoạt một action. Một action là một object JS đơn giản mô tả sự thay đổi. Giống như state là đại diện tối thiểu của dữ liệu, action là đại diện tối thiểu của sự thay đổi đối với dữ liệu đó.
+- **Changes are made with pure functions:** Để chỉ định cách cây state được chuyển đổi bởi các action, bạn cần các pure functions. Các pure functions là những func có giá trị trả về phụ thuộc vào giá trị của các đối số của chúng.
+
+**38. What do you understand by “Single source of truth”?**\
+Redux sử dụng "Store" để lưu trữ toàn bộ trạng thái của ứng dụng tại một nơi. Vì vậy, tất cả trạng thái của component được lưu trữ trong store và chúng nhận được các bản cập nhật từ chính store. Cây state duy nhất giúp theo dõi các thay đổi theo thời gian và gỡ lỗi hoặc kiểm tra ứng dụng dễ dàng hơn.
+
+**39. List down the components of Redux.**
+
+- **Action** – Một object mô tả những gì đã xảy ra.
+- **Reducer** – Nơi quyết định state sẽ thay đổi như thế nào.
+- **Store** – Cây state/object của toàn bộ app được lưu tại đây.
+- **View** – Hiển thị data được cung cấp bởi store.
+
+**40. Show how the data flows through Redux?**
+![enter image description here](https://cdn1.bbcode0.com/uploads/2021/1/7/b4dd6f458793d88578c816b0e1057021-full.png)
+
+**41. How are Actions defined in Redux?**\
+Các action trong React phải là một object có thuộc tính type cho biết loại ACTION đang được thực hiện. Type phải được định nghĩa như một hằng số String và bạn có thể thêm nhiều thuộc tính vào action đó. Trong Redux, các hành động được tạo bằng cách sử dụng các chức năng được gọi là Action Creators. Dưới đây là ví dụ về Action và Action Creator:
+
+```js
+function addTodo(text) {
+  return {
+    type: ADD_TODO,
+    text,
+  };
+}
+```
+
+**42. Explain the role of Reducer.**\
+Reducers là các pure function chỉ định cách state của ứng dụng thay đổi để đáp ứng với một ACTION. Reducers hoạt động bằng cách xử lí state cũ và action, sau đó nó trả về state mới. Nó xác định loại cập nhật nào cần được thực hiện dựa trên loại action và sau đó trả về các giá trị mới. Nó trả về state cũ như ban đầu, nếu không thực hiện công việc nào.
+
+**43. What is the significance of Store in Redux?**\
+Store là một object JavaScript có thể giữ state của ứng dụng và cung cấp một số phương pháp trợ giúp để truy cập state, dispatch action và đăng ký trình nghe. Toàn bộ cây state/object của một ứng dụng được lưu trong một cửa hàng duy nhất. Do đó, Redux rất đơn giản và dễ đoán. Chúng ta có thể chuyển middleware đến cửa hàng để xử lý dữ liệu cũng như ghi nhật ký các action khác nhau thay đổi state của store. Tất cả các action trả về state mới qua reducer.
+
+**44. How is Redux different from Flux?**
+| Flux | Redux |
+|--|--|
+| Store chứa state và logic thay đổi | Store và logic thay đổi riêng biệt |
+| Có nhiều Store | Chỉ có 1 store |
+| Tất store đều bị ngắt kết nối và phẳng | 1 store với bộ reducer phân cấp |
+| Có dispatcher | không có khái niệm dispatcher |
+| Các component đăng ký vào store | Container component bọc toàn bộ app và kết nối |
+| State is mutable | State is immutable |
+
+**45. What are the advantages of Redux?**
+
+- **Predictability of outcome –** Vì state được lấy từ cùng 1 store nên không có sự nhầm về đồng bộ state giữa các phần khác của app.
+- **Maintainability –** Code trở nên dễ bảo trì hơn với kết quả có thể đoán trước và cấu trúc chặt chẽ.
+- **Server-side rendering –** Bạn chỉ cần chuyển store được tạo trên server cho phía client. Điều này rất hữu ích cho kết xuất ban đầu và cung cấp trải nghiệm người dùng tốt hơn vì nó tối ưu hóa hiệu suất ứng dụng.
+- **Developer tools –** Từ các action đến thay đổi state, các developer có thể theo dõi mọi thứ đang diễn ra trong ứng dụng theo thời gian thực.
+- **Community and ecosystem –** Redux có một cộng đồng khổng lồ đằng sau nó, điều này làm cho nó trở nên hấp dẫn hơn khi sử dụng. Một cộng đồng lớn gồm các cá nhân tài năng đóng góp vào việc cải thiện thư viện và phát triển các ứng dụng khác nhau với nó.
+- **Ease of testing –** Code của Redux chủ yếu là các hàm nhỏ, thuần túy và biệt lập. Điều này làm cho ode có thể kiểm tra và độc lập.
+- **Organization –** Redux tốt về cách tổ chức code, điều này làm cho code nhất quán hơn và dễ dàng hơn khi một nhóm làm việc với nó.
+
+<a id="router_questions"></a>
+
+## React Router – React Interview Questions
+
+**46. What is React Router?**\
+React Router là một thư viện định tuyến mạnh mẽ được xây dựng trên React, giúp thêm các màn hình và luồng mới vào ứng dụng. Điều này giúp URL đồng bộ với dữ liệu đang được hiển thị trên trang web. Nó duy trì cấu trúc và hành vi tiêu chuẩn hóa và được sử dụng để phát triển các ứng dụng web trang đơn. React Router có một API đơn giản.
+
+**47. Why is switch keyword used in React Router v4?**\
+Từ khóa 'switch' được sử dụng khi bạn chỉ muốn hiển thị một route duy nhất trong một số route đã xác định. Thẻ `<switch>` khi được sử dụng khớp với URL đã nhập với các route được xác định theo thứ tự tuần tự. Khi tìm thấy kết quả phù hợp đầu tiên, nó sẽ hiển thị route được chỉ định. Qua đó bỏ qua các route còn lại.
+
+**48. Why do we need a Router in React?**\
+Router được sử dụng để xác định nhiều route mà khi người dùng nhập một URL cụ thể, nếu URL này khớp với đường dẫn của bất kỳ route’ nào được xác định bên trong router, thì người dùng sẽ được chuyển hướng đến route đó. Vì vậy, về cơ bản, chúng ta cần thêm một thư viện Router vào ứng dụng của mình, cho phép tạo nhiều route với route dẫn đến cho chúng ta một chế độ xem duy nhất.
+
+```js
+<switch>
+  <route exact path="/home" component={Home} />
+  <route path="/new-post" component={Newpost} />
+  <route path="/post" component={Post} />
+</switch>
+```
+
+**49. List down the advantages of React Router.**
+
+- Cũng giống như cách React dựa trên các component, trong React Router v4, API là 'Tất cả về các component'. Một Router có thể được hình dung như một thành phần gốc duy nhất (`<BrowserRouter>`) trong đó chúng ta bao gồm các route con cụ thể (`<route>`).
+- Không cần đặt giá trị History theo cách thủ công. Trong React Router v4, tất cả những gì chúng ta cần làm là bọc các tuyến đường của mình trong thành phần `<BrowserRouter>`.
+- Các gói được chia ra: có 3 gói chia ra cho Web, Native và Core. Điều này hỗ trợ kích thước nhỏ gọn của ứng dụng của chúng tôi. Nó dễ dàng chuyển đổi dựa trên một phong cách mã hóa tương tự.
+
+**50. How is React Router different from conventional routing?**
+| Topic | Conventional Routing | React Routing |
+|--|--|--|
+| PAGES INVOLVED | Mỗi chế độ xem tương ứng với một file HTML mới | Chỉ một trang HTML có liên quan |
+| URL CHANGES | Một yêu cầu HTTP được gửi đến server và trả về trang HTML tương ứng | Chỉ thuộc tính History bị thay đổi |
+| FEEL | Người dùng thực sự điều hướng trên các trang khác nhau cho mỗi chế độ xem | Người dùng bị lừa khi nghĩ rằng đang điều hướng trên các trang khác nhau |
