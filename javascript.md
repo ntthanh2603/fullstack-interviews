@@ -1,19 +1,6 @@
 # Danh sách những câu hỏi trong phỏng vấn Javascript
 
-<p align="center">
-  <a href="https://github.com/tuantvk/javascript-interview-questions-developer/issues">
-    <img src="https://img.shields.io/github/issues/tuantvk/javascript-interview-questions-developer.svg" alt="issues" />
-  </a>
-  <a href="#">
-    <img src="https://img.shields.io/github/forks/tuantvk/javascript-interview-questions-developer.svg" alt="forks" />
-  </a>
-  <a href="#">
-    <img src="https://img.shields.io/github/stars/tuantvk/javascript-interview-questions-developer.svg" alt="stars" />
-  </a>
-  <a href="https://github.com/tuantvk/javascript-interview-questions-developer/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/tuantvk/javascript-interview-questions-developer.svg" alt="LICENSE" />
-  </a>
-</p>
+
 
 <p align="center">
   <img src="https://github.com/tuantvk/javascript-interview-questions-developer/blob/master/assets/background.png" alt="background" />
