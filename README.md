@@ -31,8 +31,8 @@
   - [**An ninh mạng**](./basics/cyber): 42 câu hỏi phỏng vấn an ninh mạng.
 - Ngôn ngữ lập trình:
   - [**C++**](./basics/cpp): 28 Câu hỏi phỏng vấn C++.
-    - [**JS, TS**](./basics/javascript_typescript/): Các câu hỏi về JS, TS.
-    - [**JAVA**](./basics/java/): Các câu hỏi về Java.
+  - [**JS, TS**](./basics/javascript_typescript/): Các câu hỏi về JS, TS.
+  - [**JAVA**](./basics/java/): Các câu hỏi về Java.
 
 ### Cơ sở dữ liệu
 
@@ -64,9 +64,9 @@
   - [**Nginx**](./backend/nginx): 18 câu hỏi phỏng vấn Nginx.
   - [**WebSocket**](./backend/websocket/): 12 câu hỏi phỏng vấn WebSocket.
   - [**Microservice**](./backend/microservice): 30 câu hỏi phỏng vấn Microservices.
-    - [**Elasticsearch**](./backend/elasticsearch/): Các câu hỏi về Elasticsearch.
-    - [**Design Patterns**](./backend): Các câu hỏi về Design Patterns.
-    - [**Redis**](./backend/redis/): Các câu hỏi về Redis.
+  - [**Elasticsearch**](./backend/elasticsearch/): Các câu hỏi về Elasticsearch.
+  - [**Design Patterns**](./backend): Các câu hỏi về Design Patterns.
+  - [**Redis**](./backend/redis/): Các câu hỏi về Redis.
 - Ngôn ngữ:
   - [**C#**](./backend/csharp): 30 câu hỏi phỏng vấn C#.
   - [**PHP**](./backend/php): 33 câu hỏi phỏng vấn về PHP.
@@ -93,9 +93,10 @@
   - [**Java**](./mobile/java): 54 câu hỏi phỏng vấn về Java.
 
 # Security
-
-- [**Security**](./security/): Các câu hỏi về an toàn thông tin.
-
+- Kiến thức 
+  - [**Security**](./security/): Các câu hỏi về an toàn thông tin.
+- Ngôn ngữ lập trình:
+  
 # Tham khảo
 
 - [**Interviewbit**](https://www.interviewbit.com)
