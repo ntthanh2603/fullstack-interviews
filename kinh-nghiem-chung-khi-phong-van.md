@@ -1,7 +1,7 @@
 Những kinh nghiệm khi phỏng vấn
 ===============================
 
-Tác giả: Đinh Hoàng Phong (Software Engineer - Facebook)
+Tác giả: Đinh Hoàng Phong (Software Engineer - Facebook) và Nguyễn Tuấn Thành(Chưa có danh)
 
 Một số điểm cần lưu ý trong khi viết resume
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -45,6 +45,22 @@ Bạn cũng có thể tham khảo thêm [hướng dẫn phỏng vấn của Goo
 
 Những dạng câu hỏi và cách luyện tập trả lời
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Dạng câu hỏi giao tiếp và thông tin cần chuẩn bị:
+
+- Em biết gì về cty, tại sao em muốn làm việc ở đây(Tìm hiểu về cty: website, fanpage, tìm hiểu sứ mệnh, giá trị cốt lõi, sản phẩm dịch vụ, đọc kĩ jd). Và hãy cho cty thấy bạn đã tìm hiểu rõ cty đừng nói chung chung.
+  Ví dụ: em tìm hiểu về cty và nhận thấy công ty có một môi trường làm việc năng động và chuyên nghiệp, lĩnh vực mà em đang hoạt động phù hợp với chuyên ngành của em. em mong muốn được trải nghiệm và học hỏi từ những chuyên gia trong ngành và có thể phát triển kĩ năng thực tế và đóng góp sự phát triển chung của công ty.
+- Tại sao bạn muốn thực tập ở vị trí này: em đang theo đuổi ngành và em tin rằng vị trí này sẽ giúp em phát triển kĩ năng ... đồng thời giúp em mở rộng thêm kiến thức về lĩnh vực .. em cũng rất mong muốn  được trải nghiệm thực tế để phát triển bản thân
+- Bạn có kĩ năng nào phù hợp với vị trí này: Mặc dù em chưa có kinh nghiệm thực tế nhưng em đã trang bị cho mình những kĩ năng cần thiết qua việc học tập và tham gia các ....... như kĩ năng ..... em tin rằng những kĩ năng sẽ giúp em thích nghi và hoàn thành tốt công việc tại vị trí thực tập sinh.
+- bạn mong đợi điều gì từ kì thực tập này: Em mong muốn học hỏi làm việc chuyên nghiệp trong môi trường thực tế, từ việc xử lý các công việc hàng ngày đến các kĩ năng giải quyết vấn đề. đồng thời em hi vọng có thể tích lũy thêm kiến thức chuyên ngành thông qua việc thực hiện các dự án thực tế, giúp em cải thiện và phát triển bản thân.
+- Giới thiệu bản thân: Tóm tắt ngắn gọn về kinh nghiệm và kĩ năng liên quan.
+  Ví dụ: Em chào anh chị, hiện em là sinh viên năm 3 ngành ... với chuyên ngành ... trong quá trình học tập em đã tích lũy được những kiến thức nền tảng. em cũng đã có kinh nghiệm ... vai trò ... giúp em có kĩ năng ... em tin rằng mình có thể học hỏi và phát triển hơn nữa khi thực tập tại công ty của anh chị ạ.
+- Điểm mạnh điểm yếu: Điểm mạnh nên gắn với công việc, Điểm yếu nói kèm cách cải thiện.
+- Mục tiêu nghề nghiệp cho 3-5 năm tới: Nhà tuyển dụng đang hỏi em bạn có định hướng lâu dài không.
+- Ăn mặc chuyên nghiệp - Ấn tượng cái nhìn đầu tiên: Nên chọn màu trung tính (Đen trắng, xanh navy).
+- Em có câu hỏi gì không: nên hỏi về lộ trình thăng tiến, nhóm em gồm bao nhiêu người? văn hóa team như thế nào, anh chị kì vọng điều gì về ứng viên trong 3-6 tháng đầu tiên.
+- Tại sao chúng tôi phải chọn bạn thay vì ứng viện khác.
+- Mức lương bạn kì vọng là bao nhiêu.
+- Ngoài thời gian làm việc bạn còn sở thích hay đam mê gì không.
 
 Dạng câu hỏi về kĩ thuật (technical questions) 90% các câu hỏi sẽ thuộc về dạng này. Các câu hỏi ở dạng này sẽ có những loại như sau:
 
@@ -68,3 +84,4 @@ Những điều mà các nhà tuyển dụng thường chú ý
 -   Khả năng chuyên môn giỏi: Điều này thể hiện qua cách bạn giải quyết các vấn đề, bài toán mà họ đưa ra. Bạn có thể không phải là người giỏi nhất, nhưng chỉ cần bạn thể hiện đúng năng lực của mình với sự tự tin và kiến thức của bản thân, họ sẽ có một đánh giá công bằng nhất về trình độ hiện tại và có thể là tương lai của bạn.
 -   Khả năng giao tiếp thuần thục: Họ đang tìm kiếm những nhân viên tương lai mà họ đánh giá rằng họ có thể huấn luyện/làm việc chung với chính bản thân họ được. Vì vậy, hãy cứ thoải mái chia sẻ và trao đổi với người phỏng vấn để họ biết được khả năng thật sự của bạn ở mức độ nào.
 -   Sự trung thật: Bạn sẽ không bao giờ thành công nếu thiếu yếu tố này. Một ví dụ đơn giản như nếu bạn đã biết chắc chắn đáp án của câu hỏi mà nhà tuyển dụng đưa ra, hãy thành thật nói với họ như vậy.
+
