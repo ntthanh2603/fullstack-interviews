@@ -1,113 +1,71 @@
-# Fullstack Interviews
+# Fullstack Interviews 🚀
 
-## Tuyển tập câu hỏi phỏng vấn cho lập trình web.
+## Tuyển tập câu hỏi phỏng vấn cho lập trình web. 💻
 
-![](./interviews.jpg)
+![Interviews](./interviews.jpg)
 
-## Ngôn ngữ lập trình
 
-|                                                                                                                                                    |                                                           |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| <img src="https://raw.githubusercontent.com/github/explore/180320cffc25f4ed1bbdfd33d4db3a66eeeeb358/topics/cpp/cpp.png" height="40">               | [28 Câu hỏi phỏng vấn C++](./basics/cpp/)                 |
-| <img src="https://raw.githubusercontent.com/github/explore/180320cffc25f4ed1bbdfd33d4db3a66eeeeb358/topics/java/java.png" height="40">             | [54 Câu hỏi phỏng vấn Java](./mobile/java/)               |
-| <img src="https://raw.githubusercontent.com/github/explore/180320cffc25f4ed1bbdfd33d4db3a66eeeeb358/topics/python/python.png" height="40">         | [34 Câu hỏi phỏng vấn Python](./backend/python/)          |
-| <img src="https://raw.githubusercontent.com/github/explore/180320cffc25f4ed1bbdfd33d4db3a66eeeeb358/topics/javascript/javascript.png" height="40"> | [30 Câu hỏi phỏng vấn JavaScript](./frontend/javascript/) |
-| <img src="https://raw.githubusercontent.com/github/explore/180320cffc25f4ed1bbdfd33d4db3a66eeeeb358/topics/php/php.png" height="40">               | [33 Câu hỏi phỏng vấn PHP](./backend/php/)                |
-| <img src="https://raw.githubusercontent.com/github/explore/180320cffc25f4ed1bbdfd33d4db3a66eeeeb358/topics/csharp/csharp.png" height="40">         | [30 Câu hỏi phỏng vấn C#](./backend/csharp/)              |
-| <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/go/go.png" height="40">                 | [30 Câu hỏi phỏng vấn Golang](./devops/golang/)           |
 
-## Thư mục
+## 📂 Thư mục
 
-### Cơ bản
+### 📌 Cơ bản
 
-- Kiến thức:
-  - [**Cấu trúc dữ liệu**](./basics/data-structures): 40 câu hỏi phỏng vấn cấu trúc dữ liệu.
-  - [**Thuật toán**](./basics/algorithms): 30 câu hỏi phỏng vấn thuật toán.
-  - [**Cả cấu trúc dữ liệu và giải thuật**](./basics/dsa.md): Các câu hỏi Cả cấu trúc dữ liệu và giải thuật
-  - [**Hướng đối tượng**](./basics/oops): 40 câu hỏi phỏng vấn OOP.
-  - [**Design Patterns**](./basics/design-patterns): 28 câu hỏi phỏng vấn design pattern.
-  - [**Hệ điều hành**](./basics/os): 40 câu hỏi phỏng vấn hệ điều hành.
-  - [**Mạng máy tính**](./basics/network): 35 câu hỏi phỏng vấn mạng máy tính.
-  - [**An ninh mạng**](./basics/cyber): 42 câu hỏi phỏng vấn an ninh mạng.
-- Ngôn ngữ lập trình:
-  - [**C++**](./basics/cpp): 28 Câu hỏi phỏng vấn C++.
-  - [**JS, TS**](./basics/javascript_typescript/): Các câu hỏi về JS, TS.
-  - [**JAVA**](./basics/java/): Các câu hỏi về Java.
+- 📚 Kiến thức:
+  - 📊 [**Cấu trúc dữ liệu**](./basics/data-structures): 40 câu hỏi phỏng vấn.
+  - 🧮 [**Thuật toán**](./basics/algorithms): 30 câu hỏi phỏng vấn.
+  - 🎭 [**Hướng đối tượng**](./basics/oops): 40 câu hỏi phỏng vấn.
+  - 🎨 [**Design Patterns**](./basics/design-patterns): 28 câu hỏi.
+  - 🖥️ [**Hệ điều hành**](./basics/os): 40 câu hỏi.
+  - 🌐 [**Mạng máy tính**](./basics/network): 35 câu hỏi.
+  - 🔐 [**An ninh mạng**](./basics/cyber): 42 câu hỏi.
 
-### Cơ sở dữ liệu
+### 🗄️ Cơ sở dữ liệu
 
-- Kiến thức:
-  - [**MySQL**](./database/mysql): 31 câu hỏi phỏng vấn MySQL.
-  - [**PostgreSQL**](./database/postgresql): 26 câu hỏi phỏng vấn PostgreSQL.
-  - [**MongoDB**](./database/mongodb): 24 câu hỏi phỏng vấn MongoDB.
-- Ngôn ngữ lập trình:
-  - [**SQL**](./database/sql): 40 câu hỏi phỏng vấn SQL.
+- 📊 [**MySQL**](./database/mysql): 31 câu hỏi.
+- 🐘 [**PostgreSQL**](./database/postgresql): 26 câu hỏi.
+- 🍃 [**MongoDB**](./database/mongodb): 24 câu hỏi.
+- 🏛️ [**SQL**](./database/sql): 40 câu hỏi.
 
-### Frontend
+### 🎨 Frontend
 
-- Kiến thức:
-  - [**Web API**](./frontend/web-api): 13 câu hỏi phỏng vấn Web API.
-  - [**React**](./frontend/react): 40 câu hỏi phỏng vấn ReactJS.
-  - [**HTML**](./frontend/html): 62 câu hỏi phỏng vấn HTML.
-  - [**CSS**](./frontend/css): 54 câu hỏi phỏng vấn CSS.
-- Ngôn ngữ lập trình:
-  - [**JavaScript**](./frontend/javascript): 30 câu hỏi phỏng vấn JavaScript.
-  - [**ES6**](./frontend/es6): 39 câu hỏi phỏng vấn ES6.
-  - [**TypeScript**](./frontend/typescript): 50 câu hỏi phỏng vấn TypeScript.
+- 🖥️ [**React**](./frontend/react): 40 câu hỏi.
+- 🌐 [**Web API**](./frontend/web-api): 13 câu hỏi.
+- 🎨 [**CSS**](./frontend/css): 54 câu hỏi.
+- 🔤 [**HTML**](./frontend/html): 62 câu hỏi.
 
-### Backend
+### ⚙️ Backend
 
-- Kiến thức:
-  - [**Web Services**](./backend/web-services): 35 câu hỏi phỏng vấn dịch vụ Web.
-  - [**Node.js**](./backend/nodejs): 36 câu hỏi phỏng vấn Node.js.
-  - [**Django**](./backend/django): 37 câu hỏi phỏng vấn Django.
-  - [**Nginx**](./backend/nginx): 18 câu hỏi phỏng vấn Nginx.
-  - [**WebSocket**](./backend/websocket/): 12 câu hỏi phỏng vấn WebSocket.
-  - [**Microservice**](./backend/microservice): 30 câu hỏi phỏng vấn Microservices.
-  - [**Elasticsearch**](./backend/elasticsearch/): Các câu hỏi về Elasticsearch.
-  - [**Design Patterns**](./backend): Các câu hỏi về Design Patterns.
-  - [**Redis**](./backend/redis/): Các câu hỏi về Redis.
-- Ngôn ngữ:
-  - [**C#**](./backend/csharp): 30 câu hỏi phỏng vấn C#.
-  - [**PHP**](./backend/php): 33 câu hỏi phỏng vấn về PHP.
-  - [**Python**](./backend/python): 37 câu hỏi phỏng vấn Python.
-    - [**Numpy**](./backend/python/numpy): 11 câu hỏi phỏng vấn NumPy.
-    - [**Pandas**](./backend/python/pandas): 10 câu hỏi phỏng vấn Pandas.
+- 🔗 [**Web Services**](./backend/web-services): 35 câu hỏi.
+- 🌍 [**Node.js**](./backend/nodejs): 36 câu hỏi.
+- 🐍 [**Django**](./backend/django): 37 câu hỏi.
+- 🚀 [**Microservices**](./backend/microservice): 30 câu hỏi.
+- 🔍 [**Elasticsearch**](./backend/elasticsearch/): Các câu hỏi.
+- 🔥 [**Redis**](./backend/redis/): Các câu hỏi.
 
-### Devops
+### 🚀 DevOps
 
-- Kiến thức
-  - [**DevOps cơ bản**](./devops): 35 câu hỏi phỏng vấn DevOps.
-  - [**Docker**](./devops/docker): 35 câu hỏi phỏng vấn Docker.
-  - [**Kubernetes**](./devops/kubernetes): 26 câu hỏi phỏng vấn Kubernetes.
-- Ngôn ngữ lập trình:
-  - [**Golang**](./devops/golang): 30 câu hỏi phỏng vấn Golang.
+- 🛠️ [**Docker**](./devops/docker): 35 câu hỏi.
+- ☸️ [**Kubernetes**](./devops/kubernetes): 26 câu hỏi.
+- 🛠️ [**CI/CD**](./devops/): 35 câu hỏi.
 
-### Mobile
+### 📱 Mobile
 
-- Kiến thức
-  - [**Android**](./mobile/android): 39 câu hỏi phỏng vấn về Android.
-  - [**iOS**](./mobile/ios): 36 câu hỏi phỏng vấn về iOS.
-  - [**React Native**](./mobile/react-native/): 30 câu hỏi phỏng vấn về React Native.
-- Ngôn ngữ lập trình:
-  - [**Java**](./mobile/java): 54 câu hỏi phỏng vấn về Java.
+- 🤖 [**Android**](./mobile/android): 39 câu hỏi.
+- 🍏 [**iOS**](./mobile/ios): 36 câu hỏi.
+- ⚛️ [**React Native**](./mobile/react-native/): 30 câu hỏi.
 
-# Security
-- Kiến thức 
-  - [**Security**](./security/): Các câu hỏi về an toàn thông tin.
-- Ngôn ngữ lập trình:
-  
-# Tham khảo
+### 🔐 Security
 
-- [**Interviewbit**](https://www.interviewbit.com)
+- 🛡️ [**Security**](./security/): Các câu hỏi về an toàn thông tin.
 
-- [**Code Problems**](https://github.com/blakeembrey/code-problems)
+## 📖 Tham khảo
 
-- [**Fullstack Cafe**](https://www.fullstack.cafe)
+- 📌 [**Interviewbit**](https://www.interviewbit.com)
+- 🎯 [**Code Problems**](https://github.com/blakeembrey/code-problems)
+- ☕ [**Fullstack Cafe**](https://www.fullstack.cafe)
+- 📚 [**Learning Zone**](https://github.com/learning-zone)
+- 🏆 [**Career Guru99**](https://career.guru99.com/)
 
-- [**Learning Zone**](https://github.com/learning-zone)
+## 🎉 Đóng góp
 
-- [**Career Guru99**](https://career.guru99.com/)
-
-# Và mình có tham khảo nhiều bên nữa😅. 
-# Nếu anh em thấy còn thiếu chỗ nào nay  sai sót chỗ nào thì ae đừng ngại ngần commit vào để ae lấy cái ôn lại kiến thức mỗi khi đi đổi chỗ kiếm cơm nhé 🤑 Chúc ae ôn tập và thành công trong con đường sự nghiệp nhé =)))). 
+Nếu anh em thấy còn thiếu chỗ nào hay có sai sót, đừng ngại ngần commit để cùng nhau ôn lại kiến thức mỗi khi cần nhé! 🚀 Chúc anh em ôn tập tốt và thành công trong sự nghiệp! 💪🔥
