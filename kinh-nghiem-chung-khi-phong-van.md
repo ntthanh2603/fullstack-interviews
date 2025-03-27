@@ -3,7 +3,7 @@ Những kinh nghiệm khi phỏng vấn
 
 Tác giả: Đinh Hoàng Phong (Software Engineer - Facebook)
 
-[](http://vnoi.info/wiki/interview/general-experience#m%E1%BB%99t-s%E1%BB%91-%C4%91i%E1%BB%83m-c%E1%BA%A7n-l%C6%B0u-%C3%BD-trong-khi-vi%E1%BA%BFt-resume)Một số điểm cần lưu ý trong khi viết resume
+Một số điểm cần lưu ý trong khi viết resume
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -   Với những bạn đang học đại học thì thường resume không nên dài quá 1 trang
@@ -12,17 +12,16 @@ Tác giả: Đinh Hoàng Phong (Software Engineer - Facebook)
 -   Nếu bạn còn đang là sinh viên thì nên ghi rõ trường bạn đang học và điểm trung bình tới thời điểm gần nhất.
 -   Khi bạn viết resume xong, hãy đưa thử một người khác đọc và hỏi họ xem, nếu họ là nhà tuyển dụng, họ có chú ý đến bạn hay không, từ đó bạn hãy lắng nghe những gì họ nói và sửa đổi để hoàn thiện resume của mình hơn
 
-Ví dụ: [một resume được trình bày rõ ràng](https://drive.google.com/file/d/0BwcTB8a10LBwdXdxOWoyRjdVNWc/view)
 
-[](http://vnoi.info/wiki/interview/general-experience#nh%E1%BB%AFng-b%C6%B0%E1%BB%9Bc-c%C6%A1-b%E1%BA%A3n-%C4%91%E1%BB%83-n%E1%BB%99p-h%E1%BB%93-s%C6%A1-v%C3%A0-thu-h%C3%BAt-nh%C3%A0-tuy%E1%BB%83n-d%E1%BB%A5ng)Những bước cơ bản để nộp hồ sơ và thu hút nhà tuyển dụng
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Những bước cơ bản để nộp hồ sơ và thu hút nhà tuyển dụng
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -   Nếu bạn có quen biết ai trong một công ty nào nó, hãy nhờ họ giới thiệu bạn vào công ty đấy (ask for referral). Đây là cách dễ nhất để được chọn phỏng vấn, tất nhiên với điều kiện là bạn cũng phải là một người có thực lực.
 -   Có nhiều cách để giới thiệu bản thân đến các công ty như hội chợ việc làm, Linkedin... Bạn có thể liên hệ trực tiếp nhà tuyển dụng để giới thiệu bản thân.
 -   Một số công ty lớn thì sẽ yêu cầu bạn nộp hồ sơ qua Internet. Họ sẽ yêu cầu bạn có resume, thỉnh thoảng có cả thư xin việc (cover letter), và học bạ (transcript).
 -   Nếu bạn đang tìm kiếm một công việc có liên quan đến nghiên cứu khoa học, và bạn có một bài báo ở một hội nghị khoa học lớn, bạn nên tham dự vì sẽ có rất nhiều nhà tuyển dụng của các công ty hàng đầu thế giới đến để mời chào bạn.
 
-[](http://vnoi.info/wiki/interview/general-experience#quy-tr%C3%ACnh-ph%E1%BB%8Fng-v%E1%BA%A5n-th%C3%B4ng-th%C6%B0%E1%BB%9Dng)Quy trình phỏng vấn thông thường
+Quy trình phỏng vấn thông thường
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -   **Coding assessment**: Phần này bạn sẽ phải giải 1 đến 2 bài toán trong một thời gian quy định. Các bài toán này chủ yếu tập trung vào thuật toán (algorithms) và cấu trúc dữ liệu (data structure) đơn giản, không quá phức tạp.
@@ -30,7 +29,7 @@ Ví dụ: [một resume được trình bày rõ ràng](https://drive.google.co
 -   **Onsite Interview**: Đến vòng phỏng vấn này, bạn sẽ được mời đến công ty và sẽ có 3-5 người phỏng vấn bạn trực tiếp tại chỗ. Ở mỗi lần phỏng vấn, sẽ có khoảng 1 đến 3 nhân viên đưa ra những câu hỏi khác nhau cho bạn. Một số công ty sẽ có nhân viên dẫn bạn đi ăn sáng/trưa/tối để đánh giá con người của bạn.
 -   **Interview with hiring manager**: Một số công ty sẽ yêu cầu bạn thêm một phần phỏng vấn với một hiring manager, người đưa ra quyết định cuối cùng về việc có tuyển dụng bạn hay không. Ở vòng này có thể là technical hoặc behavioral skills.
 
-[](http://vnoi.info/wiki/interview/general-experience#nh%E1%BB%AFng-%C4%91i%E1%BB%81u-c%E1%BA%A7n-bi%E1%BA%BFt-khi-tr%E1%BA%A3-l%E1%BB%9Di-ph%E1%BB%8Fng-v%E1%BA%A5n)Những điều cần biết khi trả lời phỏng vấn
+Những điều cần biết khi trả lời phỏng vấn
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -   Nếu bạn không bị bắt buộc về ngôn ngữ lập trình khi phỏng vấn, hãy nói rõ cho người phỏng vấn biết ngôn ngữ bạn lựa chọn để phỏng vấn là gì.
@@ -44,7 +43,7 @@ Ví dụ: [một resume được trình bày rõ ràng](https://drive.google.co
 
 Bạn cũng có thể tham khảo thêm [hướng dẫn phỏng vấn của Google](https://www.youtube.com/watch?time_continue=1&v=oWbUtlUhwa8)
 
-[](http://vnoi.info/wiki/interview/general-experience#nh%E1%BB%AFng-d%E1%BA%A1ng-c%C3%A2u-h%E1%BB%8Fi-v%C3%A0-c%C3%A1ch-luy%E1%BB%87n-t%E1%BA%ADp-tr%E1%BA%A3-l%E1%BB%9Di)Những dạng câu hỏi và cách luyện tập trả lời
+Những dạng câu hỏi và cách luyện tập trả lời
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Dạng câu hỏi về kĩ thuật (technical questions) 90% các câu hỏi sẽ thuộc về dạng này. Các câu hỏi ở dạng này sẽ có những loại như sau:
@@ -63,7 +62,7 @@ Với những bạn đã có những kiến thức cơ bản về thuật toán 
 
 Nếu bạn có quen một ai đó có thể giúp đỡ bạn, bạn hãy nhờ họ làm một cuộc phỏng vấn thử. Trong lúc phỏng vấn thử này, họ sẽ đưa cho bạn một câu hỏi, và nhiệm vụ của bạn là hãy trả lời một cách suôn sẻ, và họ sẽ đưa ra ý kiến của riêng họ về những điều bạn có thể cải thiện để tiến bộ hơn.
 
-[](http://vnoi.info/wiki/interview/general-experience#nh%E1%BB%AFng-%C4%91i%E1%BB%81u-m%C3%A0-c%C3%A1c-nh%C3%A0-tuy%E1%BB%83n-d%E1%BB%A5ng-th%C6%B0%E1%BB%9Dng-ch%C3%BA-%C3%BD)Những điều mà các nhà tuyển dụng thường chú ý
+Những điều mà các nhà tuyển dụng thường chú ý
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -   Khả năng chuyên môn giỏi: Điều này thể hiện qua cách bạn giải quyết các vấn đề, bài toán mà họ đưa ra. Bạn có thể không phải là người giỏi nhất, nhưng chỉ cần bạn thể hiện đúng năng lực của mình với sự tự tin và kiến thức của bản thân, họ sẽ có một đánh giá công bằng nhất về trình độ hiện tại và có thể là tương lai của bạn.
