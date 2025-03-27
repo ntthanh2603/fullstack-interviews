@@ -108,3 +108,6 @@
 - [**Learning Zone**](https://github.com/learning-zone)
 
 - [**Career Guru99**](https://career.guru99.com/)
+
+# Và mình có tham khảo nhiều bên nữa😅. 
+# Nếu anh em thấy còn thiếu chỗ nào nay  sai sót chỗ nào thì ae đừng ngại ngần commit vào để ae lấy cái ôn lại kiến thức mỗi khi đi đổi chỗ kiếm cơm nhé 🤑 Chúc ae ôn tập và thành công trong con đường sự nghiệp nhé =)))). 
