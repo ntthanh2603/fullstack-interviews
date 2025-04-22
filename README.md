@@ -1,6 +1,8 @@
 # Fullstack Interviews 🚀
 
-## Tuyển tập câu hỏi phỏng vấn cho lập trình web. 💻
+## Tuyển tập câu hỏi phỏng vấn cho lập trình Web, Mobile, DevOps, Data Engineer, Security🚀
+
+
 
 ![Interviews](./interviews.jpg)
 
