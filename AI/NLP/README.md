@@ -98,3 +98,17 @@ Sau đó biểu diễn mỗi văn bản thành vector đếm từ:
   - Bỏ qua ngữ cảnh và thứ tự từ
   - Tạo ra vector rất lớn nếu tập từ vựng lớn (sparse matrix)
   - Không hiểu ý nghĩa ngữ nghĩa giữa các từ (ví dụ "dog" và "puppy" được xem là hoàn toàn khác nhau)
+
+### TF-IDF:
+
+TF-IDF là viết tắt của Term Frequency – Inverse Document Frequency, là một kỹ thuật dùng để đánh giá mức độ quan trọng của một từ trong một văn bản so với toàn bộ tập văn bản. Đây là một cải tiến so với Bag of Words (BoW), giúp giảm trọng số của các từ phổ biến và tăng trọng số của các từ đặc trưng hơn.
+![TF-IDF](./assets/tf-idf.png)
+
+- Ưu điểm của TF-IDF
+  - Giảm ảnh hưởng của từ phổ biến (như "the", "is", "and")
+  - Làm nổi bật các từ mang tính phân biệt
+  - Đơn giản, dễ triển khai
+- Nhược điểm
+  - Bỏ qua ngữ cảnh (ngữ nghĩa)
+  - Không hiểu mối quan hệ giữa các từ
+  - Không xử lý tốt từ đồng nghĩa / đa nghĩa
