@@ -3,12 +3,84 @@
 ![](./assets/remix-logo.jpg)
 
 1. Remix là gì và nó được phát triển bởi ai?
+   Remix là một framework web JavaScript/TypeScript mã nguồn mở được phát triển bởi công ty Shopify. Nó là một framework React cho phép các nhà phát triển xây dựng các ứng dụng web hiện đại với hiệu suất cao và trải nghiệm người dùng tốt hơn.
+
+Một số đặc điểm chính của Remix:
+
+- Hỗ trợ Server-side Rendering (SSR) và Client-side Rendering (CSR)
+- Routing động và linh hoạt
+- Quản lý dữ liệu và form hiệu quả
+- Tối ưu hóa hiệu suất
+- Hỗ trợ nested routing
+- Tích hợp tốt với các dịch vụ và API
+
+Remix được tạo ra bởi những người sáng lập như Michael Jackson và Ryan Florence, những người đã từng phát triển React Router. Framework này ra mắt vào năm 2021 và nhanh chóng thu hút sự chú ý của cộng đồng phát triển web do các tính năng tiên tiến và cách tiếp cận mới trong việc xây dựng ứng dụng web.
 
 2. Kể tên 3 đặc điểm chính của Remix khiến nó khác biệt với các framework khác?
 
+- Nested Routing tự động
+- Tích hợp data loading mạnh mẽ
+- Progressively Enhanced (hoạt động được ngay cả khi JavaScript bị tắt)
+
 3. Cách cài đặt và khởi tạo một dự án Remix mới?
 
+```
+# Tạo dự án
+npx create-remix@latest
+# Vào thư mục dự án có tên vừa tạo ví dụ my_project
+cd my_projecr
+# Chạy dự án
+npm run dev
+```
+
 4. Giải thích cấu trúc thư mục cơ bản của một dự án Remix?
+
+### Các Thư Mục Chính
+
+#### `/app`
+
+- Thư mục chính chứa source code của ứng dụng
+- Bao gồm:
+  - `routes/`: Chứa các file định nghĩa routes
+  - `components/`: Các component React tái sử dụng
+  - `styles/`: Các file CSS
+  - `utils/`: Các hàm tiện ích
+
+#### `/public`
+
+- Chứa các tài nguyên tĩnh
+- Hình ảnh, font chữ, file favicon
+- Các file này được truy cập trực tiếp
+
+#### `/build`
+
+- Thư mục output sau khi build
+- Chứa các file đã được biên dịch
+- Không nên chỉnh sửa trực tiếp
+
+#### Các File Cấu Hình Quan Trọng
+
+- `remix.config.js`: Cấu hình Remix
+- `package.json`: Quản lý dependencies
+- `.env`: Biến môi trường
+- `tsconfig.json`: Cấu hình TypeScript (nếu sử dụng)
+
+#### Cấu Trúc Điển Hình
+
+```
+my-remix-app/
+├── app/
+│   ├── routes/
+│   ├── components/
+│   ├── styles/
+│   └── utils/
+├── public/
+├── build/
+├── remix.config.js
+└── package.json
+```
+
+**Lưu ý:** Cấu trúc có thể thay đổi nhẹ tùy theo phiên bản Remix và cấu hình dự án.á
 
 5. Vai trò của file `remix.config.js` trong một dự án Remix?
 
