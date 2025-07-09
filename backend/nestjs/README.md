@@ -415,10 +415,17 @@
     ==> Còn nếu phải lựa chọn chức năng và hiệu suất thì hiệu suất của Kafka là lựa chọn để dùng.
     ==> Kafka với triển khai fsync + epoch number + Raft protocol cho consistency + durability + reliability rất tốt, không thể nói là kém hơn rabbitmq được :D Cái đặc trưng nhất giữa 2 thằng cần nói ở đây là trade-off giữa low latency và high throughput -> Kafka dùng concept batch processing, nên cho throughput cao, độ trễ mỗi message ổn định, còn RabbitMQ ưu tiên low latency cho mỗi message, dùng cho real-processing application, bù lại nếu tải cao thì system bị stress dẫn đến tail latency cao chứ không ổn định theo batch như kafka.
 
-- Cơ chế khi login:
+- Cơ chế khi login(không dùng 2FA: nếu dùng thì thêm bước xác thực bằng OTP và OTP đó cache ở memcache hoặc redis):
+Khi login bằng email, password thì backend trả về refresh token thông qua httpOnly còn access token thì qua body -> frontend nhận được access token thì gán vào localStorage .
 
 - Cơ chế khi logout:
+Gửi request lên backend -> backend xóa phiên đăng nhập + xóa refreshToken khỏi httpOnly -> frontend xóa accessToken khỏi localStorage.
 
 - Cơ chế cấp lại refresh token:
+Gửi request lên backend, backend kiểm tra deviceId và refeshToken(có trong httpOnly) để xem coi có đúng user và thiết bị không, nếu đúng thì gen cặp refreshToken và accessToken mới rồi lưu refreshToken vào db/cache và trả về cặp 2 token cho frontend.
 
 - Cơ chế xác minh trong mỗi request:
+Lấy accessToken rồi gán vào header của request rồi gửi lên backend .
+```bash
+Authorization: Bearer <access_token>
+```
