@@ -2,8 +2,6 @@
 
 ## Tuyển tập câu hỏi phỏng vấn cho lập trình Web, Mobile, DevOps, Data Engineer, Security🚀
 
-
-
 ![Interviews](./interviews.jpg)
 
 ## 📂 Thư mục
@@ -15,10 +13,13 @@
 - 🎧 [Cấu trúc dữ liệu](./basics/data-structures): 40 câu hỏi về danh sách liên kết, cây, đồ thị, stack, queue, hash table, v.v.
 - 🧪 [Thuật toán](./basics/algorithms): 30 câu hỏi về thuật toán sắp xếp, tìm kiếm, đệ quy, lập trình động, greedy, v.v.
 - 🎭 [Hướng đối tượng](./basics/oops): 40 câu hỏi về các nguyên lý OOP (SOLID, Inheritance, Polymorphism, Encapsulation, Abstraction).
-- 🎭 [Design Patterns](./basics/design-patterns): 28 câu hỏi về các mẫu thiết kế phổ biến như Singleton, Factory, Observer, Strategy.
 - 🎮 [Hệ điều hành](./basics/os): 40 câu hỏi về bộ nhớ, tiến trình, luồng, hệ thống tệp, đồng bộ hóa.
 - 🌐 [Mạng máy tính](./basics/network): 35 câu hỏi về TCP/IP, HTTP/HTTPS, WebSocket, DNS, Load Balancing.
 - 🔒 [An ninh mạng](./basics/cyber): 42 câu hỏi về bảo mật ứng dụng web, mã hóa, JWT, OAuth, XSS, CSRF, SQL Injection.
+- ☕ [Java](./basics/java): Các câu hỏi về Java cơ bản, OOP, collections, concurrency.
+- 🐹 [Golang](./basics/golang): Các câu hỏi về Go programming, goroutines, channels, interfaces.
+- ⚡ [C++](./basics/cpp): Các câu hỏi về C++ fundamentals, STL, memory management, templates.
+- 🟨 [JavaScript/TypeScript](./basics/javascript_typescript): Các câu hỏi về ES6+, async/await, closures, TypeScript types.
 
 ### 🛄 Cơ sở dữ liệu
 
@@ -29,32 +30,44 @@
 
 ### 🎨 Frontend
 
-- 🖥️ [React](./frontend/react): 40 câu hỏi về hooks, state management, lifecycle, performance optimization.
+- ⚛️ [React](./frontend/react): 40 câu hỏi về hooks, state management, lifecycle, performance optimization.
+- 🅰️ [Angular](./frontend/angular): Các câu hỏi về components, services, dependency injection, RxJS.
 - 🌐 [Web API](./frontend/web-api): 13 câu hỏi về Fetch API, WebSockets, IndexedDB, WebRTC.
 - 🎨 [CSS](./frontend/css): 54 câu hỏi về flexbox, grid, animations, responsive design.
 - 🎮 [HTML](./frontend/html): 62 câu hỏi về semantic HTML, accessibility, SEO.
+- 🟨 [JavaScript](./frontend/javascript): Các câu hỏi về DOM manipulation, events, ES6+ features.
+- 🟦 [TypeScript](./frontend/typescript): Các câu hỏi về types, interfaces, generics, decorators.
+- 📱 [Remix](./frontend/remix): Các câu hỏi về full-stack React framework, loaders, actions.
+- 🌊 [ES6](./frontend/es6): Các câu hỏi về modern JavaScript features và syntax.
 
 ### ⚙️ Backend
 
 - 🔗 [Web Services](./backend/web-services): 35 câu hỏi về REST, SOAP, GraphQL, WebSockets.
 - 🌍 [Node.js](./backend/nodejs): 36 câu hỏi về event loop, streams, clustering, performance tuning.
 - 🐍 [Django](./backend/django): 37 câu hỏi về ORM, middleware, caching, signals.
+- 🐍 [Python](./backend/python): Các câu hỏi về Python fundamentals, decorators, generators, async programming.
+- ☕ [Java](./backend/java): Các câu hỏi về Spring Framework, JPA, microservices architecture.
+- 🐘 [PHP](./backend/php): Các câu hỏi về PHP fundamentals, Laravel, Symfony, composer.
 - 🚀 [Microservices](./backend/microservice): 30 câu hỏi về service discovery, API gateway, event-driven architecture.
-- 🔍 [Elasticsearch](./backend/elasticsearch/): Các câu hỏi về full-text search, indexing, query DSL, aggregation.
-- 🔥 [Redis](./backend/redis/): Các câu hỏi về caching, pub/sub, persistence, data eviction.
-- 🎯 [Gin](./backend/gin/): 300 câu hỏi về framework web Go, routing, middleware, JSON handling.
+- 🔍 [Elasticsearch](./backend/elasticsearch): Các câu hỏi về full-text search, indexing, query DSL, aggregation.
+- 🎯 [NestJS](./backend/nestjs): Các câu hỏi về framework Nestjs, decorators, guards, interceptors.
+- 🔧 [C#](./backend/csharp): Các câu hỏi về .NET Framework, ASP.NET Core, Entity Framework.
+- 🌐 [Nginx](./backend/nginx): Các câu hỏi về web server, reverse proxy, load balancing.
+- 🔌 [WebSocket](./backend/websocket): Các câu hỏi về real-time communication, Socket.IO.
+- 🔄 [Common](./backend/common): Các câu hỏi chung về backend development, architecture patterns.
 
 ### 🚀 DevOps
 
 - 🛠️ [Docker](./devops/docker): 35 câu hỏi về containerization, Dockerfile, volumes, networking.
-- ☨️ [Kubernetes](./devops/kubernetes): 26 câu hỏi về pod, deployment, service, configMap, secret.
-- 🛠️ [CI/CD](./devops/): 35 câu hỏi về Jenkins, GitHub Actions, GitLab CI/CD, deployment strategies.
+- ☸️ [Kubernetes](./devops/kubernetes): 26 câu hỏi về pod, deployment, service, configMap, secret.
+- 🛠️ [CI/CD](./devops/awesome-devops-interview): 35 câu hỏi về Jenkins, GitHub Actions, GitLab CI/CD, deployment strategies.
 
 ### 📱 Mobile
 
 - 🤖 [Android](./mobile/android): 39 câu hỏi về Activity, Fragment, ViewModel, Jetpack.
 - 🍏 [iOS](./mobile/ios): 36 câu hỏi về Swift, UIKit, CoreData, MVVM.
-- ⚛️ [React Native](./mobile/react-native/): 30 câu hỏi về navigation, state management, performance.
+- ⚛️ [React Native](./mobile/react-native): 30 câu hỏi về navigation, state management, performance.
+- ☕ [Java Mobile](./mobile/java): Các câu hỏi về Java trong phát triển mobile, Android development.
 
 ### 🔒 Security
 
