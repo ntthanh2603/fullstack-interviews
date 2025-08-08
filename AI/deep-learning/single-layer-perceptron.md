@@ -4,7 +4,7 @@
 
 Single Layer Perceptron là một thuật toán học máy cơ bản thuộc nhóm mạng neural nhân tạo. Đây là mô hình đơn giản nhất của perceptron, được phát triển bởi Frank Rosenblatt vào năm 1957.
 
-![SLP](../docs/single-layer-perceptron.png)
+![SLP](AI/assets/single-layer-perceptron.png)
 
 ## ⚙️ Cách thức hoạt động
 
