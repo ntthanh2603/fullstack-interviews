@@ -5,6 +5,7 @@
 ## Microservice là gì?
 
 Microservice là một kỹ thuật phát triển phần mềm, một biến thể của kiến trúc hướng dịch vụ cấu trúc một ứng dụng như một tập hợp các dịch vụ được kết nối lỏng lẻo. Trong kiến trúc microservice, các dịch vụ được xử lý tốt và các giao thức rất nhẹ. Các ứng dụng được mô hình hoá dưới dạng các dịch vụ, nó giúp:
+
 - Dễ bảo trì và kiếm tra
 - Kết nối mềm
 - Có thể triển khai độc lập
@@ -75,6 +76,8 @@ Microservice là một kỹ thuật phát triển phần mềm, một biến th�
 
 [30. Giải thích cách thực hiện khám phá dịch vụ trong kiến trúc microservices?](#30-gi%E1%BA%A3i-th%C3%ADch-c%C3%A1ch-th%E1%BB%B1c-hi%E1%BB%87n-kh%C3%A1m-ph%C3%A1-d%E1%BB%8Bch-v%E1%BB%A5-trong-ki%E1%BA%BFn-tr%C3%BAc-microservices)
 
+[31. Khi dùng Kafka thì 1 service push lên topic vậy service dùng lấy message về kiểu gì?](#31-khi-d%C3%B9ng-kafka-thi%E1%BA%BF-1-service-push-l%E1%BB%9Bn-topic-v%C3%A0o-th%C3%A0nh-ph%E1%BA%A7n-thu%E1%BA%ADt-%C4%91%E1%BA%B7c-%C4%91i%E1%BB%83m-c%E1%BB%A7a-service-d%C3%B9ng-l%E1%BB%9Bn-message-v%E1%BB%9Bi-k%E1%BA%BF-gi%E1%BB%8F)
+
 ## Câu hỏi phỏng vấn cho Fresher
 
 ### 1. Các tính năng chính của Microservices?
@@ -92,12 +95,12 @@ Microservice là một kỹ thuật phát triển phần mềm, một biến th�
 
 ### 2. Các thành phần chính trong Microservices?
 
-* Containers, Clustering, và Orchestration.
-* IaC [Infrastructure as Code Conception] 
-* Cloud Infrastructure 
-* API Gateway 
-* Enterprise Service Bus 
-* Service Delivery 
+- Containers, Clustering, và Orchestration.
+- IaC [Infrastructure as Code Conception]
+- Cloud Infrastructure
+- API Gateway
+- Enterprise Service Bus
+- Service Delivery
 
 ### 3. Ưu nhược điểm của Microservices?
 
@@ -148,13 +151,14 @@ Microservice là một kỹ thuật phát triển phần mềm, một biến th�
 
 **Monolithic**: Giống như một container lớn, trong đó là tất cả thành phần của ứng dụng được gói cùng với nhau. Nó được xây dựng như một hệ thống lớn với một code-base.
 
-**SOA (Serivce-Oriented Architecture)**: Nó là một nhóm các dịch vụ tương tác hoặc giao tiếp với nhau. Tùy thuộc vào bản chất của giao tiếp, nó có thể là trao đổi dữ liệu đơn giản hoặc nó có thể liên quan đến một số dịch vụ phối hợp một số hoạt động. 
+**SOA (Serivce-Oriented Architecture)**: Nó là một nhóm các dịch vụ tương tác hoặc giao tiếp với nhau. Tùy thuộc vào bản chất của giao tiếp, nó có thể là trao đổi dữ liệu đơn giản hoặc nó có thể liên quan đến một số dịch vụ phối hợp một số hoạt động.
 
 **Microservice**: Nó liên quan đến việc cấu trúc một ứng dụng dưới dạng một cluster (cụm) các dịch vụ nhỏ, tự trị được mô hình hóa xung quanh một miền doanh nghiệp. Các module chức năng có thể được triển khai độc lập, có thể mở rộng, nhằm đạt được các mục tiêu kinh doanh cụ thể và giao tiếp với nhau qua các giao thức tiêu chuẩn.
 
 ### 7. Cohesion và Coupling là gì?
 
 **Khớp nối (Cohesion):** Nó được định nghĩa là mối quan hệ giữa các module phần mềm A và B, và mức độ một module phụ thuộc hoặc tương tác với một module khác. Các cohesion nối được chia thành ba loại chính:
+
 - Các module phụ thuộc nhiều vào nhau.
 - Các module ít phụ thuộc (lỏng lẻo).
 - Các module tách rời hoàn toàn.
@@ -204,11 +208,12 @@ PACT được định nghĩa là một công cụ mã nguồn mở cho phép cá
 ### 12. Giải thích cách microservice giao tiếp với các phần khác?
 
 Giao tiếp giữa các microservice có thể thực hiện:
+
 - HTTP/REST với JSON hoặc giao thức nhị phân cho request/response.
 - Websocket cho streaming
 - Một broker hoặc server dùng cho các thuật toán routing.
 
-RabbitMQ, Kafka,... có thể dùng như một message broker, mỗi cái được xây dựng để xử lý message cụ thể. 
+RabbitMQ, Kafka,... có thể dùng như một message broker, mỗi cái được xây dựng để xử lý message cụ thể.
 
 ### 13. Client certificates là gì?
 
@@ -255,8 +260,8 @@ Kết quả của việc phân tích hệ thống dựa trên phương pháp DDD
 
 **OAuth** là một phương thức xác thực giúp một ứng dụng bên thứ 3 có thể được ủy quyền bởi người dùng để truy cập đến tài nguyên người dùng nằm trên một dịch vụ khác. OAuth là từ ghép của O(Open) và Auth tượng trưng cho:
 
-- *Authentication*: xác thực người dùng.
-- *Authorization*: cấp quyền truy cập đến tài nguyên mà người dùng hiện đang nắm giữ.
+- _Authentication_: xác thực người dùng.
+- _Authorization_: cấp quyền truy cập đến tài nguyên mà người dùng hiện đang nắm giữ.
 
 OAuth2 là bản nâng cấp của OAuth1.0, là một giao thức chứng thực cho phép các ứng dụng chia sẻ một phần tài nguyên với nhau mà không cần xác thực qua username và password như cách truyền thống từ đó giúp hạn chế được những phiền toái khi phải nhập username, password ở quá nhiều nơi hoặc đăng ký quá nhiều tài khoản mật khẩu mà chúng ta chẳng thể nào nhớ hết.
 
@@ -276,7 +281,7 @@ Giao dịch phân tán (distributed transactions) là một cách tiếp cận l
 ### 21. Idempotence là gì?
 
 Thuật ngữ "Idempotence" đề cập đến việc thực hiện lặp đi lặp lại một nhiệm vụ mặc dù cùng một kết quả. Nói cách khác, nó là một tình huống trong đó một nhiệm vụ được thực hiện lặp đi lặp lại với kết quả cuối cùng được giữ nguyên.
- 
+
 Cách sử dụng: Khi dịch vụ từ xa hoặc nguồn dữ liệu nhận được hướng dẫn nhiều lần, Idempotence đảm bảo rằng nó sẽ xử lý từng yêu cầu một lần.
 
 ### 22. Ent-to-end microservices testing là gì?
@@ -338,3 +343,41 @@ Docker thường cung cấp một môi trường container, trong đó bất k�
 ### 30. Giải thích cách thực hiện khám phá dịch vụ trong kiến trúc microservices?
 
 Có nhiều cách để thiết lập tính năng khám phá dịch vụ, nhưng Eureka của Netflix là cách hiệu quả nhất. Đây là một thủ tục đơn giản, không phức tạp và không tạo thêm nhiều dung lượng cho ứng dụng. Nó cũng hỗ trợ một loạt các ứng dụng web. Một số chú thích được cung cấp bởi Spring Cloud để làm cho việc sử dụng nó trở nên đơn giản nhất có thể và để ẩn đi các khái niệm phức tạp.
+
+### 31. Khi dùng Kafka thì 1 service push lên topic vậy service dùng lấy message về kiểu gì?
+
+Service dùng **Kafka Consumer** để chủ động **"kéo" (pull)** message từ các Broker của Kafka.
+
+#### 1. Consumer và Topic/Partition
+
+- **Topic:** Nơi chứa luồng dữ liệu (message).
+- **Partition:** Mỗi Topic được chia thành nhiều **Partition** (phân vùng). Message được ghi vào Partition theo thứ tự.
+- **Kafka Consumer:** Là ứng dụng (service) được cấu hình để kết nối với Kafka Cluster và **subscribe** (đăng ký) vào một hoặc nhiều Topic.
+- **Gán Partition:** Sau khi subscribe, Kafka sẽ tự động gán các Partition của Topic đó cho các Consumer trong cùng một nhóm (**Consumer Group**). Mỗi Consumer chỉ đọc dữ liệu từ các Partition được gán cho nó.
+
+#### 2. Consumer Group: Xử lý song song và Khả năng chịu lỗi
+
+Đây là một khái niệm quan trọng:
+
+- **Định nghĩa:** Nhiều Consumer có cùng một tên **Group ID** được gọi là một **Consumer Group**.
+- **Mục đích:**
+  - **Chia tải xử lý (Scale):** Trong một nhóm, mỗi Partition chỉ được gán cho **duy nhất một Consumer**. Điều này cho phép nhiều Consumer cùng nhau xử lý dữ liệu song song từ các Partition khác nhau, tăng tốc độ xử lý.
+  - **Chịu lỗi (Fault Tolerance):** Nếu một Consumer trong nhóm bị lỗi, các Partition mà nó đang xử lý sẽ được tự động **chuyển giao (re-balance)** cho các Consumer còn lại trong nhóm tiếp tục đọc.
+
+#### 3. Cơ chế Lấy Message (Polling)
+
+- **Pull Mechanism:** Consumer không chờ Kafka "đẩy" message đến. Thay vào đó, Consumer liên tục chủ động gọi hàm **`poll()`** (hoặc tương đương trong thư viện lập trình) đến Kafka Broker.
+- **Broker phản hồi:** Kafka Broker sẽ trả về một lô (batch) các message mới nhất có sẵn từ các Partition đã được gán cho Consumer đó.
+- **Xử lý:** Service nhận lô message này và tiến hành xử lý logic nghiệp vụ.
+
+#### 4. Offset và Cam kết (Committing)
+
+- **Offset:** Mỗi message trong một Partition có một số thứ tự duy nhất được gọi là **Offset**. Offset là cách Kafka theo dõi vị trí của message.
+- **Commit Offset:** Sau khi Consumer đã xử lý thành công một lô message, nó phải **"commit"** (cam kết/ghi nhận) Offset của message cuối cùng đã xử lý. Offset này được lưu trữ trong một Topic nội bộ của Kafka (`__consumer_offsets`).
+- **Vai trò của Commit:**
+  - **Tiếp tục công việc:** Nếu Consumer đó bị tắt hoặc gặp lỗi, khi khởi động lại (hoặc một Consumer khác trong nhóm tiếp quản), nó sẽ đọc từ Offset đã được Commit gần nhất để tránh xử lý lặp lại các message đã hoàn tất.
+  - **Đảm bảo độ tin cậy:** Consumer có thể chọn Commit **tự động (auto-commit)** hoặc Commit **thủ công (manual commit)** sau khi logic xử lý hoàn tất để đảm bảo message đã được xử lý thành công.
+
+**Tóm tắt: Dòng chảy dữ liệu của Consumer**
+
+Service **(Kafka Consumer)** → **Subscribe** vào Topic → Tham gia **Consumer Group** → Được **Gán Partition** → Liên tục **Poll** từ Broker → Nhận Message và Xử lý → **Commit Offset** → Lặp lại.
