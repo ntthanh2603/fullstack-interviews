@@ -90,6 +90,8 @@ Bất kì công ty nào lớn cũng cần xây dựng một hệ thống để l
 
 [40. Pattern Matching trong SQL?](#40-pattern-matching-trong-sql)
 
+[41. Viết lệch SQL giúp lấy ra nhân viên có mức lương cao thứ 2 trong 1 phòng ban](#41-viết-lệch-sql-giúp-lấy-ra-nhân-viên-có-mức-lương-cao-thứ-2-trong-1-phòng-ban)
+
 ## Câu hỏi phỏng vấn SQL
 
 ### 1. Cơ sở dữ liệu là gì?
@@ -259,7 +261,7 @@ ON A.col = B.col;
 
 ### 12. Self-Join là gì?
 
-Self JOIN à một trường hợp join thông thường trong đó một bảng được liên kết với chính nó dựa trên một số mối quan hệ giữa (các) cột của chính nó. Self-Join  sử dụng mệnh đề INNER JOIN hoặc LEFT JOIN và tên bí danh bảng để gán các tên khác nhau cho bảng trong truy vấn. 
+Self JOIN à một trường hợp join thông thường trong đó một bảng được liên kết với chính nó dựa trên một số mối quan hệ giữa (các) cột của chính nó. Self-Join sử dụng mệnh đề INNER JOIN hoặc LEFT JOIN và tên bí danh bảng để gán các tên khác nhau cho bảng trong truy vấn.
 
 ```sql
 SELECT A.emp_id AS "Emp_ID",A.emp_name AS "Employee",
@@ -270,10 +272,10 @@ WHERE A.emp_sup = B.emp_id;
 
 ### 13. Cross-Join là gì?
 
-Cross-Join có thể được định nghĩa là một tích descartes của hai bảng trong phép join. Bảng sau khi join có số hàng là tích descartes số hàng của hai bảng. Nếu mệnh đề WHERE được sử dụng trong cross-join thì truy vấn sẽ hoạt động giống như một INNER JOIN. 
+Cross-Join có thể được định nghĩa là một tích descartes của hai bảng trong phép join. Bảng sau khi join có số hàng là tích descartes số hàng của hai bảng. Nếu mệnh đề WHERE được sử dụng trong cross-join thì truy vấn sẽ hoạt động giống như một INNER JOIN.
 
 ```sql
-SELECT stu.name, sub.subject 
+SELECT stu.name, sub.subject
 FROM students AS stu
 CROSS JOIN subjects AS sub;
 ```
@@ -282,7 +284,7 @@ CROSS JOIN subjects AS sub;
 
 ### 14. Đánh chỉ mục là gì? Giải thích các kiểu chỉ mục khác nhau?
 
-Chỉ mục trong cơ sở dữ liệu là một dạng cấu trúc dữ liệu cung cấp chức năng tìm kiếm dữ liệu nhanh trong cột hay bảng. Nó tăng tốc độ chi truy cập dữ liệu từ cơ sở dữ liệu với chi phí bổ sung ghi và bộ nhớ để duy trì cấu trúc dữ liệu chỉ mục. 
+Chỉ mục trong cơ sở dữ liệu là một dạng cấu trúc dữ liệu cung cấp chức năng tìm kiếm dữ liệu nhanh trong cột hay bảng. Nó tăng tốc độ chi truy cập dữ liệu từ cơ sở dữ liệu với chi phí bổ sung ghi và bộ nhớ để duy trì cấu trúc dữ liệu chỉ mục.
 
 ```sql
 CREATE INDEX index_name   /* Create Index */
@@ -301,7 +303,7 @@ ON students (enroll_no);
 
 Ngược lại các chỉ mục không phải là duy nhất không được dùng để ràng bụooc các bảng mà chúng được liên kết với nhau. Các chỉ mục này được dùng để cải thiện hiệu suất truy vấn bằng cách duy trì thứ tự được sắp xếp của các giá trị dữ liệu được sắp xếp thường xuyên.
 
-- **Clustered/Non-Clustered Index**: 
+- **Clustered/Non-Clustered Index**:
 
 Clustered Index lưu trữ và sắp xếp dữ liệu vật lý trong bảng dựa trên các giá trị khóa của chúng. Các cột khóa này được chỉ định trong định nghĩa index. Mỗi bảng chỉ có duy nhất một Clusterd Index vì bản thân các dòng dữ liệu được lưu trữ và sắp xếp theo thứ tự vật lý dựa trên các cột trong loại Index này.
 
@@ -309,7 +311,7 @@ Non-Clustered có một cấu trúc tách biệt với dữ liệu hàng trong b
 
 ### 15. Toàn vẹn dữ liệu là gì?
 
-Toàn vẹn dữ liệu (data integrity) là sự dảm bảo tính nhất quán và chính xác của dữ liệu trong toàn bộ vòng đời của chúng. Nó là một khía cạnh quan trọng trong thiết kế, triển khai và sử dụng bất kỳ hệ thống nào lưu trữ, xử lý hoặc truy xuất dữ liệu. Nó cũng xác định các ràng buộc toàn vẹn để thực thi các quy tắc nghiệp vụ trên dữ liệu khi nó được nhập vào ứng dụng hoặc cơ sở dữ liệu. 
+Toàn vẹn dữ liệu (data integrity) là sự dảm bảo tính nhất quán và chính xác của dữ liệu trong toàn bộ vòng đời của chúng. Nó là một khía cạnh quan trọng trong thiết kế, triển khai và sử dụng bất kỳ hệ thống nào lưu trữ, xử lý hoặc truy xuất dữ liệu. Nó cũng xác định các ràng buộc toàn vẹn để thực thi các quy tắc nghiệp vụ trên dữ liệu khi nó được nhập vào ứng dụng hoặc cơ sở dữ liệu.
 
 ### 16. Truy vấn là gì?
 
@@ -320,6 +322,7 @@ SELECT fname, lname    /* select query */
 FROM myDb.students
 WHERE student_id = 1;
 ```
+
 ```sql
 UPDATE myDB.students    /* action query */
 SET fname = 'Captain', lname = 'America'
@@ -346,7 +349,7 @@ Có hai loại truy vấn con là: **tương quan** và **không tương quan**:
 
 ### 18. Lệnh SELECT là gì?
 
-SELECT là hoạt động trong SQL dùng để lấy dữ liệu từ bảng. Dữ liệu trả về được lưu vào bảng kết quả, được gọi là *result-set*.
+SELECT là hoạt động trong SQL dùng để lấy dữ liệu từ bảng. Dữ liệu trả về được lưu vào bảng kết quả, được gọi là _result-set_.
 
 ```sql
 SELECT * FROM myDB.students;
@@ -397,11 +400,13 @@ SELECT name FROM Students   /* Fetch the union of queries with duplicates*/
 UNION ALL
 SELECT name FROM Contacts;
 ```
+
 ```sql
 SELECT name FROM Students   /* Fetch names from students */
 MINUS     /* that aren't present in contacts */
 SELECT name FROM Contacts;
 ```
+
 ```sql
 SELECT name FROM Students   /* Fetch names from students */
 INTERSECT    /* that are present in contacts as well */
@@ -426,7 +431,7 @@ DECLARE db_cursor CURSOR FOR   /* Declare Cursor Name*/
 SELECT name
 FROM myDB.students
 WHERE parent_name IN ('Sara', 'Ansh')
-OPEN db_cursor   /* Open cursor and Fetch data into @name */ 
+OPEN db_cursor   /* Open cursor and Fetch data into @name */
 FETCH next
 FROM db_cursor
 INTO @name
@@ -473,7 +478,7 @@ View là một bảng ảo dựa trên tập kết quả từ câu lệnh SQL. M
 Chuẩn hóa (normalization) là để giúp cho việc tổ chức dữ liệu trong cơ sở dữ liệu một cách hiệu quả. Có hai mục đích chính để chuẩn hóa dữ liệu:
 
 - Giảm lượng dữ liệu dư thừa (ví dụ như lưu trữ cùng một dữ liệu trong 1 bảng)
-- Đảm bảo độc lập dữ liệu (dữ liệu liên quan đặt trong cùng 1 bảng) 
+- Đảm bảo độc lập dữ liệu (dữ liệu liên quan đặt trong cùng 1 bảng)
 
 Cả 2 mục đích trên đều giúp giảm thiểu không gian sử dụng trong cơ sở dữ liệu và đảm bảo dữ liệu được lưu trữ một cách logic.
 
@@ -493,6 +498,7 @@ Nếu một quan hệ có chứa một thuộc tính tổng hợp hoặc nhiều
 Students Table
 
 ![](./assets/Students_Table.png)
+
 </div>
 
 Ta có thể thấy trường `Books Issued` có nhiều một giá trị bảng ghi, và nó vi phạm dạng chuẩn hoá thứ nhất. Để giải quyết vấn đề này ta tách biệt các bản ghi trên mỗi book issued.
@@ -500,7 +506,8 @@ Ta có thể thấy trường `Books Issued` có nhiều một giá trị bảng
 <div align="center">
 Students Table (1st Normal Form)
 
-![](./assets/Students_Table_(1st_Normal_Form).png)
+![](<./assets/Students_Table_(1st_Normal_Form).png>)
+
 </div>
 
 **Dạng chuẩn hoá thứ hai:**
@@ -512,20 +519,22 @@ Một quan hệ là dạng chuẩn hoá thứ hai nếu nó thoả mãn điều 
 <div align="center">
 Students Table (2nd Normal Form)
 
-![](./assets/Students_Table_(2nd_Normal_Form).png)
+![](<./assets/Students_Table_(2nd_Normal_Form).png>)
+
 </div>
 
 <div align="center">
 Books Table (2nd Normal Form)
 
-![](./assets/Books_Table_(2nd_Normal_Form).png)
+![](<./assets/Books_Table_(2nd_Normal_Form).png>)
+
 </div>
 
 **Ví dụ 2:** xem xét các phụ thuộc sau trong quan hệ R(W, X, Y, Z)
 
 ```text
-WX -> Y    [W và X cùng quyết định Y] 
-XY -> Z    [X và Y cùng quyết định Z] 
+WX -> Y    [W và X cùng quyết định Y]
+XY -> Z    [X và Y cùng quyết định Z]
 ```
 
 Ở đây, WX là khoá tiềm năng duy nhất và không có phụ thuộc vào phần nào, tức là bất kỳ tập con thích hợp nào của WX cũng không xác định thuộc tính non-prime trong mối quan hệ.
@@ -539,20 +548,22 @@ Một quan hệ là dạng chuẩn hoá thứ ba nếu nó thoả mãn điều k
 <div align="center">
 Students Table (3rd Normal Form)
 
-![](./assets/Students_Table(3rd_Normal_Form).png)
+![](<./assets/Students_Table(3rd_Normal_Form).png>)
+
 </div>
 
 <div align="center">
 Books Table (3rd Normal Form)
 
-![](./assets/Books_Table_(2nd_Normal_Form).png)
-</div>
+![](<./assets/Books_Table_(2nd_Normal_Form).png>)
 
+</div>
 
 <div align="center">
 Salutations Table (3rd Normal Form)
 
-![](./assets/Salutations_Table_(3rd_Normal_Form).png)
+![](<./assets/Salutations_Table_(3rd_Normal_Form).png>)
+
 </div>
 
 ### 29. Lệnh TRUNCATE, DELETe và DROP là gì?
@@ -598,7 +609,7 @@ Một hàm Aggregate (tổng hợp) thực hiện các hoạt động trên mộ
 - **FIRST()** - Lấy phần tử đầu tiên trong tập hợp giá trị.
 - **LAST()** - Lấy phần tử cuối cùng trong tập hợp giá trị.
 
-*Lưu ý*: Tất cả hàm tổng hợp trên đều bỏ qua giá trị NULL ngoại trừ COUNT.
+_Lưu ý_: Tất cả hàm tổng hợp trên đều bỏ qua giá trị NULL ngoại trừ COUNT.
 
 Một hàm Scalar (vô hướng) trả về giá trị duy nhất dựa trên giá trị đầu vào. Các hàm scalar phổ biến.
 
@@ -615,10 +626,11 @@ Một hàm Scalar (vô hướng) trả về giá trị duy nhất dựa trên gi
 ### 33. Hàm người dùng định nghĩa là gì?
 
 Các hàm do người dùng định nghĩa trong SQL giống như các hàm trong bất kỳ ngôn ngữ lập trình nào khác. Nó nhận các tham số, thực hiện các phép tính phức tạp và trả về một giá trị. Chúng được viết để sử dụng logic lặp đi lặp lại bất cứ khi nào được yêu cầu. Có hai loại hàm do người dùng định nghĩa trong SQL:
+
 - Scalar Function: Như đã giải thích ở trên, hàm scalar do người dùng định nghĩa trả về một giá trị scalar.
 - Table-Valued Function: trả về một giá trị dạng bảng.
-   + **Inline**: trả về một bảng dựa trên câu lệnh SELECT duy nhất.
-   + **Multi-statement**: trả về một tập kết quả dạng bảng, nhiều câu lệnh SELECT có thể dùng trong thân hàm.
+  - **Inline**: trả về một bảng dựa trên câu lệnh SELECT duy nhất.
+  - **Multi-statement**: trả về một tập kết quả dạng bảng, nhiều câu lệnh SELECT có thể dùng trong thân hàm.
 
 ### 34. OLTP là gì?
 
@@ -644,7 +656,7 @@ Collation - đối chiếu - đề cập đến một tập hợp các quy tắc
 
 ### 37. Stored Procedure là gì?
 
-Stored procedure là một chương trình con có sẵn cho các ứng dụng truy cập vào hệ thống quản lý cơ sở dữ liệu quan hệ (RDBMS). Một stored procedure cung cấp một lớp bảo mật quan trọng giữa user và database. Những người dùng cuối không thể thực thi được một số tác vụ quan trọng trong database, bằng cách cung cấp các stored procedure, người dùng cuối có thể thoải moái sử dụng để thực thi các tác vụ này mà không cần quan tâm bên dưới đang làm gì. 
+Stored procedure là một chương trình con có sẵn cho các ứng dụng truy cập vào hệ thống quản lý cơ sở dữ liệu quan hệ (RDBMS). Một stored procedure cung cấp một lớp bảo mật quan trọng giữa user và database. Những người dùng cuối không thể thực thi được một số tác vụ quan trọng trong database, bằng cách cung cấp các stored procedure, người dùng cuối có thể thoải moái sử dụng để thực thi các tác vụ này mà không cần quan tâm bên dưới đang làm gì.
 
 ```sql
 DELIMITER $$
@@ -690,7 +702,7 @@ FROM Students WHERE 1 = 2;
 
 ### 40. Pattern Matching trong SQL?
 
-SQL pattern matching cung cấp mẫu tìm kiếm dữ liệu nếu bạn không có manh mối nào về từ cần tìm. Loại truy vấn SQL này sử dụng các ký tự đại diện để khớp với một mẫu chuỗi, thay vì viết từ chính xác. Toán tử LIKE được sử dụng cùng với SQL Wildcards để tìm nạp thông tin cần thiết. 
+SQL pattern matching cung cấp mẫu tìm kiếm dữ liệu nếu bạn không có manh mối nào về từ cần tìm. Loại truy vấn SQL này sử dụng các ký tự đại diện để khớp với một mẫu chuỗi, thay vì viết từ chính xác. Toán tử LIKE được sử dụng cùng với SQL Wildcards để tìm nạp thông tin cần thiết.
 
 **Sử dụng % cho tìm kiếm đơn giản**
 
@@ -722,9 +734,9 @@ FROM students
 WHERE first_name LIKE '%K%'
 ```
 
-**Sử dụng _ để chỉ định vị trí cụ thể**
+**Sử dụng \_ để chỉ định vị trí cụ thể**
 
-Ký tự đại diện _ khớp chính xác với một ký tự thuộc bất kỳ loại nào. Nó có thể được sử dụng cùng với% ký tự đại diện. Truy vấn này tìm nạp tất cả học sinh có chữ cái K ở vị trí thứ ba trong tên của họ.
+Ký tự đại diện \_ khớp chính xác với một ký tự thuộc bất kỳ loại nào. Nó có thể được sử dụng cùng với% ký tự đại diện. Truy vấn này tìm nạp tất cả học sinh có chữ cái K ở vị trí thứ ba trong tên của họ.
 
 ```sql
 SELECT *
@@ -734,7 +746,7 @@ WHERE first_name LIKE '__K%'
 
 **Chỉ định độ dài cụ thể**
 
-Ký tự đại diện _ đóng một vai trò quan trọng như một giới hạn khi nó khớp chính xác với một ký tự. Nó giới hạn độ dài và vị trí của các kết quả phù hợp. Ví dụ 
+Ký tự đại diện \_ đóng một vai trò quan trọng như một giới hạn khi nó khớp chính xác với một ký tự. Nó giới hạn độ dài và vị trí của các kết quả phù hợp. Ví dụ
 
 ```sql
 SELECT *   /* Matches first names with three or more letters */
@@ -744,4 +756,24 @@ WHERE first_name LIKE '___%'
 SELECT *   /* Matches first names with exactly four characters */
 FROM students
 WHERE first_name LIKE '____'
+```
+
+### 41. Viết lệch SQL giúp lấy ra nhân viên có mức lương cao thứ 2 trong 1 phòng ban
+
+```sql
+SELECT
+    e.employee_id,
+    e.employee_name,
+    e.salary,
+    e.department_id,
+    d.department_name
+FROM employees e
+JOIN department d ON e.department_id = d.department_id
+WHERE e.salary = (
+    SELECT DISTINCT salary
+    FROM employees
+    WHERE department_id = e.department_id
+    ORDER BY salary DESC
+    LIMIT 1 OFFSET 1
+);
 ```
