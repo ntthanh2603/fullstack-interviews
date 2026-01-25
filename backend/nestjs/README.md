@@ -1,6 +1,6 @@
 ## Interview Backend Nestjs
 
-![](./assets/nestjs-req-res-pipeline.jpg)
+![](../../assets/nestjs-req-res-pipeline.jpg)
 
 ### Phân biệt let, var, const:
 
@@ -395,8 +395,8 @@ const addItemToCart = (cart, item) => {
 
 ### Đọc ghi cache tối ưu nhất để có tính nhất quán:
 
-![](./assets/io-cache.png)
-![](./assets/io-cache-use-rabbitmq.png)
+![](../../assets/io-cache.png)
+![](../../assets/io-cache-use-rabbitmq.png)
 
 ### Message queue:
 
