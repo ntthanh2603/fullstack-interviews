@@ -1,5 +1,7 @@
 ## Interview Backend Nestjs
 
+![](./assets/nestjs-req-res-pipeline.jpg)
+
 ### Phân biệt let, var, const:
 
 - Var không nên dùng vì có vấn đề về hoisting( bị vấn đề không khai báo mà vẫn dùng được) và block scope( vấn đề không bị giới hạn trong block làm khó kiểm soát).
