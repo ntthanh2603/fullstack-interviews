@@ -1,0 +1,22 @@
+// File này nằm trong .vscode để kết hợp với nestjs để cấu hình debug
+// Sau đó dùng lệnh npm run debug để debug
+// Sau đó chọn Debug NestJS trong Visual Studio Code để debug
+{
+  "configurations": [
+    {
+      "name": "Debug NestJS",
+      "port": 9229,
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    },
+    {
+      "name": "Debug nodejs",
+      "program": "${workspaceFolder}/dist/main.js",
+      "type": "node",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "stopOnEntry": true // --inspect-brk
+    }
+  ]
+}
