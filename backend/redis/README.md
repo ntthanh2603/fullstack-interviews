@@ -199,3 +199,91 @@ Trong môi trường Master-Slave DB, data sync có độ trễ.
 
 - **Delayed Double Delete:** Update DB -> Del Cache -> Sleep (1-2s) -> Del Cache again.
 - **CDC (Change Data Capture):** Lắng nghe Binlog của MySQL để xoá Cache async (dùng Debezium/Canal).
+
+---
+
+## 6. Memory Fragmentation (Phân Mảnh Bộ Nhớ)
+
+**Vấn đề:**
+Bạn kiểm tra Redis thấy `used_memory` chỉ 5GB, nhưng hệ điều hành báo tiến trình Redis đang chiếm 10GB (`used_memory_rss`). 5GB kia đi đâu?
+
+- **Nguyên nhân:**
+  - Redis giải phóng bộ nhớ (xóa key) nhưng trình quản lý bộ nhớ (jemalloc/libc) chưa trả lại ngay cho OS.
+  - Phân mảnh do cấp phát/giải phóng liên tục các object kích thước khác nhau.
+- **Tác hại:** Lãng phí RAM, có thể bị OOM Killer của OS giết chết dù "tưởng" là còn RAM.
+- **Giải pháp:**
+  - **Active Defragmentation:** Bật `activedefrag yes` trong config (Redis 4.0+). Redis sẽ dùng CPU để sắp xếp lại bộ nhớ (trade-off CPU lấy RAM).
+  - **Restart:** Cách "nông dân" nhất để reset fragmentation.
+  - **Tối ưu Allocator:** Sử dụng jemalloc (default) thay vì libc.
+
+---
+
+## 7. Redis Cluster & Cross-Slot Limitations
+
+**Vấn đề:**
+Khi chuyển từ Single Node sang Cluster, rất nhiều feature bị **gãy**:
+
+- `MGET key1 key2` trả về lỗi nếu key1, key2 nằm ở 2 node khác nhau.
+- Transaction `MULTI/EXEC` không hoạt động trên nhiều node.
+- Lua Script báo lỗi cross slot.
+
+**Nguyên nhân:**
+Redis Cluster chia 16384 slot. Dữ liệu sharding tự động. Redis không hỗ trợ atomic operation trên nhiều node vật lý.
+
+**Giải pháp: Hash Tags**
+Dùng `{...}` để ép các key liên quan về cùng 1 slot.
+
+- Ví dụ: Thay vì `user:100:profile` và `user:100:posts`, hãy đặt là `{user:100}:profile` và `{user:100}:posts`.
+- Redis sẽ chỉ hash phần chuỗi trong `{}` (tức là `user:100`) để tính slot -> Cùng slot -> Cùng node -> Transaction/Batch hoạt động bình thường.
+
+---
+
+## 8. Single Thread & Blocking Operations
+
+**Vấn đề:**
+Redis xử lý lệnh bằng **đơn luồng (Single Thread)**. Chỉ một lệnh chậm (Slow Query) sẽ chặn đứng 10,000 request khác đang xếp hàng.
+
+- **Các lệnh tử thần:**
+  - `KEYS *`: Quét toàn bộ DB. -> Dùng `SCAN`.
+  - `FLUSHALL` / `FLUSHDB`: Xóa sạch DB. -> Dùng `FLUSHALL ASYNC`.
+  - Lua Script chạy quá lâu (infinite loop hoặc xử lý nặng). -> Cấu hình `lua-time-limit`.
+  - `DEL` một key cực lớn (như đã nói ở mục Big Key). -> Dùng `UNLINK`.
+
+**Monitoring:**
+
+- Dùng lệnh `SLOWLOG GET` để bắt các lệnh chạy chậm hơn quy định (VD > 10ms).
+
+---
+
+## 9. Persistence Nightmare (RDB vs AOF Forking)
+
+**Vấn đề: Latency Spike bí ẩn.**
+Hệ thống đang chạy ngon, cứ 5-10 phút lại bị khựng (stutter) khoảng 500ms - 1s mà không thấy Slow Query.
+
+**Nguyên nhân: Copy-On-Write (COW)**
+
+- Khi Redis save RDB hoặc rewrite AOF, nó phải `fork()` ra một process con.
+- `fork()` trên Linux copy page table (bảng nhớ).
+- Nếu Redis dùng 20GB RAM, việc copy page table tốn thời gian đáng kể, làm Block main thread.
+
+**Giải pháp:**
+
+- **Không bật RDB/AOF trên Master:** Chỉ bật persistence trên Slave (nếu chấp nhận mất ít dữ liệu khi cả cụm sập).
+- **Tránh Huge Pages:** Tắt Transparent Huge Pages (THP) của Linux (`echo never > /sys/kernel/mm/transparent_hugepage/enabled`). Huge Pages làm chi phí copy khi fork tăng vọt.
+- **Tối ưu tần suất:** Giãn thời gian rewrite AOF hoặc save RDB.
+
+---
+
+## 10. Client Output Buffer Limit
+
+**Vấn đề:**
+Redis chiếm RAM tăng đột biến rồi crash, dù lượng key không tăng.
+**Nguyên nhân:**
+
+- Có một Slow Consumer (Client đọc chậm) hoặc mạng chập chờn.
+- Redis phải lưu kết quả query vào buffer chờ Client nhận. Server gom hàng đống data vào buffer -> Tràn RAM.
+- Thường gặp với Pub/Sub khi Sub xử lý không kịp tốc độ Pub.
+
+**Giải pháp:**
+
+- Cấu hình `client-output-buffer-limit`. Nếu buffer vượt quá cache (VD 256MB) hoặc vượt quá soft limit trong thời gian quy định -> Redis chủ động ngắt kết nối Client đó để bảo vệ Server.
